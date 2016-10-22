@@ -2,6 +2,7 @@ package com.huawei.support.cbbservice.utils;
 
 import static com.huawei.support.cbbservice.utils.PropertiesUtil.readValue;
 import static com.huawei.support.cbbservice.utils.PropertiesUtil.writeProperties;
+
 import org.junit.Test;
 
 public class PropertiesUtilTest
@@ -14,6 +15,7 @@ public class PropertiesUtilTest
 	public void testGetKeyValue()
 	{
 		String value = readValue(profilepath, "MAIL_SERVER_PASSWORD");
+		System.out.println(value);
 		writeProperties("MAIL_SERVER_INCOMING", "327@qq.com");
 		writeProperties("MAIL_SERVER_INCOMING33", "327@qq.com33");
 		System.out.println("操作完成");

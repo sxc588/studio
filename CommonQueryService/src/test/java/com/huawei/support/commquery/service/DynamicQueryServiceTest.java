@@ -27,8 +27,8 @@ public class DynamicQueryServiceTest
 	String username = "root";
 	// 登录的密码
 	String password = "root";
-	String sql = "select count(*) as cnt  from account where 1=1";
-	String sql2 = "select count(*) as cnt  from account where 1=1 offset 0 limit 10";
+	String sql = "select * from t_account where 1=1";
+	String sql2 = "select count(*) as cnt  from t_account where 1=1 offset 0 limit 10";
 
 	@Test
 	public void testExecuteQuery() throws SQLException
@@ -53,6 +53,34 @@ public class DynamicQueryServiceTest
 		PowerMockito.verifyStatic();
 
 		assertEquals(expectedValue, actualValue);
+	}
+	
+	
+	@Test
+	public void testExecuteQuery2() throws SQLException
+	{
+		//List<Map<String, String>> expectedValue = new ArrayList<Map<String, String>>();
+
+		// PowerMockito.mockStatic(PropertyApplicationContext.class);// 3
+		// PowerMockito.mockStatic(WebChatUtil.class);
+
+	//	PowerMockito.mockStatic(DynamicQuery.class);
+		/*
+		 * Setup the expectation using the standard Mockito syntax,
+		 * generateNewId() will now return 2 everytime it's invoked in this
+		 * test.
+		 */
+	//	PowerMockito.when(DynamicQuery.executeQuery(driver, URL, username, password, sql2)).thenReturn(expectedValue);
+
+		List<Map<String, String>> actualValue = DynamicQueryService.executeQuery(driver, URL, username, password, sql,
+				0, 10);
+		
+		System.out.println(actualValue);
+
+		// Optionally verify that the static method was actually called
+	//	PowerMockito.verifyStatic();
+
+	//	assertEquals(expectedValue, actualValue);
 	}
 
 }

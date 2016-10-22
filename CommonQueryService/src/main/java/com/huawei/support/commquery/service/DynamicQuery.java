@@ -30,7 +30,7 @@ public class DynamicQuery
 			String DBNAME = "root";
 			// 登录的密码
 			String DBPASS = "root";
-			String sql = "select count(*) as count  from account where 1=1";
+			String sql = "select count(*) as count  from t_account where 1=1";
 			
 			List<Map<String, String>> result = executeQuery(DRIVER, URL, DBNAME, DBPASS, sql);
 			
@@ -56,8 +56,8 @@ public class DynamicQuery
 
 			psm = con.prepareStatement(sql);
 			resultSet = psm.executeQuery();
-			logger.info(String.format("执行SQL成功! sql【%s】.", sql));
-
+			logger.info(String.format("执行SQL成功!【%s】.", sql));
+	
 			// 获取所有的列名
 			ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
 			for (int i = 0; i < resultSetMetaData.getColumnCount(); i++)
@@ -65,7 +65,7 @@ public class DynamicQuery
 				logger.info(resultSetMetaData.getColumnName(i + 1));
 			}
 
-			logger.info(String.format("开始遍历结果集! Rows【%d】", resultSet.getRow()));
+			
 			// 遍历结果集
 			List<Map<String, String>> resultList = new ArrayList<Map<String, String>>();
 			while (resultSet.next())
@@ -80,6 +80,7 @@ public class DynamicQuery
 				}
 				resultList.add(rowMap);
 			}
+			logger.info(String.format("遍历结果集完成! Rows【%d】", resultList.size()));
 			return resultList;
 		}
 		catch (Exception e)

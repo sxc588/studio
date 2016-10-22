@@ -77,7 +77,7 @@ public class DynamicQueryService
 															final int offset,
 															final int limit) throws SQLException
 	{
-		String sql2 = sql + " offset "+ offset  + " limit "+ limit;
+		String sql2 = sql + " limit "+ offset +", " +limit;
 		logger.info(sql2);
 		return DynamicQuery.executeQuery(driver, URL, username, password, sql2);
 	}

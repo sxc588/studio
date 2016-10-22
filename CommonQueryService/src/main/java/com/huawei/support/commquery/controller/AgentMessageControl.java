@@ -9,9 +9,6 @@ public class AgentMessageControl extends MultiActionController
 	public ModelAndView getAgentMessage(HttpServletRequest requset, HttpServletRequest response)
 	{
 		ModelAndView mv = null;
-		
-		
 		return mv;
 	}
-
 }
