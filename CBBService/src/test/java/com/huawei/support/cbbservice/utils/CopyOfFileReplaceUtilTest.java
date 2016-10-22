@@ -10,7 +10,7 @@ public class CopyOfFileReplaceUtilTest
 	@Test
 	public void test() throws IOException
 	{
-		CopyOfFileReplaceUtil.RelplaseMutl();
+		DirReplaceUtil.RelplaseMutl();
 	}
 
 }

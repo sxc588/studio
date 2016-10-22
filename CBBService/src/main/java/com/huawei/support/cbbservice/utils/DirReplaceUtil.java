@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CopyOfFileReplaceUtil
+public class DirReplaceUtil
 {
 	/**
 	 * 处理文件内容替换项
