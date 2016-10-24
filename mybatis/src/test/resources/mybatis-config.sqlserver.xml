@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- MyBatis针对SqlServer进行的配置 -->
+<!-- 	<properties resource="mybatis_sqlserver.properties"> -->
+<properties>
+		<property name="username" value="king" />
+		<property name="password" value="king1234" />
+	</properties>
+	<typeAliases>
+		<typeAlias alias="Student" type="com.huawei.support.mybatis3.model.Student" />
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver"
+					value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+				<!-- <property name="url" value="jdbc:microsoft:sqlserver://localhost:1433;DatabaseName=mydbname"/> -->
+				<property name="url"
+					value="jdbc:sqlserver://localhost:1433;DatabaseName=HWTest" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/huawei/support/mybatis3/mapper/StudentMapper.xml" />
+	</mappers>
+</configuration>
