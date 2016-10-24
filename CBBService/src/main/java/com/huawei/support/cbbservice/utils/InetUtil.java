@@ -11,16 +11,16 @@ import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class InetUtil {
+public class InetUtil
+{
 
 	private static Logger logger = LoggerFactory.getLogger(InetUtil.class);
 
-	@Deprecated
-	public static String getLocalIP() throws UnknownHostException {
+	public static String getLocalIP() throws UnknownHostException
+	{
 		InetAddress address = InetAddress.getLocalHost();
 		return address.getHostAddress().toString();
 	}
@@ -31,7 +31,8 @@ public class InetUtil {
 	 * @return
 	 * @throws SocketException
 	 */
-	public static String uploadIPs() throws SocketException {
+	public static String uploadIPs() throws SocketException
+	{
 		return "192.168.1.106;";
 
 	}
@@ -42,12 +43,14 @@ public class InetUtil {
 	 * @return
 	 * @throws SocketException
 	 */
-	public static String getLocalIP2(String uploadIps) throws SocketException {
+	public static String getLocalIP2(String uploadIps) throws SocketException
+	{
 		Enumeration<NetworkInterface> allnetInterface = null;
 
 		allnetInterface = NetworkInterface.getNetworkInterfaces();
 
-		if (null == allnetInterface) {
+		if (null == allnetInterface)
+		{
 			return null;
 		}
 
@@ -58,16 +61,19 @@ public class InetUtil {
 
 		logger.info("ipList:" + uploadIpList);
 
-		while (allnetInterface.hasMoreElements()) {
+		while (allnetInterface.hasMoreElements())
+		{
 			NetworkInterface inter = allnetInterface.nextElement();
 			Enumeration<InetAddress> addresses = inter.getInetAddresses();
 
-			while (addresses.hasMoreElements()) {
+			while (addresses.hasMoreElements())
+			{
 				InetAddress address = addresses.nextElement();
 
 				String ip = address.getHostAddress().replace("/", "");
 				logger.info("RawIp address:" + address + "--> Fixed address:" + ip);
-				if (uploadIpList.contains(ip)) {
+				if (uploadIpList.contains(ip))
+				{
 					return ip;
 				}
 			}
@@ -83,7 +89,8 @@ public class InetUtil {
 	 *            源文件路基
 	 * @return String
 	 */
-	public static String getQuotedFilePath(String filePath) {
+	public static String getQuotedFilePath(String filePath)
+	{
 		char quated = '"';
 		StringBuilder sb = new StringBuilder(filePath.length() + 2);
 		sb.append(quated).append(filePath).append(quated);
@@ -95,7 +102,8 @@ public class InetUtil {
 	 * 
 	 * @return
 	 */
-	public static final String getRamInfo() {
+	public static final String getRamInfo()
+	{
 		Runtime rt = Runtime.getRuntime();
 		return "RAM:" + rt.totalMemory() / 1024 / 1024 + "MB total," + rt.freeMemory() / 1024 / 1024 + "MB free.";
 	}
@@ -105,7 +113,8 @@ public class InetUtil {
 	 * 
 	 * @return
 	 */
-	public static String getSystemOsName() {
+	public static String getSystemOsName()
+	{
 		Properties props = System.getProperties();
 		String osName = props.getProperty("os.name");
 		return osName;
@@ -117,19 +126,25 @@ public class InetUtil {
 	 * @return
 	 * @throws Exception
 	 */
-	public static InetAddress getUnixLocalIp() throws Exception {
+	public static InetAddress getUnixLocalIp() throws Exception
+	{
 		Enumeration<NetworkInterface> netInterfaces = NetworkInterface.getNetworkInterfaces();
-		if (null == netInterfaces) {
+		if (null == netInterfaces)
+		{
 			throw new Exception("获取类Unix系统的IP失败");
 		}
 		InetAddress ip = null;
-		while (netInterfaces.hasMoreElements()) {
+		while (netInterfaces.hasMoreElements())
+		{
 			NetworkInterface ni = netInterfaces.nextElement();
-			if (ni.isUp()) {
+			if (ni.isUp())
+			{
 				Enumeration<InetAddress> addressEnumeration = ni.getInetAddresses();
-				while (addressEnumeration.hasMoreElements()) {
+				while (addressEnumeration.hasMoreElements())
+				{
 					ip = addressEnumeration.nextElement();
-					if (ip.isSiteLocalAddress() && !ip.isLoopbackAddress() && ip.getHostAddress().indexOf(":") == -1) {
+					if (ip.isSiteLocalAddress() && !ip.isLoopbackAddress() && ip.getHostAddress().indexOf(":") == -1)
+					{
 						return ip;
 					}
 				}
@@ -144,7 +159,8 @@ public class InetUtil {
 	 * @return
 	 * @throws UnknownHostException
 	 */
-	public static InetAddress getWinLocalIp() throws UnknownHostException {
+	public static InetAddress getWinLocalIp() throws UnknownHostException
+	{
 		InetAddress inet = InetAddress.getLocalHost();
 		return inet;
 	}
@@ -155,13 +171,17 @@ public class InetUtil {
 	 * @return
 	 * @throws Exception
 	 */
-	private static InetAddress getSystemLocalIP() throws Exception {
+	private static InetAddress getSystemLocalIP() throws Exception
+	{
 
 		InetAddress inet = null;
 		String osName = getSystemOsName();
-		if ("Windows".compareToIgnoreCase(osName) < 0) {
+		if ("Windows".compareToIgnoreCase(osName) < 0)
+		{
 			inet = getWinLocalIp();
-		} else {
+		}
+		else
+		{
 			inet = getUnixLocalIp();
 		}
 		return inet;
@@ -173,11 +193,13 @@ public class InetUtil {
 	 * @return
 	 * @throws Exception
 	 */
-	public static String getLocalIp() throws Exception {
+	public static String getLocalIp() throws Exception
+	{
 		InetAddress inet;
 
 		inet = getSystemLocalIP();
-		if (null != inet) {
+		if (null != inet)
+		{
 			String ip = inet.getHostAddress();
 			logger.info("获取的本机IP为{}", ip);
 			return ip;

@@ -1,0 +1,10 @@
+2016-07-04 23:29:23 [com.huawei.xmlserlize.XmlUtilTest:29] - <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<classA xmlns:ns2="cn.lzrabbit">
+    <classAId>11</classAId>
+    <classAName>A1</classAName>
+    <classB>
+        <classBId>22</classBId>
+        <classBName>B2</classBName>
+    </classB>
+</classA>
+

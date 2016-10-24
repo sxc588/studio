@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huawei.support.mybatis3.mapper.StudentMapper">
+
+	<insert id="add" parameterType="Student" keyProperty="id">
+		insert into t_student values(null,#{name},#{age})
+	</insert>
+
+</mapper>

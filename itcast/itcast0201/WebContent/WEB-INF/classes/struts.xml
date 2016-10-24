@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!-- 指定Struts 2配置文件的DTD信息 -->
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- 配置Struts 2配置文件的根元素 -->
+<struts>
+	<!-- Struts 2的Action必须放在指定的包空间下定义 -->
+	<package name="demo" extends="struts-default">
+		<!-- 定义login的Action，该Action的实现类为
+			org.crazyit.demo.action.LoginAction类 -->
+		<action name="login" class="org.crazyit.demo.action.LoginAction">
+			<!-- 定义input的逻辑视图名，对应loginForm.jsp页面 -->
+			<result name="input">/WEB-INF/content/loginForm.jsp</result>
+			<!-- 定义处理结果和视图资源之间映射关系 -->
+			<result name="error">/WEB-INF/content/error.jsp</result>
+			<result name="success">/WEB-INF/content/welcome.jsp</result>
+		</action>
+		<action name="getBooks" class="org.crazyit.demo.action.GetBooksAction">
+			<!-- 如果处理结果返回login，进入login.jsp页面 -->
+			<result name="login">/WEB-INF/content/login.jsp</result>
+			<!-- 如果处理结果返回success，进入showBook.jsp页面 -->
+			<result name="success">/WEB-INF/content/showBook.jsp</result> 
+		</action>
+
+		<action name="*">
+			<!-- 直接跳转到*所代表的页面页面，
+			比如用户访问abc Action，此时*代表abc，
+			Struts 2将会跳转到abc.jsp页面 -->
+			<result>/WEB-INF/content/{1}.jsp</result> 
+		</action>
+	</package>
+</struts>

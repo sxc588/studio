@@ -95,7 +95,7 @@ public class DynamicQuery
 				resultSet.close();
 				logger.info(String.format("关闭结果集成功!"));
 			}
-			if (psm == null)
+			if (psm != null)
 			{
 				psm.close();
 				logger.info(String.format("关闭结果查询语句成功！"));

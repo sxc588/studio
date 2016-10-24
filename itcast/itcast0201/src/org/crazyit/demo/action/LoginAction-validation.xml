@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 指定校验规则文件的DTD信息 -->
+<!DOCTYPE validators PUBLIC 
+	"-//OpenSymphony Group//XWork Validator 1.0.3//EN" 
+	"http://www.opensymphony.com/xwork/xwork-validator-1.0.3.dtd">
+<!-- 校验规则定义文件的根元素 -->
+<validators>
+	<!-- 校验第一个表单域：username -->
+	<field name="username">
+		<!-- 该表单域必须填写 -->
+		<field-validator type="requiredstring">
+			<!-- 如果校验失败，显示user.required对应的信息 -->
+			<message key="user.required"/>
+		</field-validator>
+	</field>
+	<!-- 校验第二个表单域：password -->
+	<field name="password">
+		<field-validator type="requiredstring">
+			<!-- 如果校验失败，显示pass.required对应的信息 -->
+			<message key="pass.required"/>
+		</field-validator>
+	</field>
+</validators>

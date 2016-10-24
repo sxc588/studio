@@ -1,13 +1,6 @@
 package com.huawei.support.commquery.service;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.apache.log4j.Logger;
@@ -81,5 +74,4 @@ public class DynamicQueryService
 		logger.info(sql2);
 		return DynamicQuery.executeQuery(driver, URL, username, password, sql2);
 	}
-
 }
