@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<!-- changes from the defaults -->
+		<setting name="lazyLoadingEnabled" value="false" />
+	</settings>
+
+	<typeAliases>
+		<typeAlias alias="user" type="com.bolo.examples.base.entity.User" />
+		<typeAlias alias="role" type="com.bolo.examples.base.entity.Role" />
+		<typeAlias alias="userInfo" type="com.bolo.examples.base.entity.UserInfo" />
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="mapper/UserMapper.xml" />
+		<mapper resource="mapper/RoleMapper.xml" />
+		<mapper resource="mapper/UserInfoMapper.xml" />
+	</mappers>
+</configuration>

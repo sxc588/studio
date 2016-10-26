@@ -3,26 +3,26 @@
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-        <!-- 命名空间 -->
-    <properties resource="jdbc.properties" />
-    <settings>
-        <setting name="cacheEnabled" value="false"/>
-    </settings>
-    <typeAliases>
-        <typeAlias alias="Student" type="com.huawei.support.mybatis3.model.Student"/>
-    </typeAliases>
-    <environments default="development">
-        <environment id="development">
-            <transactionManager type="JDBC" />
-            <dataSource type="POOLED">
-                <property name="driver" value="${jdbc.driver}" />
-                <property name="url" value="${jdbc.url}" />
-                <property name="username" value="${jdbc.username}" />
-                <property name="password" value="${jdbc.password}" />
-            </dataSource>
-        </environment>
-    </environments>
-    <mappers>
-        <mapper resource="com/huawei/support/mybatis3/mapper/StudentMapper.xml" />
-    </mappers>
+	<!-- 命名空间 -->
+	<properties resource="jdbc.properties" />
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+	</settings>
+	<typeAliases>
+		<typeAlias alias="Student" type="com.huawei.support.mybatis3.model.Student" />
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/huawei/support/mybatis3/mapper/StudentMapper.xml" />
+	</mappers>
 </configuration>
