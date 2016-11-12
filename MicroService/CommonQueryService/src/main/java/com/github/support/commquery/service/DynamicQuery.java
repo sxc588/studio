@@ -1,4 +1,4 @@
-package com.huawei.support.commquery.service;
+package com.github.support.commquery.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,5 +1,5 @@
 
-package com.huawei.support.commquery.controller;
+package com.github.support.commquery.controller;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.huawei.support.commquery.service.DynamicQuery;
+import com.github.support.commquery.service.DynamicQuery;
 
 /**
  * 欢迎页面

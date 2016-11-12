@@ -3,7 +3,7 @@ package com.huawei.support.commquery.model;
 import org.junit.Test;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huawei.support.commquery.model.Person;
+import com.github.support.commquery.model.Person;
 
 public class PersonTest
 {

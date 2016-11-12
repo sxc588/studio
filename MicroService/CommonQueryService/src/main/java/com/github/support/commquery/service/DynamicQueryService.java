@@ -1,5 +1,5 @@
 
-package com.huawei.support.commquery.service;
+package com.github.support.commquery.service;
 
 import java.sql.SQLException;
 import java.util.List;

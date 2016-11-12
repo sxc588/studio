@@ -3,27 +3,28 @@
 <mapper namespace="roleMapper">
 
 	<sql id="base_column">
-	    id, name
+		id, name
 	</sql>
-	
+
 	<select id="selectByEntity" parameterType="role" resultType="role">
-		select 
+		select
 		<include refid="base_column" />
 		from role
 	</select>
-	
+
 	<select id="selectByPrimaryKey" parameterType="int" resultType="role">
-		select 
+		select
 		<include refid="base_column" />
 		from role where id = #{id}
 	</select>
-	
+
 	<insert id="insert" parameterType="role">
-		insert into role (name) values (#{name})
+		insert into role (name) values
+		(#{name})
 	</insert>
-	
+
 	<update id="update" parameterType="role">
-		update role 
+		update role
 		<set>
 			<if test="name != null">
 				name = #{name},
@@ -31,8 +32,9 @@
 		</set>
 		where id = #{id}
 	</update>
-	
+
 	<delete id="delete" parameterType="int">
-		delete from role where id = #{id}
+		delete from role where id =
+		#{id}
 	</delete>
 </mapper>

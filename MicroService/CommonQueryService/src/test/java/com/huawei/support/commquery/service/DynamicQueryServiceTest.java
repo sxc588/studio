@@ -10,8 +10,8 @@ import org.junit.runner.RunWith;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
-import com.huawei.support.commquery.service.DynamicQuery;
-import com.huawei.support.commquery.service.DynamicQueryService;
+import com.github.support.commquery.service.DynamicQuery;
+import com.github.support.commquery.service.DynamicQueryService;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(DynamicQuery.class)
