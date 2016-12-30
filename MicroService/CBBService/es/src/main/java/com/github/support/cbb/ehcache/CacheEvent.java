@@ -7,5 +7,4 @@ public interface CacheEvent
 	static final int UPDATE = 2;
 	static final int REMOVE = 3;
 	static final int EXPTRE = 4;
-
 }

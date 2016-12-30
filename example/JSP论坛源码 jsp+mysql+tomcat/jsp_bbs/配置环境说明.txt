@@ -1,0 +1,25 @@
+运行环境：
+下载安装jdk1.6
+下载tomcat 5.0以上版本
+下载mysql 5.0版本以上
+下载myeclipse 6.0版本以上
+
+
+运行配置过程：
+正确配置好jdk
+启动mysql数据库服务器，导入.sql脚本并执行生成相应数据库
+把源代码bbs文件夹导入到myeclipse中，并把相应的mysql-connector-java-5.0.7-bin.jar添加的路径中
+更改部分的连接数据库的源代码：
+如文件夹中jsp_bbs\bbs\src\com\yxq\dao\DB.java中
+更改数据库名字，用户名和密码(更改至自己本地的数据库连接一致)
+className="com.mysql.jdbc.Driver";
+		url="jdbc:mysql://localhost:3306/db_luntan";
+		username="root";
+		password="root";  //我的数据库名字为db_luntan 用户名为root 密码为root
+
+在myeclipse中配置启动tomcat服务器
+即可运行成功！
+
+
+在C:\Documents and Settings\Administrator\桌面\apache-tomcat-6.0.32\webapps中会出现bbs的文件夹
+打开浏览器输入http://localhost:8080/bbs运行成功！

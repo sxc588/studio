@@ -23,7 +23,7 @@ public class flayawyTest
 
 		for (String name : beanNames)
 		{
-			System.err.println(name);
+			System.err.println("----" +name);
 		}
 
 	}

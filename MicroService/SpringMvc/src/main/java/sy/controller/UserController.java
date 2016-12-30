@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import sy.model.User;
+import com.github.support.entitement.mybatis.model.User;
 import sy.service.UserServiceI;
 
 @Controller
@@ -30,9 +30,7 @@ public class UserController
 	public String showUser(@PathVariable String id, HttpServletRequest request)
 	{
 
-		System.err.println("dddddddddddddddddddddd");
-		User u = new User();
-		// User u = userService.getUserById(id);
+		User u = userService.getUserById(id);
 		request.setAttribute("user", u);
 		return "showUser";
 	}

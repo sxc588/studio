@@ -17,7 +17,17 @@
 	<beans:bean id="logService" class="com.github.support.aop.LogServiceImpl" />
 	<beans:bean id="loginService" class="com.github.support.aop.service.impl.LoginServiceImpl" />
 	
-
+	<aop:config>
+		<!-- 切入点 -->
+		<aop:pointcut expression="execution(* com.github.support.aop.service.impl.LoginServiceImpl.*(..))" id="myPointcut" />
+		<!-- 切面： 将哪个对象中的哪个方法，织入到哪个切入点 -->
+		<aop:aspect id="dd" ref="logService">
+			<aop:before method="log" pointcut-ref="myPointcut" />
+			<aop:after method="logArg" pointcut-ref="myPointcut" />
+			<aop:after-returning method="logArgAndReturn" returning="returnObj" pointcut-ref="myPointcut" />
+			<!-- <aop:after-throwing method="logAfterThrowing" execption pointcut-ref="myPointcut" /> -->
+		</aop:aspect>
+	</aop:config>
 	
 	<aop:aspectj-autoproxy/> 
 	

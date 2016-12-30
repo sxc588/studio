@@ -7,9 +7,8 @@
 <title>用户选择语言实例</title>
 </head>
 
-<body style="height: 378px; ">
+<body style="height: 378px;">
 	<h1>用户选择语言</h1>
-	<s:select list="#huitailang.locales"   listKey="value" listValue="key" ></s:select>
+	<s:select list="#huitailang.locales" listKey="value" listValue="key"></s:select>
 </body>
 </html>
-	

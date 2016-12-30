@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.github.support.entitement.mybatis.dao.UserMapper;
+import com.github.support.entitement.mybatis.model.User;
 
-import sy.dao.UserMapper;
-import sy.model.User;
 
 @Service("userService")
 public class UserServiceImpl implements UserServiceI {

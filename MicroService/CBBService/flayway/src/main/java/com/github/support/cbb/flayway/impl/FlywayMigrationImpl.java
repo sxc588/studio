@@ -40,7 +40,7 @@ public class FlywayMigrationImpl implements FlywayMigration
 
 		flyway.migrate();
 
-		System.err.println("done");
+		System.err.println("FlywayMigrationImpl.migrate- done");
 	}
 
 	@Override

@@ -14,9 +14,10 @@ import java.util.Properties;
 
 public class PropertiesUtil
 {
+	
 
 	// 属性文件的路径
-	static String profilepath = "D:\\Workspaces\\MyEclipsePro2013\\CBBService\\src\\main\\java\\com\\huawei\\support\\cbbservice\\jms\\mail.properties";
+	public static String profilepath = PropertiesUtil.class.getResource("/").toString() + "mail.properties";
 	/**
 	 * 采用静态方法
 	 */
@@ -64,7 +65,10 @@ public class PropertiesUtil
 		Properties props = new Properties();
 		try
 		{
-			InputStream in = new BufferedInputStream(new FileInputStream(filePath));
+		
+			InputStream in = new BufferedInputStream(new FileInputStream(PropertiesUtil.class.getResource("/").toString() + filePath));
+			//InputStream in = PropertiesUtil.class.getResourceAsStream(PropertiesUtil.class.getResource("/").toString() + filePath);
+			
 			props.load(in);
 			String value = props.getProperty(key);
 			System.out.println(key + " 键的值是：" + value);

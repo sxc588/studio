@@ -19,5 +19,4 @@ public class QuartzJobUpload implements Job
 
 		logger.info("★★★★★★★★★★★ 完成病毒扫描中心");
 	}
-	
 }

@@ -1,4 +1,4 @@
-package com.github.support.cbb.ehcache.json;
+package com.github.support.cbb.utils;
 
 public class NestedException extends RuntimeException
 {

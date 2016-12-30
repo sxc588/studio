@@ -69,5 +69,4 @@ public class QuartzManagerTest
 			QuartzManager.addJob(job_name, QuartzJob.class, "0/1 * * * * ?");
 			Thread.sleep(15000);
 	}
-
 }

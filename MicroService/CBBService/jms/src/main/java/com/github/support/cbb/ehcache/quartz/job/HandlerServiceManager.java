@@ -25,8 +25,7 @@ public class HandlerServiceManager implements InitializingBean
 	@Autowired
 	@Qualifier("queueDestination")
 	private Destination destination;
-	
-	
+
 	/**
 	 * @return the destination
 	 */
@@ -36,14 +35,15 @@ public class HandlerServiceManager implements InitializingBean
 	}
 
 	static HandlerServiceManager handlerServiceManager;
-	
+
 	@Override
 	public void afterPropertiesSet() throws Exception
 	{
 		handlerServiceManager = this;
 	}
-	
-	public static HandlerServiceManager getInstance(){
+
+	public static HandlerServiceManager getInstance()
+	{
 		return handlerServiceManager;
 	}
 
