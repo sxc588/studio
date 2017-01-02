@@ -54,8 +54,7 @@ public class JMSMessageService
 		{
 			if (topic == null)
 			{
-				topic = jmsTemplate.getConnectionFactory().createConnection()
-						.createSession(false, Session.AUTO_ACKNOWLEDGE).createTopic(topicName);
+				topic = jmsTemplate.getConnectionFactory().createConnection().createSession(false, Session.AUTO_ACKNOWLEDGE).createTopic(topicName);
 			}
 
 			jmsTemplate.send(topic, new MessageCreator()
@@ -73,15 +72,14 @@ public class JMSMessageService
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void sendMessage(final Map<String, Object> message)
 	{
 		try
 		{
 			if (topic == null)
 			{
-				topic = jmsTemplate.getConnectionFactory().createConnection()
-						.createSession(false, Session.AUTO_ACKNOWLEDGE).createTopic(topicName);
+				topic = jmsTemplate.getConnectionFactory().createConnection().createSession(false, Session.AUTO_ACKNOWLEDGE).createTopic(topicName);
 			}
 
 			jmsTemplate.send(topic, new MessageCreator()
@@ -90,7 +88,7 @@ public class JMSMessageService
 				public Message createMessage(Session session) throws JMSException
 				{
 					MapMessage textMessage = session.createMapMessage();
-					//textMessage.setObject(name, value);
+					// textMessage.setObject(name, value);
 					return textMessage;
 				}
 			});
@@ -100,14 +98,11 @@ public class JMSMessageService
 			e.printStackTrace();
 		}
 	}
-	
-	
 
 	public Destination createQueue(String queueName) throws JMSException
 	{
 
-		Destination topic = jmsTemplate.getConnectionFactory().createConnection()
-				.createSession(false, Session.AUTO_ACKNOWLEDGE).createTopic(queueName);
+		Destination topic = jmsTemplate.getConnectionFactory().createConnection().createSession(false, Session.AUTO_ACKNOWLEDGE).createTopic(queueName);
 		return topic;
 	}
 

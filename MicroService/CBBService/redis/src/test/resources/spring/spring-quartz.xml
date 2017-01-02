@@ -42,7 +42,7 @@
 	</bean>
 	
 	<!-- 消息监听器 -->
-	<bean id="consumerMessageListener" class="com.huawei.support.cbbservice.jms.listener.ActiveMqObjectMessageListener" />
+	<bean id="consumerMessageListener" class="com.github.support.cbbservice.jms.listener.ActiveMqObjectMessageListener" />
 	
 	<!-- 消息监听容器 -->
 	<bean id="jmsContainer"
@@ -53,5 +53,5 @@
 	</bean>
 
 	<context:annotation-config />
-	<context:component-scan base-package="com.huawei.support.cbbservice" />
+	<context:component-scan base-package="com.github.support.cbbservice" />
 </beans>

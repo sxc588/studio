@@ -5,7 +5,9 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import com.github.support.cbb.ehcache.jms.JMSMessageService;
 
 @Component
 public class QuartzJobCheckResult implements Job
@@ -20,7 +22,6 @@ public class QuartzJobCheckResult implements Job
 	//	List<Sysconfig> abc = sysconfigMapper.getAllAccount();
 //		logger.info(abc.toString());
 //	producerService.sendMessage("DDF");
-		
 		logger.info("★★★★★★★★★★★ 轮休扫描结果");
 	}
 
