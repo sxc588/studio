@@ -40,7 +40,6 @@ public class SessionFilter extends OncePerRequestFilter
 
 		Logger.info(uri);
 		
-		
 		if (doFilter)
 		{
 			// 执行过滤
