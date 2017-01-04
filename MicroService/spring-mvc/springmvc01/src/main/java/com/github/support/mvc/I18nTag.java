@@ -15,12 +15,12 @@ public class I18nTag extends TagSupport
 	public int doStartTag() throws JspException
 	{
 
-		String lang = this.pageContext.getSession().getAttribute(KEY_LANG).toString();
+	//	String lang = this.pageContext.getSession().getAttribute(KEY_LANG).toString();
 
 		try
 		{
-			String langValue = I18nCacheService.getI18nValue(lang, key);
-			super.pageContext.getOut().write(langValue);
+			//String langValue = I18nCacheService.getI18nValue(lang, key);
+			super.pageContext.getOut().write("langValue");
 		}
 		catch (IOException e)
 		{

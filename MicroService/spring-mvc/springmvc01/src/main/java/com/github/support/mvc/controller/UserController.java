@@ -120,7 +120,6 @@ public class UserController
 
 		System.err.println(uri);
 		response.sendRedirect(uri);
-
 	}
 
 }

@@ -74,5 +74,9 @@
 		<taglib-uri>/dateConvert</taglib-uri>
 		<taglib-location>dateConvert.tld</taglib-location>
 	</taglib>
+		<taglib>
+		<taglib-uri>/I18nTag</taglib-uri>
+		<taglib-location>I18nTag.tld</taglib-location>
+	</taglib>
 </jsp-config>
 </web-app>

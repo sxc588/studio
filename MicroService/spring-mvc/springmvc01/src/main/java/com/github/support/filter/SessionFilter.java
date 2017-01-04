@@ -59,6 +59,9 @@ public class SessionFilter extends OncePerRequestFilter
 			}
 			else
 			{
+				Object url = request.getSession().getAttribute(SessionKeyContent.SESSION_KEY_URL);
+				
+			//	response.sendRedirect(request.getContextPath() + url.toString());
 				// 如果session中存在登录者实体，则继续
 				filterChain.doFilter(request, response);
 			}
