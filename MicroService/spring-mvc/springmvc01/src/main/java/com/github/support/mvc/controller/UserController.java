@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.RequestToViewNameTranslator;
-import com.github.support.SessionKeyContent;
 import com.github.support.entitement.mybatis.model.User;
+import com.github.support.filter.SessionKeyContent;
 import com.github.support.mvc.service.UserServiceI;
 
 @Controller
 @RequestMapping("/user")
 public class UserController
 {
-	private static Logger  logger  = org.apache.log4j.Logger.getLogger(UserController.class);
+	private static Logger logger = org.apache.log4j.Logger.getLogger(UserController.class);
 	// private UserServiceI userService;
 	//
 	//
@@ -89,8 +89,7 @@ public class UserController
 	@RequestMapping("/ajax0")
 	public User ajax0()
 	{
-		
-	
+
 		User currentuser = new User();
 		currentuser.setUsrname("username");
 		currentuser.setPassword("password");
@@ -100,34 +99,28 @@ public class UserController
 	@RequestMapping("/ajax")
 	public @ResponseBody User ajax()
 	{
-	     System.err.println("triagle ==>ajas" + new Date().getTime());
+		System.err.println("triagle ==>ajas" + new Date().getTime());
 		User currentuser = new User();
 		currentuser.setUsrname("username");
 		currentuser.setPassword("password");
 		return currentuser;
 	}
-	
-	
+
 	@RequestMapping("/login2")
 	public void login2(HttpServletRequest request, HttpServletResponse response) throws IOException
 	{
-	    System.err.println("triagle ==>ajas" + new Date().getTime());
+		System.err.println("triagle ==>ajas" + new Date().getTime());
 		User currentuser = new User();
 		currentuser.setUsrname("username");
 		currentuser.setPassword("password");
-		
-		request.getSession().setAttribute(SessionKeyContent.SESSION_KEY_OBJ_USER_BEAN,"aaaa");
-		
-		
-		String uri=  (String) request.getSession().getAttribute(SessionKeyContent.SESSION_KEY_URL);
-			
-		   System.err.println(uri);
-			response.sendRedirect(uri);
 
-		
-		
-		
+		request.getSession().setAttribute(SessionKeyContent.SESSION_KEY_OBJ_USER_BEAN, "aaaa");
+
+		String uri = (String) request.getSession().getAttribute(SessionKeyContent.SESSION_KEY_URL);
+
+		System.err.println(uri);
+		response.sendRedirect(uri);
+
 	}
-	
 
 }
