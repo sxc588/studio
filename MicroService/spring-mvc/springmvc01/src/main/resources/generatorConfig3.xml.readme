@@ -2,7 +2,7 @@ http://www.cnblogs.com/JsonShare/p/5521901.html
 
 mvn  mabatis-generator:generate
 
-maven 国内可用的中央仓库 阿里云
+maven 国内可用的中央仓库 阿里云[ORM]
 <mirrors>  
     <mirror>  
       <id>alimaven</id>  

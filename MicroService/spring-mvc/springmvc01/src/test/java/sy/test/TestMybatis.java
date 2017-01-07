@@ -1,5 +1,6 @@
 package sy.test;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -8,17 +9,26 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
+import com.github.support.entitement.mybatis.dao.BugMapper;
+import com.github.support.entitement.mybatis.model.Bug;
 import com.github.support.mvc.service.UserServiceI;
 
 //import com.alibaba.fastjson.JSON;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring.xml", "classpath:spring-mybatis.xml" })
+@Transactional
+@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 public class TestMybatis {
+
+	
 
 //	private static final Logger logger = Logger.getLogger(TestMybatis.class);
 //
-//	private UserServiceI userService;
+	@Autowired
+	private BugMapper bugMapper;
 //
 //	public UserServiceI getUserService() {
 //		return userService;
@@ -31,7 +41,14 @@ public class TestMybatis {
 
 	@Test
 	public void test1() {
-//		User u = userService.getUserById("1");
+		Bug record = new Bug();
+		Integer id = java.util.UUID.randomUUID().hashCode();
+		record.setId(id.toString());
+		record.setName("name");
+		record.setCreatedatetime(null);
+		record.setNote("new Date()");
+		bugMapper.insertSelective(record );
+//		User u = userSe("1");
 //		logger.info(JSON.toJSONStringWithDateFormat(u, "yyyy-MM-dd HH:mm:ss"));
 	}
 

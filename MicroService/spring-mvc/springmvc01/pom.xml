@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.support</groupId>
-	<artifactId>SpringMvc01A</artifactId>
+	<artifactId>springmvc01</artifactId>
 	<packaging>war</packaging>
 	<version>1.0.1-SNAPSHOT</version>
-	<name>testmybatis Maven Webapp</name>
+	<name>springmvc01</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -18,27 +18,27 @@
 		<!-- <artifactId>swagger-springmvc</artifactId> -->
 		<!-- <version>1.0.2</version> -->
 		<!-- </dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.codehaus.jackson</groupId> -->
-<!-- 			<artifactId>jackson-mapper-asl</artifactId> -->
-<!-- 			<version>1.9.13</version> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.codehaus.jackson</groupId> -->
-<!-- 			<artifactId>jackson-core-asl</artifactId> -->
-<!-- 			<version>1.9.13</version> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.codehaus.jackson</groupId> -->
+		<!-- <artifactId>jackson-mapper-asl</artifactId> -->
+		<!-- <version>1.9.13</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.codehaus.jackson</groupId> -->
+		<!-- <artifactId>jackson-core-asl</artifactId> -->
+		<!-- <version>1.9.13</version> -->
+		<!-- </dependency> -->
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.codehaus.jackson</groupId> -->
-<!-- 			<artifactId>jackson-core-lgpl</artifactId> -->
-<!-- 			<version>1.9.13</version> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.codehaus.jackson</groupId> -->
-<!-- 			<artifactId>jackson-mapper-lgpl</artifactId> -->
-<!-- 			<version>1.9.13</version> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.codehaus.jackson</groupId> -->
+		<!-- <artifactId>jackson-core-lgpl</artifactId> -->
+		<!-- <version>1.9.13</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.codehaus.jackson</groupId> -->
+		<!-- <artifactId>jackson-mapper-lgpl</artifactId> -->
+		<!-- <version>1.9.13</version> -->
+		<!-- </dependency> -->
 
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -94,7 +94,6 @@
 			<scope>test</scope>
 		</dependency>
 
-
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
@@ -110,14 +109,13 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-		
-					<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-log4j12</artifactId>
-				<version>1.7.5</version>
-			</dependency>
-		
-		
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
@@ -142,17 +140,14 @@
 			<version>1.1.2</version>
 		</dependency>
 
-
-<dependency>  
-<groupId>javax.servlet.jsp</groupId>  
-<artifactId>jsp-api</artifactId>  
-<version>2.2</version>  
-<scope>provided</scope>  
-</dependency>  
-
-
-
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
+	
 	<build>
 		<defaultGoal>compile</defaultGoal>
 		<plugins>
@@ -161,8 +156,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>1.7</source>
+					<target>1.7</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -203,7 +198,6 @@
 					<verbose>true</verbose>
 				</configuration>
 			</plugin>
-
 		</plugins>
 	</build>
 </project>

@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
  * 数据类型转换
@@ -20,6 +21,7 @@ public class DateConvert extends TagSupport
 	@Override
 	public int doStartTag() throws JspException
 	{
+
 		long l = 0l;
 		if (longTime != null && !longTime.equals(""))
 		{

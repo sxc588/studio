@@ -17,12 +17,13 @@ public class TaskController
 	
 	private static Logger  Logger  = org.apache.log4j.Logger.getLogger(TaskController.class);
 
-//	@Autowired
+	@Autowired
 	private TaskService taskService;
 
 	@RequestMapping("/list")
 	public ModelAndView list()
 	{
+		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("taskList", taskService.getAll());
 		mav.setViewName("task/list");

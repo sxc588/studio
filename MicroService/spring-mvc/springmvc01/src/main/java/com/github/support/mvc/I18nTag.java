@@ -1,6 +1,7 @@
 package com.github.support.mvc;
 
 import java.io.IOException;
+import java.util.Date;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 
@@ -20,7 +21,9 @@ public class I18nTag extends TagSupport
 		try
 		{
 			//String langValue = I18nCacheService.getI18nValue(lang, key);
-			super.pageContext.getOut().write("langValue");
+			
+			Long value = new Date().getTime();
+			super.pageContext.getOut().write(value.toString());
 		}
 		catch (IOException e)
 		{
