@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="springDSN" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.microsoft.jdbc.sqlserver.SQLServerDriver">
+		</property>
+		<property name="url" value="jdbc:microsoft:sqlserver://localhost:1433;databasename=bbs">
+		</property>
+		<property name="username" value="sa"></property>
+		<property name="password" value="sa"></property>
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" abstract="false" lazy-init="false"
+		autowire="default" dependency-check="default">
+		<property name="dataSource">
+			<ref bean="springDSN" />
+		</property>
+	</bean>
+
+	<bean id="bookDao" class="com.yy.struts.dao.BookDao">
+		<property name="jdbcT">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+</beans>
