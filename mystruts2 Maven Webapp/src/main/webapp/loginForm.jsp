@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h2>请用户登录</h2>
-	<form action="loginPro" method="post">
+	<form action="loginPro.action" method="post">
 		<table>
 			<tr>
 				<td>用户：</td>

@@ -1,4 +1,10 @@
 package org.fkjava.action;
+import org.fkjava.domain.User;
+import org.fkjava.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import com.opensymphony.xwork2.Action;
 
 
@@ -10,12 +16,38 @@ import com.opensymphony.xwork2.Action;
  * @author Administrator
  *
  */
+@Service
 public class LoginAction implements Action
 {
-
-	public String execute() throws Exception
+	User user;
+	
+	
+	public User getUsr()
 	{
-		return SUCCESS;
+		return user;
 	}
 
+	public void setUsr(User usr)
+	{
+		this.user = usr;
+	}
+
+	
+	@Autowired
+	UserService userService; 
+	
+	@Autowired
+	ApplicationContext ctx; 
+
+	@Override
+	public String execute() throws Exception
+	{
+		User validateUsr = userService.validateLoin(user);
+		if (validateUsr == null)
+		{
+			return ERROR;
+		}
+		
+		return SUCCESS;
+	}
 }
