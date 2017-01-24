@@ -8,8 +8,8 @@
 		<version>1.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>ehcache</artifactId>
-	<name>cbb-ehcache</name>
+	<artifactId>quartz</artifactId>
+	<name>cbb-quartz</name>
 	<packaging>jar</packaging>
 
 	<url>http://maven.apache.org</url>
@@ -53,7 +53,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>aopalliance</groupId>
 			<artifactId>aopalliance</artifactId>
@@ -77,7 +77,7 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>redis.clients</groupId>
 			<artifactId>jedis</artifactId>

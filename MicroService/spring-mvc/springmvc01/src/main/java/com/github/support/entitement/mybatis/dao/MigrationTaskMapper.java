@@ -1,6 +1,5 @@
 package com.github.support.entitement.mybatis.dao;
 
-import java.util.List;
 import com.github.support.entitement.mybatis.model.MigrationTask;
 
 public interface MigrationTaskMapper {
@@ -51,6 +50,4 @@ public interface MigrationTaskMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(MigrationTask record);
-
-	List<MigrationTask> getAll();
 }

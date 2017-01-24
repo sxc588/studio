@@ -3,11 +3,12 @@ package com.github.support.cbbservice.jms.listener;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import org.apache.activemq.command.ActiveMQObjectMessage;
+import org.junit.Ignore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-
+@Ignore
 //MessageListenerAdapter会把接收到的消息做如下转换：
 //1. TextMessage转换为String对象；
 //2. BytesMessage转换为byte数组；

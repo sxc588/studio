@@ -1,81 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee"
-	xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xmlns:web_1="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	id="WebApp_ID" version="3.0">
+<web:web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:web="http://java.sun.com/xml/ns/javaee" 
+	xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID"
+	version="3.0">
 	<display-name>mybatis</display-name>
-	<context-param>
+	<web:context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:spring.xml,classpath:spring-mybatis.xml</param-value>
-	</context-param>
-	<filter>
-		<filter-name>sessionFilter</filter-name>
-		<filter-class>com.github.support.filter.SessionFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>sessionFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	<filter>
+	</web:context-param>
+	<web:filter>
+		<web:filter-name>sessionFilter</web:filter-name>
+		<web:filter-class>com.github.support.filter.SessionFilter</web:filter-class>
+	</web:filter>
+	<web:filter-mapping>
+		<web:filter-name>sessionFilter</web:filter-name>
+		<web:url-pattern>/*</web:url-pattern>
+	</web:filter-mapping>
+	<web:filter>
 		<description>字符集过滤器</description>
-		<filter-name>encodingFilter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-		<init-param>
+		<web:filter-name>encodingFilter</web:filter-name>
+		<web:filter-class>org.springframework.web.filter.CharacterEncodingFilter</web:filter-class>
+		<web:init-param>
 			<description>字符集编码</description>
 			<param-name>encoding</param-name>
 			<param-value>UTF-8</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>encodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	<listener>
+		</web:init-param>
+	</web:filter>
+	<web:filter-mapping>
+		<web:filter-name>encodingFilter</web:filter-name>
+		<web:url-pattern>/*</web:url-pattern>
+	</web:filter-mapping>
+	<web:listener>
 		<description>spring监听器</description>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-	<listener>
+	</web:listener>
+	<web:listener>
 		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
-	</listener>
-	<servlet>
+	</web:listener>
+	<web:servlet>
 		<description>spring mvc servlet</description>
-		<servlet-name>springmvc</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
+		<web:servlet-name>springmvc</web:servlet-name>
+		<web:servlet-class>org.springframework.web.servlet.DispatcherServlet</web:servlet-class>
+		<web:init-param>
 			<description>spring mvc 配置文件</description>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:spring-mvc.xml</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>springmvc</servlet-name>
-		<url-pattern>*.do</url-pattern>
-	</servlet-mapping>
-	<welcome-file-list>
-		<welcome-file>/index.jsp</welcome-file>
-		<welcome-file>dateConvert.jsp</welcome-file>
-	</welcome-file-list>
-	<session-config>
-		<session-timeout>15</session-timeout>
-	</session-config>
-	<servlet>
-		<servlet-name>helloworld</servlet-name>
-		<servlet-class>com.github.support.servlet.SimpleHello</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>helloworld</servlet-name>
-		<url-pattern>/SimpleHello</url-pattern>
-	</servlet-mapping>
-	<jsp-config>
-		<taglib>
-			<taglib-uri>/dateConvert</taglib-uri>
-			<taglib-location>dateConvert.tld</taglib-location>
-		</taglib>
-		<taglib>
-			<taglib-uri>/I18nTag</taglib-uri>
-			<taglib-location>I18nTag.tld</taglib-location>
-		</taglib>
-	</jsp-config>
-</web-app>
+		</web:init-param>
+		<web:load-on-startup>1</web:load-on-startup>
+	</web:servlet>
+	<web:servlet-mapping>
+		<web:servlet-name>springmvc</web:servlet-name>
+		<web:url-pattern>*.do</web:url-pattern>
+	</web:servlet-mapping>
+	<web:welcome-file-list>
+		<web:welcome-file>/index.jsp</web:welcome-file>
+		<web:welcome-file>dateConvert.jsp</web:welcome-file>
+	</web:welcome-file-list>
+	<web:session-config>
+		<web:session-timeout>15</web:session-timeout>
+	</web:session-config>
+	<web:servlet>
+		<web:servlet-name>helloworld</web:servlet-name>
+		<web:servlet-class>com.github.support.servlet.SimpleHello</web:servlet-class>
+	</web:servlet>
+	<web:servlet-mapping>
+		<web:servlet-name>helloworld</web:servlet-name>
+		<web:url-pattern>/SimpleHello</web:url-pattern>
+	</web:servlet-mapping>
+	<taglib>
+		<taglib-uri>/dateConvert</taglib-uri>
+		<taglib-location>dateConvert.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>/I18nTag</taglib-uri>
+		<taglib-location>I18nTag.tld</taglib-location>
+	</taglib>
+</web:web-app>

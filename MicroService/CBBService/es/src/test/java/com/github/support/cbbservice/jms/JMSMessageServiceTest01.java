@@ -2,6 +2,7 @@ package com.github.support.cbbservice.jms;
 
 import javax.jms.Destination;
 import javax.jms.JMSException;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import com.github.support.cbb.ehcache.jms.JMSMessage;
 import com.github.support.cbb.ehcache.jms.JMSMessageService;
 
 
-
+@Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:/spring/spring-jms.xml")
 public class JMSMessageServiceTest01

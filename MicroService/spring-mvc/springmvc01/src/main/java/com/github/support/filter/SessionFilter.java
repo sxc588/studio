@@ -7,18 +7,19 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.filter.OncePerRequestFilter;
-import com.github.support.mvc.controller.TaskController;
 
 public class SessionFilter extends OncePerRequestFilter
 {
-	
-	private static Logger  Logger  = org.apache.log4j.Logger.getLogger(SessionFilter.class);
 
+	private static Logger Logger = org.apache.log4j.Logger.getLogger(SessionFilter.class);
 
 	/** 登录验证过滤器 */
 
 	@Override
-	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException
+	protected void doFilterInternal(
+									HttpServletRequest request,
+									HttpServletResponse response,
+									FilterChain filterChain) throws ServletException, IOException
 	{
 		// 不过滤的uri
 		String[] notFilter = new String[]
@@ -39,7 +40,7 @@ public class SessionFilter extends OncePerRequestFilter
 		}
 
 		Logger.info(uri);
-		
+
 		if (doFilter)
 		{
 			// 执行过滤
@@ -60,8 +61,9 @@ public class SessionFilter extends OncePerRequestFilter
 			else
 			{
 				Object url = request.getSession().getAttribute(SessionKeyContent.SESSION_KEY_URL);
-				
-			//	response.sendRedirect(request.getContextPath() + url.toString());
+
+				// response.sendRedirect(request.getContextPath() +
+				// url.toString());
 				// 如果session中存在登录者实体，则继续
 				filterChain.doFilter(request, response);
 			}

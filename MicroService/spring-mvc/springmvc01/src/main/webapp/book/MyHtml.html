@@ -1,0 +1,656 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=10" />
+
+<link href="http://www.huawei.com/favicon.ico" type="image/x-icon"
+	rel="icon" />
+<link href="http://www.huawei.com/favicon.ico" type="image/x-icon"
+	rel="shortcut icon" />
+<link href="http://www.huawei.com/favicon.ico" type="image/x-icon"
+	rel="Bookmark" />
+<script type="text/javascript">
+	var path = location.pathname;
+	if (top != self) {
+		top.location = self.location;
+	}
+</script>
+
+<link
+	href="/carrier/3rdParty/opensource/common/css/jquery.merge.css?v=V800R006C10201701011414"
+	rel="stylesheet" type="text/css" />
+<link
+	href="http://support.huawei.com/resource/3rdparty/jquery-ui/1.10.1/themes/base/jquery.ui.theme.min.css"
+	rel="stylesheet" type="text/css" />
+
+<link
+	href="/carrier/common/css/common_ui_zh.css?v=V800R006C10201701011414"
+	rel="stylesheet" type="text/css" media="screen, project, print" />
+<link
+	href="http://support.huawei.com/resource/3rdparty/bootstrap/3.3.6/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css" media="screen, project, print" />
+
+
+<script type="text/javascript"
+	src="http://support.huawei.com/resource/3rdparty/jquery/1.11.3/jquery-1.11.3.min.js"></script>
+
+<script type='text/javascript'
+	src='http://support.huawei.com/resource/3rdparty/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+<script type='text/javascript'
+	src='http://support.huawei.com/resource/3rdparty/jquery-ui/1.10.1/ui/jquery-ui.min.js'></script>
+
+
+<script type='text/javascript'>
+	$.ajaxSetup({
+		cache : true
+	});
+</script>
+
+<title>技术支持 - 欢迎访问华为公司网站</title>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<link
+	href="/carrier/pages/navigation/css/support_main_right.css?v=V800R006C10201701011414"
+	rel="stylesheet" type="text/css">
+
+
+<link
+	href="/carrier/3rdParty/opensource/xbreadcrumbs/xbreadcrumbs.css?v=V800R006C10201701011414"
+	rel="stylesheet" type="text/css">
+<link
+	href="/carrier/3rdParty/opensource/autocomplete/jquery.autocomplete.css?v=V800R006C10201701011414"
+	rel="stylesheet" type="text/css">
+
+<!--[if lt IE 9 ]>
+	<link 
+		href="/carrier/common/css/head_forIE8.css?v=V800R006C10201701011414"
+		rel="stylesheet" type="text/css"/>
+	<script type="text/javascript"
+		src="/carrier/3rdParty/opensource/respond/respond.src.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9 ]>
+	<link 
+		href="/carrier/common/css/head_forIE8.css?v=V800R006C10201701011414"
+		rel="stylesheet" type="text/css"/>
+	<script type="text/javascript"
+		src="/carrier/3rdParty/opensource/respond/respond.src.js"></script>
+<![endif]-->
+</head>
+<body class="templateBody" style="overflow-x:hidden;">
+
+	<div id="container">
+		<div id="layout_header">
+
+
+
+
+			<html>
+
+
+<link
+	href="/carrier/pages/index/css/carrier_support_main.css?v=V800R006C10201701011414"
+	rel="stylesheet" type="text/css" media="screen, project, print" />
+<link
+	href="/carrier/pages/index/css/support_header.css?v=V800R006C10201701011414"
+	rel="stylesheet" type="text/css">
+
+
+
+<body>
+	<input id="isMobile" style="display:none;" value="0" />
+	<span id="pronumI18N" style="display:none;">请输入产品名称或关键词，如BSC6900</span>
+	<input id="contextPath" style="display:none" value="/carrier">
+	<input id="jsCssVersion" style="display:none"
+		value="V800R006C10201701011414">
+	<input id="userId" style="display:none;" value="s00318828">
+	<input id="sysUid" style="display:none;" value="SU1001836222">
+	<input id="userRType" style="display:none" value="HWE">
+	<input id="ssoLoginUrlpgh" style="display:none"
+		value="https://uniportal.huawei.com/uniportal/?redirect=http://support.huawei.com/carrier/navi">
+	<input id="ssoLoginUrl" style="display:none"
+		value="http://support.huawei.com/carrier/logoutServlet?redirect=http://support.huawei.com/carrier/navi">
+	<input style="display:none;" id="hasQuestionaire" value="" />
+	<input id="ssoLoginPreUrl" style="display:none"
+		value="https://uniportal.huawei.com/uniportal/?redirect=">
+	<input id="ssoRootUrl" style="display:none"
+		value="http://support.huawei.com/carrier">
+	<input id="sysLang" style="display:none" value="zh">
+
+
+	<input style="display:none" id="noLoginTips" value="登录可以搜索到更多信息">
+	<input style="display:none" id="searchRangeTips" value="搜索范围：技术支持">
+	<input style="display:none" id="dcpLinks"
+		value="http://support.huawei.com/hwdcp/">
+	<div id="show_header"></div>
+
+
+	<div id="msgTips" class="msgentertip"
+		style="display: none;z-index: 100">
+		<div class="msgetip_top">
+			<div class="msgetip_topl"></div>
+			<div class="msgetip_topr"></div>
+			<div class="msgetip_topm"></div>
+		</div>
+		<div class="msgetip_con" id="tipsmsg"></div>
+		<div class="msgetip_bottom">
+			<div class="msgetip_bottoml"></div>
+			<div class="msgetip_bottomr"></div>
+			<div class="msgetip_bottomm"></div>
+		</div>
+	</div>
+
+
+
+
+</body>
+<script type=text/javascript
+	src="/carrier/pages/index/js/header.js?v=V800R006C10201701011414"></script>
+			</html>
+		</div>
+
+		<div id="layout_content" class="layout_content"
+			style="min-height: 450px;box-sizing:content-box ! important;margin:0 auto;">
+
+			<input id="userRoleType" style="display:none" value="HWE"> <input
+				style="display:none" id="notLogin" value="no"> <input
+				style="display:none" id="offeringNum" value="402-00023809">
+
+			<input style="display:none" id="curNodeName" value=""> <input
+				style="display:none" id="myAttention" value=""> <input
+				style="display:none" id="contextPath" value="/carrier"> <input
+				style="display:none" id="curNodeName" value="" /> <input
+				style="display:none" id="bullspath" value="" /> <input
+				style="display:none" id="bullsproname" value="" /> <input
+				style="display:none" id="bullisQueryParamHidden" value="" />
+
+			<div style="height: 18px;"></div>
+			<input style="display:none" id="pbiColumn" value="false">
+			<div id="offeringNodeName" style="display:none"></div>
+			<div id="versionData" style="display:none"></div>
+			<input style="display:none" id="offeringflag" value="">
+			<div class="spt_position" style="width: 1170px;">
+
+
+				<div id="navi_share_help">
+
+					<div class="spt_share" id="homesptshare"
+						style="float: right; clear: both; margin-top: 4px; margin-left: 5px;">
+						<a id="trianShareIdzh" class="addthis_button_compact"
+							title="社交分享（能访问社交类网站方可分享）"> <span id="mediaShareIcon"
+							class="icon-pc media_share_zh"></span>
+						</a>
+					</div>
+
+					<div id="spt_img_helpCenter" style="float: right; margin-top: 4px;">
+						<a href="helpCenter" target="_blank"> <span
+							class="icon-pc help_center_zh"></span>
+						</a>
+					</div>
+					<div style="width:0px;clear:left"></div>
+				</div>
+
+
+
+				<div id="navi_breadcrumbs"></div>
+
+			</div>
+			<span style="float:right; margin-top:3px;"> </span>
+			<div class="spt_main" style="width: 1170px;">
+
+				<input style="display:none" id='lang' value='zh' />
+
+				<div class="leftside">
+					<div class="divline1px"></div>
+					<div id="searchDiv" style="display:none">
+						<div class="width210">
+							<a class="navi_title" href="javascript:void(0)" id="navType"></a>
+							<div class="divline5px"></div>
+						</div>
+						<form action="navi!searchProduct" id="searchform" method="post">
+							<div class="supportIcon spt_navi_searchbar">
+								<input id="productSearch" name="key" class="navi_search"
+									value="请输入产品名称或关键词"
+									onFocus="if(this.value=='请输入产品名称或关键词'){this.value=''};this.style.color='#333';"
+									onBlur="if(this.value==''||this.value=='请输入产品名称或关键词'){this.value='请输入产品名称或关键词';this.style.color='#B9B9B9';}" />
+								<input id="resType" name="resType" style="display:none" value="" />
+								<input name="search" id="searchProduct" type="button"
+									class="supportIcon navi_search_btn" value="" />
+							</div>
+						</form>
+					</div>
+
+					<div class="mySelectSpan" style="display: none;">
+
+						<select id="gtsProduct" onchange="gtsProductChange()">
+							<option value="myProduct">我的关注</option>
+							<option value="allProduct">全部产品</option>
+						</select> <span class="mySettingImg"> <a target="_blank" href="#"
+							id="myAssuranceSetting" onclick="changeUrl()"> <span
+								width="16" height="16" title="设置个人关注"
+								class="supportIcon setting_icon_gray" complete="complete"
+								style="cursor: pointer;"></span></span> </a>
+					</div>
+
+					<div id="naviTree"></div>
+
+				</div>
+
+				<div id="navi_main"></div>
+
+
+				<div id="rightLayout"></div>
+
+			</div>
+
+			<div style="clear:both;height:1px;line-height:1px;overflow:hidden;"></div>
+			<div style="height: 20px;"></div>
+
+			<div class="modal fade  bs-example-modal-sm" id="messageTipModal"
+				tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog  modal-sm" role="document"
+					style="width:300px;">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" id="shareDocNoSelectClose" class="close"
+								data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="" id="myModalLabel">提示</h4>
+						</div>
+						<div class="modal-body">
+							<span class="messageTip" style=""> </span>
+						</div>
+						<div class="modal-footer">
+							<button type="button" id="shareDocNoSelectConfirm"
+								class="btn btn-primary" data-dismiss="modal">确定</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div id="navigationI18N" style="display: none;">
+				<span id="enterpronameI18N">请输入产品名称或关键词</span> <span id="homeI18N">技术支持</span>
+
+				<span id="nodataI18N">您所访问的节点没有可查资源。请尝试访问其他的节点。</span> <span
+					id="dataWarngingI18N">秒后返回上一层节点</span> <span id="nodataFoundI18N">返回首页</span>
+				<span id="notLoginI18N">您还未登录，请先<a
+					href="https://uniportal.huawei.com/uniportal/?redirect=http://support.huawei.com/carrier/personalSetting!forward.action&nls=zh"
+					style="color:#006699;">登录</a>，<br> <span
+					style="color:#666;font-size:12px;font-weight:normal; ">如果您还没有注册帐号，请先<a
+						href="https://uniportal.huawei.com/accounts/register.do?method=toRegister&appurl=http://support.huawei.com/carrier/personalSetting!forward.action&nls=zh"
+						style="color:#006699;">注册</a>。
+				</span></span> <span id="notPurviewI18N">您没有该资源的查看权限<br> <span
+					style="font-size:10px;font-weight:normal; color:#666;">如果您所在的公司/单位使用了华为产品，您可以<br>
+						申请<a
+						href="http://support.huawei.com/myspace/mySpaceNaviAction#click=myAccount">升级帐号</a>以获取更多的访问权限。<br>
+						更多咨询请联系：<span
+						style="color:#006699;font-size:12px;font-weight:normal; ">supportmaster@huawei.com</span></span></span>
+				<span id="isconstructionI18N">网站建设中</span> <span
+					id="searchscopeI18N">搜索范围：</span> <span id="naviStatus"></span> <input
+					style="display:none" id="okBtnI8n" value="确定"> <input
+					style="display:none" id="cancelBthI8n" value="取消"> <input
+					id="tipsValue" value="您还未配置您关注的产品信息。点击确定进入My Support设置页面。" /> <input
+					style="display:none" id="warnIn8Btn" value="提示"> <input
+					style="display:none" id="designatedCompanyI18N" value='特殊密级' /> <input
+					style="display:none" id="Common_Warn" value="提示" /> <input
+					style="display:none" id="Common_Close" value="关闭" /> <input
+					id="registerurl" style="display:none"
+					value="https://uniportal.huawei.com/accounts/register.do?method=toRegister&appurl=http://support.huawei.com/carrier/&nls=zh">
+
+				<span id="copypathI8n">复制路径</span> <input style="display:none"
+					id="CopySuccessI8n" value="复制成功" />
+			</div>
+
+
+			<script type='text/javascript'
+				src='/carrier/common/js/pagination/sui_cbb_pagination_zh.js?v=V800R006C10201701011414'></script>
+			<script type='text/javascript'
+				src='/carrier/3rdParty/opensource/pagination/js/jquery.pagination.js?v=V800R006C10201701011414'></script>
+
+
+
+			<script type="text/javascript"
+				src="/carrier/3rdParty/opensource/xbreadcrumbs/jquery.xbreadcrumbs.js?v=V800R006C10201701011414"></script>
+
+
+			<script type="text/javascript"
+				src="/carrier/pages/layout/js/layoutRight_mediaShare.js?v=V800R006C10201701011414"></script>
+
+			<script type="text/javascript"
+				src="/carrier/pages/navigation/js/navigation_tree_merge.js?v=V800R006C10201701011414"></script>
+
+
+		</div>
+	</div>
+	<div id="layout_footer" class="layout_footer">
+
+
+
+
+
+
+
+
+
+		<input class="currentDate" style="display:none" value="2017">
+		<div id="show_footer"></div>
+
+		<script language="JavaScript">
+			var lang = $("#sysLang").val();
+			$(function() {
+				var sysLang = $("#sysLang").val();
+				var currentDate = $(".currentDate").val();
+				var footerPage = "footer_zh";
+				if ("en" == sysLang) {
+					footerPage = "footer_en";
+				}
+				$("#show_footer").load(
+						$("#contextPath").val() + "/pages/index/" + footerPage
+								+ ".html?v=" + $("#jsCssVersion").val(),
+						function() {
+							$(".show_current_date").text(currentDate);
+						});
+			});
+		</script>
+
+		<div class="hidden">
+			<span id="sup_tips">提示</span> <span id="sup_confirm">确定</span> <span
+				id="sup_ctrld">您使用的浏览器不支持自动加入收藏夹，请使用Ctrl+D进行添加</span> <span
+				id="sup_sessionout">长时间未操作或已退出登录，请重新登录</span>
+		</div>
+
+		<div id="mer_man_footer" class="float_box"
+			style="display: none; width: 100px; height: 148px; position: fixed; z-index: 9000; right: 10px; top: 256px;">
+
+			<a href="javascripts:void(0);" target="_blank"> <span
+				id="mer_man_change_footer" class="robot_icon robot"></span>
+			</a> <a href="javascript:void(0);" onclick="robotHide()"> <span
+				style="height:12px; width:17px; display:inline-block; position: absolute; right: 1px; top: 0px;"></span>
+			</a>
+		</div>
+
+		<div id="mer_man_small_footer" class="float_box"
+			style="display: none; width: 30px; height: 110px; position: fixed; z-index: 9000; right: 0px; top: 256px; margin:0px; ">
+			<a href="javascript:void(0);" onClick="robotShow()"> <span
+				id="mer_man_small_change_footer" class="robot_icon robot_small"></span>
+			</a>
+		</div>
+
+		<div id="scrollTop" class="displayNone">
+			<a title="返回顶部" href="javascript:void(0);"> <span
+				class="supportIcon totop"></span>
+			</a>
+		</div>
+
+		<div id="addFavorite" class="displayNone">
+			<a title="添加到收藏夹" href="javascript:void(0);"> <span
+				class="supportIcon favorite"></span>
+			</a>
+		</div>
+
+		<div id="itHotLine" class="displayNone">
+			<a title="IT热线" href="createWebsiteFBAction!create"
+				style="line-height:0px;"> <span class="supportIcon itHotline"></span>
+			</a>
+		</div>
+
+		<div id="tempDiv" class="Recentlyview"
+			style="display: none;white-space: nowrap;"></div>
+
+
+
+
+
+		<div>
+
+
+
+			<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+			<link
+				href="/carrier/pages/customizenav/css/customizenav.css?v=V800R006C10201701011414"
+				rel="stylesheet" type="text/css">
+
+
+
+
+			<input id="i18n_tip" style="display: none" value="提示" /> <input
+				id="i18n_sure" style="display: none" value="确认" /> <input
+				id="myFavorite_addSuccess" style="display: none" value="已成功加入收藏" />
+			<input id="ExistingProduct" style="display: none" value="该产品已添加" />
+			<input id="sellectFolder" style="display: none" value="请选择文件夹" /> <input
+				id="folder_uncate" style="display: none" value="未分类文件夹" /> <input
+				id="input_categoryName" style="display: none" value="请输入标题" /> <input
+				id="folder_CatalogId" style="display: none" value="" />
+
+			<div class="customizeNav_float">
+				<div class="customizeTitle">
+					<span class="icon-custom_float titleText"> <i
+						class="icon-custom_float"></i> 我的收藏 <em class=""></em>
+					</span> <span class="icon-custom_float titleTextAfter"> </span>
+				</div>
+				<div id="navContent" class="clearfix">
+					<div class="customizeTitleshow ">
+						<div class="icon-custom_float showbg">
+							<span><i class="icon-custom_float"></i> 我的收藏 <em class=""></em>
+							</span>
+						</div>
+					</div>
+					<div class="customizeNavList">
+						<ul class="customizeNavListUl">
+							<li id="addMyNav"><a href="javascript:void(0);"> <i
+									class="icon-custom_float addNav"></i> 添加当前链接到我的收藏
+							</a>
+								<div class="addFloderBox">
+									<div id="addFavorite_Title" class="popupTitle">
+										<button class="popupClose" type="button">&times;</button>
+										<span>添加当前链接到我的收藏</span>
+									</div>
+									<div class="popupContent">
+										<div class="addNavContent">
+											<label>
+												<div>
+													<span id="subjectNullRemind"
+														style="color: red;float: right !important; display: none;">
+														标题不能为空 </span> <span style=" margin-top:-5px;"> 标题 </span>
+												</div> <span> <input class="myFav_title" type="text"
+													value="" maxlength="50">
+											</span>
+											</label>
+											<div>
+												<label> <label><span id="urlNullRemind"
+														style="color: red;float: right !important; display: none;">
+															url不能为空</span> </label> <span style=" margin-top:5px;"> 地址 </span>
+												</label>
+											</div>
+											<div class="textAdress">
+												<textarea class="myFav_address" maxlength="250"
+													onchange="testLength(this)" onkeyup="testLength(this)"
+													onpaste="testLength(this)"></textarea>
+												<script>
+													var maxLength = 250;
+													function testLength(ta) {
+														if (ta.value.length > maxLength) {
+															ta.value = ta.value
+																	.substring(
+																			0,
+																			maxLength);
+														}
+													}
+												</script>
+											</div>
+											<div>
+												<label><span id="pleaseChooseFolder_addFav"
+													style="color: red;float: right !important; display: none;">
+														请选择文件夹</span> </label> <label> <span style=" margin-top:5px;">添加至</span>
+												</label>
+											</div>
+											<div class="addTo_float">
+												<input type="text" readonly="true"
+													class="categoryNameChecked" value="请选择文件夹">
+												<button id="addToBtn" type="button">
+													<i class="icon-custom_float"></i>
+												</button>
+												<div class="selectCatalog">
+													<div class="selectCatalogBox">
+														<div class="myNavBar">
+															<span><i class="icon-custom_float iconMyNavBar"></i>
+																添加当前链接到我的收藏 </span>
+															<button type="button" class="addFavCustomFolder">
+																<i class="icon-pc addCatalogFolder"></i>
+															</button>
+														</div>
+														<div class="catalogFolderList">
+															<ul class="catelogProduct_ul">
+
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="addFavFooter">
+										<button class="addFavConfirm" id="addFavUrl_confirm"
+											type="button">确定</button>
+										<button class="popupCancel addProduct_cancel" type="button">
+											取消</button>
+									</div>
+								</div></li>
+							<li><a href="/myspace/mysupport?editFlag=1#col=mySupport"
+								target="_blank"> <i class="icon-custom_float editNav"></i>
+									整理我的收藏
+							</a></li>
+							<li><a href="/myspace/mysupport#col=mySupport"
+								target="_blank"> <i class="icon-custom_float myNav"></i>
+									我的收藏
+							</a></li>
+							<li id="addCurrentProduct"><a href="javascript:void(0)">
+									<i class="icon-custom_float addCurentnode"></i> 添加当前产品到我的收藏
+							</a>
+								<div class="addFloderBox">
+									<div id="addProduct_Title" class="popupTitle">
+										<button class="popupClose" type="button">&times;</button>
+										<span> 添加当前产品到我的收藏 </span>
+									</div>
+									<div class="popupContent">
+										<div class="addNavContent">
+											<label> <span style=" margin-top:-5px;"> 标题 </span> <span><input
+													id="product_name" disabled type="text" value=""></span>
+											</label>
+											<div>
+												<label><span id="pleaseChooseFolder_addProduct"
+													style="color: red;float: right !important; display: none;">
+														请选择文件夹</span> </label> <label> <span style=" margin-top:5px;">添加至</span>
+												</label>
+											</div>
+											<div class="addTo_float">
+												<input type="text" class="categoryNameChecked"
+													readonly="true" value="请选择文件夹">
+												<button type="button">
+													<i class="icon-custom_float"></i>
+												</button>
+												<div class="selectCatalog">
+													<div class="selectCatalogBox">
+														<div class="myNavBar">
+															<span><i class="icon-custom_float iconMyNavBar"></i>
+																添加当前链接到我的收藏 </span>
+															<button type="button" class="addProductFolder">
+																<i class="icon-pc addCatalogFolder"
+																	style="background-position: -89px -683px;"></i>
+															</button>
+														</div>
+														<div class="catalogFolderList">
+															<ul class="catelogProduct_ul">
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="addFavFooter">
+										<button class="addFavConfirm addProduct_confirm" type="button">
+											确定</button>
+										<button class="popupCancel" type="button">取消</button>
+									</div>
+								</div></li>
+						</ul>
+					</div>
+					<div id="" class="myNavFolder">
+						<li id="folder_template" style="display:none;"><i
+							class="icon-custom_float iconFolder iconFolder_plus"></i> <span
+							class="b folder"></span>
+							<ul class="vel2">
+							</ul></li>
+						<li id="vel2_template" style="display:none;"><i
+							class="icon-custom_float iconFolder iconFolder_plus"></i> <span
+							class="b"></span>
+							<ul class="vel3">
+							</ul></li>
+						<li id="pbiName_template" style="display:none;" class="pbiName">
+							<a href="javascript:void(0)" target="_blank"></a>
+						</li>
+						<ul class="folder_ul">
+
+						</ul>
+					</div>
+					<div class=" icon-custom_float navBottom"></div>
+				</div>
+			</div>
+
+
+			<li id="catelogParentFloat_template" style="display:none;"><i
+				class="icon-custom_float catalogPlus selectCategoryFloat_icon"
+				style="display:none;"></i> <label><input type="radio"></label>
+				<ul class="subCategoryFloat_addProduct">
+				</ul></li>
+			<li id="catelogChildFloat_template" style="display:none;"><label><input
+					type="radio"></label></li>
+
+			<script type="text/javascript"
+				src="/carrier/pages/customizenav/js/customizenav.js?v=V800R006C10201701011414"></script>
+		</div>
+
+	</div>
+
+</body>
+
+<input id="only4ssoTimeUpdate_url" style="display:none"
+	value="/carrier/only4ssoTimeUpdate.do" />
+<input id="ssoKeepSession_url" style="display:none"
+	value="https://uniportal.huawei.com/uniportal/keepSession.jsp" />
+<img id="ssoKeepSession_tag" style="display:none" />
+
+<script type='text/javascript'
+	src='/carrier/common/js/utils/pubUtils.js?v=V800R006C10201701011414'></script>
+<script type="text/javascript"
+	src="http://support.huawei.com/resource/3rdparty/jquery-blockui/2.70/jquery.blockUI.js"></script>
+<script type="text/javascript"
+	src="/carrier/3rdParty/opensource/jquery/js/jquery.ba-bbq.js?v=V800R006C10201701011414"></script>
+<script type='text/javascript'
+	src="/carrier/3rdParty/opensource/autocomplete/jquery.autocomplete.js?v=V800R006C10201701011414"></script>
+
+
+
+<input id='defSampleRate' style='display:none' value='10' />
+
+<script src="/carrier/common/js/ha1.js?v=V800R006C10201701011414"
+	type="text/javascript"></script>
+<script
+	src="http://support.huawei.com/da/ha2.js?v=V800R006C10201701011414"
+	type="text/javascript" async="async"></script>
+<script src="http://support.huawei.com/resource/da/haCommon.js"
+	type="text/javascript"></script>
+
+
+</html>
+

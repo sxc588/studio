@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.RequestToViewNameTranslator;
 import com.github.support.entitement.mybatis.model.User;
 import com.github.support.filter.SessionKeyContent;
-import com.github.support.mvc.service.UserServiceI;
 
 @Controller
 @RequestMapping("/user")

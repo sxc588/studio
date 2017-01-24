@@ -11,56 +11,55 @@ public class MigrationHandler
 
 	@Autowired
 	private MigrationEntDispatch entDispatch;
-
-	public int migrationAll(String taskId)
+	
+	
+	IMigrationHandler getHandler(String taskId)
 	{
 		IMigrationHandler hanlder = supDispatch.getHandler(taskId);
 		if (hanlder != null)
 		{
-			return hanlder.migrationAll();
+			return hanlder;
 		}
 
 		hanlder = entDispatch.getHandler(taskId);
-
+		return hanlder;
+	}
+	
+	public int migrationAll(String taskId)
+	{
+		IMigrationHandler hanlder = this.getHandler(taskId);
 		if (hanlder != null)
 		{
 			return hanlder.migrationAll();
 		}
-
 		return 0;
 	}
 
 	public int migrationInc(Date beginTime, Date endTime, String taskId)
 	{
-		IMigrationHandler hanlder = supDispatch.getHandler(taskId);
+		IMigrationHandler hanlder = this.getHandler(taskId);
 		if (hanlder != null)
 		{
 			return hanlder.migrationInc(beginTime, endTime);
 		}
-
-		hanlder = entDispatch.getHandler(taskId);
-
-		if (hanlder != null)
-		{
-			return hanlder.migrationInc(beginTime, endTime);
-		}
-
 		return 0;
 	}
 
 	public int migrationDel(String taskId)
 	{
-		IMigrationHandler hanlder = supDispatch.getHandler(taskId);
-		if (hanlder != null)
-		{
-			return hanlder.migrationDel();
-		}
-
-		hanlder = entDispatch.getHandler(taskId);
+		IMigrationHandler hanlder = this.getHandler(taskId);
 		if (hanlder != null)
 		{
 			return hanlder.migrationDel();
 		}
 		return 0;
+	}
+
+	public void migrationAll(IMigrationHandler... handlers)
+	{
+		for (IMigrationHandler handler : handlers)
+		{
+			handler.migrationAll();
+		}
 	}
 }

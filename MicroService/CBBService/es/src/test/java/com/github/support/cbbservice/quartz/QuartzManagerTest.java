@@ -1,6 +1,7 @@
 package com.github.support.cbbservice.quartz;
 
 import java.io.File;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -11,6 +12,7 @@ import com.github.support.cbb.ehcache.quartz.job.QuartzJobCheckResult;
 import com.github.support.cbb.ehcache.quartz.job.QuartzJobMigration;
 import com.github.support.cbb.ehcache.quartz.job.QuartzJobUpload;
 
+@Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:/spring/spring-quartz.xml")
 public class QuartzManagerTest
