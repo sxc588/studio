@@ -8,7 +8,6 @@ public class User
 	public User()
 	{
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public User(String id, String name, String pass, float weight, Date birthDay)
 	{

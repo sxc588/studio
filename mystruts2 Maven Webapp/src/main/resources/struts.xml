@@ -1,22 +1,30 @@
-<?xml version="1.0" encoding="GBK" ?>
-<!-- Ö¸¶¨Struts 2ÅäÖÃÎÄ¼þµÄDTDÐÅÏ¢ -->
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- æŒ‡å®šStruts 2é…ç½®æ–‡ä»¶çš„DTDä¿¡æ¯ -->
 <!DOCTYPE struts PUBLIC
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- é…ç½®Struts 2é…ç½®æ–‡ä»¶çš„æ ¹å…ƒç´  -->
 <struts>
-	<!-- Struts 2µÄAction±ØÐë·ÅÔÚÖ¸¶¨µÄ°ü¿Õ¼äÏÂ¶¨Òå -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.objectFactory" value="spring"></constant>
+	<constant name="struts.serve.static.browserCache" value="false" />
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<constant name="struts.devMode" value="true" />
+
+	<!-- Struts 2çš„Actionå¿…é¡»æ”¾åœ¨æŒ‡å®šçš„åŒ…ç©ºé—´ä¸‹å®šä¹‰ -->
 	<package name="default" namespace="/" extends="struts-default">
-		<!-- ¶¨ÒåloginµÄAction£¬¸ÃActionµÄÊµÏÖÀàÎª
-			org.crazyit.demo.action.LoginActionÀà -->
-		<action name="loginPro" class="org.fkjava.action.LoginAction" method="execute">
+
+		<action name="loginPro" class="org.fkjava.action.LoginAction">
 			<result name="input">/WEB-INF/login/loginForm.jsp</result>
 			<result name="error">/WEB-INF/login/error.jsp</result>
 			<result name="success">/WEB-INF/login/success.jsp</result>
 		</action>
 
 		<action name="*">
-			<!-- Ö±½ÓÌø×ªµ½*Ëù´ú±íµÄÒ³ÃæÒ³Ãæ£¬±ÈÈçÓÃ»§·ÃÎÊabc Action£¬´ËÊ±*´ú±íabc£¬Struts 2½«»áÌø×ªµ½abc.jspÒ³Ãæ -->
-			<result>/WEB-INF/login/{1}.jsp</result> 
+			<!-- ç›´æŽ¥è·³è½¬åˆ°*æ‰€ä»£è¡¨çš„é¡µé¢é¡µé¢ï¼Œ
+			æ¯”å¦‚ç”¨æˆ·è®¿é—®abc Actionï¼Œæ­¤æ—¶*ä»£è¡¨abcï¼Œ
+			Struts 2å°†ä¼šè·³è½¬åˆ°abc.jspé¡µé¢ -->
+			<result>/WEB-INF/content/{1}.jsp</result> 
 		</action>
 	</package>
 </struts>
