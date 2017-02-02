@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.Action;
 
-
-
 /**
  * Action 满足三个要求：
  * 1. 实现Action 接口，或 继承ActionSupport【推荐继承】 
@@ -18,36 +16,39 @@ public class LoginAction implements Action
 {
 	private User user;
 	
-	public User getUsr()
+
+	
+	public User getUser()
 	{
 		return user;
 	}
 
-	public void setUsr(User usr)
+	public void setUser(User user)
 	{
-		this.user = usr;
+		this.user = user;
 	}
-	
+
 	@Autowired
-	UserService userService; 
+	UserService userService = new UserService(); 
 	
 	@Override
 	public String execute()
 	{
-		User validateUsr = userService.validateLogin(user);
-		if (validateUsr == null)
-		{
-			return ERROR;
-		}
+//		User validateUsr = userService.validateLogin(user);
+//		if (validateUsr == null)
+//		{
+//			return ERROR;
+//		}
 		return SUCCESS;
 	}
 	
-	
 	public String registUser()
 	{
-		
-	
 		userService.add(user);
+		
+		String json = JSONUtil.toJson(user);
+
+	 System.err.println(json);
 		
 		return SUCCESS;
 	}

@@ -1,8 +1,14 @@
 package org.fkjava.action;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import org.apache.log4j.Logger;
 import org.fkjava.domain.User;
+import org.fkjava.service.AjaxObject;
+import org.fkjava.service.AssociatedPersonnelService;
+import org.fkjava.service.JSON;
 import org.fkjava.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -13,7 +19,10 @@ import com.opensymphony.xwork2.ActionSupport;
 @Controller
 public class ViewUsersAction extends ActionSupport
 {
+
 	private static final long serialVersionUID = 2635886475870205495L;
+
+	private static Logger log = Logger.getLogger(ViewUsersAction.class);
 
 	private List<User> users;
 
@@ -27,13 +36,45 @@ public class ViewUsersAction extends ActionSupport
 		this.users = users;
 	}
 
-	@Autowired
-	UserService userService;
+	// @Autowired
+	UserService userService = new UserService();;
 
 	@Override
 	public String execute()
 	{
 		users = userService.getAll();
+		
+		String json = JSONUtil.toJson(users);
+		log.info(json);
+		
+	 System.err.println(json);
 		return SUCCESS;
+	}
+
+	// @Autowired
+	AssociatedPersonnelService associatedPersonnelService = new AssociatedPersonnelService();
+
+	public String save()
+	{
+
+		log.error("save");
+
+		try
+		{// 保存基本信息附件信息
+
+			associatedPersonnelService.save();
+			// 关联人员列表
+			Map<String, Object> condition = new HashMap<String, Object>();
+			String user_id = "abcd";
+			condition.put("personnel_id", user_id);
+			List<Map<String, Object>> personnelList = associatedPersonnelService.getAssociatedPersonnelList(condition);
+			return JSON.toJSON(personnelList); // 返回json格式数据
+		}
+		catch (Exception e)
+		{
+			// log.(e);
+			return AjaxObject.newError("保存信息失败!").toString();
+		}
+
 	}
 }
