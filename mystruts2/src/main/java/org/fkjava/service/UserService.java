@@ -39,15 +39,29 @@ public class UserService
 		return null;
 	}
 
-	public void add(User user)
+	public User add(User user)
 	{
 		Integer id = new Random().nextInt(999999);
 		user.setId(id.toString());
 		userDb.add(user);
+		
+		return user;
 	}
 
 	public List<User> getAll()
 	{
 		return userDb;
+	}
+
+	public User validateUser(String userName)
+	{
+		for (User usr : userDb)
+		{
+			if (usr.getName().equalsIgnoreCase(userName))
+			{
+				return usr;
+			}
+		}
+		return null;
 	}
 }

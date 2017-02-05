@@ -1,4 +1,5 @@
-package org.fkjava.action;
+package org.fkjava.action.users;
+import org.fkjava.action.JSONUtil;
 import org.fkjava.domain.User;
 import org.fkjava.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import com.opensymphony.xwork2.Action;
  * setter，getter 方法 3. 无构造参数的构造器
  */
 @Controller
-public class LoginAction implements Action
+public class RegistAction implements Action
 {
 	private User user;
 
@@ -29,16 +30,6 @@ public class LoginAction implements Action
 
 	@Override
 	public String execute()
-	{
-		// User validateUsr = userService.validateLogin(user);
-		// if (validateUsr == null)
-		// {
-		// return ERROR;
-		// }
-		return SUCCESS;
-	}
-
-	public String registUser()
 	{
 		userService.add(user);
 		String json = JSONUtil.toJson(user);

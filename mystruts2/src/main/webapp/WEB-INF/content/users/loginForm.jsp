@@ -7,6 +7,7 @@
 </head>
 <body>
 	<h2>请用户登录</h2>
+	<s:
 	<form action="loginPro" method="post">
 		<table>
 			<tr>

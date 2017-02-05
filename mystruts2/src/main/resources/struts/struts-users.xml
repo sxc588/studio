@@ -4,36 +4,20 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <!-- 配置Struts 2配置文件的根元素 -->
 <struts>
-	<!-- 开启使用开发模式，详细错误提示 -->
-	<constant name="struts.devMode" value="true" />
-	<!-- 将对象交给spring管理 -->
-	<!--<constant name="struts.objectFactory" value="spring" /> -->
-	<!-- 指定资源编码类型 -->
-	<constant name="struts.i18n.encoding" value="UTF-8" />
-	<!-- 指定每次请求到达，重新加载资源文件 -->
-	<constant name="struts.i18n.reload" value="false" />
-	<!-- 指定每次配置文件更改后，自动重新加载 -->
-	<constant name="struts.configuration.xml.reload" value="false" />
-	<!-- 默认后缀名 -->
-	<constant name="struts.action.extension" value="action," />
 
 	<!-- Struts 2的Action必须放在指定的包空间下定义 -->
 	<package name="users" namespace="/users" extends="struts-default">
-	
-		<action name="loginPro" class="org.fkjava.action.LoginAction">
-			<result name="input">/login/loginForm.jsp</result>
-			<result name="error">/login/error.jsp</result>
-			<result name="success">/login/success.jsp</result>
+		<action name="registPro" class="org.fkjava.action.users.RegistAction">
+			<result name="success" type="chain">viewUsers</result>
+			<result name="error">/WEB-INF/content/users/error.jsp</result>
 		</action>
 
-		<action name="registPro" class="org.fkjava.action.LoginAction"
-			method="registUser">
-			<result name="success">/login/viewUsers</result>
-			<result name="error">/login/error.jsp</result>
+		<action name="viewUsers" class="org.fkjava.action.users.ViewUsersAction">
+			<result name="success">/WEB-INF/content/users/listUsers.jsp</result>
 		</action>
-
-		<action name="viewUsers" class="org.fkjava.action.ViewUsersAction">
-			<result name="success">/login/listUsers.jsp</result>
+		
+		<action name="validateName" class="org.fkjava.action.users.ValidateNameAction">
+			<result type="stream">tip</result>
 		</action>
 
 		<action name="*">
@@ -41,6 +25,5 @@
 			<result>/WEB-INF/content/users/{1}.jsp</result>
 		</action>
 	</package>
-	<include file="struts/struts_login.xml"/>
-	<include file="struts/struts_tag.xml"/>
+
 </struts>

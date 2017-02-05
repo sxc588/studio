@@ -8,10 +8,11 @@
 </head>
 <body>
 	<h2>请输入用户信息</h2>
+	<f
 	<form action="registPro" method="post">
 		<table>
 			<tr>
-				<td>用户 名：</td>
+				<td>用户名：</td>
 				<td><input type="text" name="user.name"></td>
 			</tr>
 			<tr>

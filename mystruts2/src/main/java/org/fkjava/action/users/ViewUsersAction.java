@@ -1,9 +1,10 @@
-package org.fkjava.action;
+package org.fkjava.action.users;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.apache.log4j.Logger;
+import org.fkjava.action.JSONUtil;
 import org.fkjava.domain.User;
 import org.fkjava.service.AjaxObject;
 import org.fkjava.service.AssociatedPersonnelService;
