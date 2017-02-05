@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- 配置Struts 2配置文件的根元素 -->
+<struts>
+
+	<!-- Struts 2的Action必须放在指定的包空间下定义 -->
+	<package name="users" namespace="/users" extends="struts-default">
+		<action name="registPro" class="org.fkjava.action.users.RegistAction">
+			<result name="success" type="chain">viewUsers</result>
+			<result name="error">/WEB-INF/content/users/error.jsp</result>
+		</action>
+
+		<action name="viewUsers" class="org.fkjava.action.users.ViewUsersAction">
+			<result name="success">/WEB-INF/content/users/listUsers.jsp</result>
+		</action>
+		
+		<action name="validateName" class="org.fkjava.action.users.ValidateNameAction">
+			<result type="stream">tip</result>
+		</action>
+
+		<action name="*">
+			<!-- 直接跳转到*所代表的页面页面， 比如用户访问abc Action，此时*代表abc， Struts 2将会跳转到abc.jsp页面 -->
+			<result>/WEB-INF/content/users/{1}.jsp</result>
+		</action>
+	</package>
+
+</struts>
