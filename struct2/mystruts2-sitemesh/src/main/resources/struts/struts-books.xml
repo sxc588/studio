@@ -13,6 +13,15 @@
 			<result type="json" />
 		</action>
 
+		<action name="excel" class="org.fkjava.books.action.ExportExcellAction">
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="inputName">excelStream</param>
+				<param name="contentDisposition">filename="export.xls"</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>
+
 		<action name="*">
 			<!-- 直接跳转到*所代表的页面页面， 比如用户访问abc Action，此时*代表abc， Struts 2将会跳转到abc.jsp页面 -->
 			<result>/WEB-INF/content/books/{1}.jsp</result>
