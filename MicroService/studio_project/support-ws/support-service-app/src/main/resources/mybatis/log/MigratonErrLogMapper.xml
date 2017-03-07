@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.support.mapper.MigratonErrLogMapper" >
+  <resultMap id="BaseResultMap" type="com.github.support.model.MigratonErrLog" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="ENTITY_NAME" property="entityName" jdbcType="VARCHAR" />
+    <result column="ENTITY_VALUE" property="entityValue" jdbcType="VARCHAR" />
+    <result column="OPERATOR_TYPE" property="operatorType" jdbcType="VARCHAR" />
+    <result column="A1" property="a1" jdbcType="VARCHAR" />
+    <result column="A2" property="a2" jdbcType="VARCHAR" />
+    <result column="A3" property="a3" jdbcType="VARCHAR" />
+    <result column="A4" property="a4" jdbcType="VARCHAR" />
+    <result column="A5" property="a5" jdbcType="VARCHAR" />
+    <result column="LAST_UPDATE_TIME" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="LAST_UPDATE_BY" property="lastUpdateBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.github.support.model.MigratonErrLog" extends="BaseResultMap" >
+    <result column="EXCEPTION" property="exception" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ENTITY_NAME, ENTITY_VALUE, OPERATOR_TYPE, A1, A2, A3, A4, A5, LAST_UPDATE_TIME, 
+    LAST_UPDATE_BY
+  </sql>
+  <sql id="Blob_Column_List" >
+    EXCEPTION
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_log_migraion
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_log_migraion
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.github.support.model.MigratonErrLog" >
+    insert into t_log_migraion (ID, ENTITY_NAME, ENTITY_VALUE, 
+      OPERATOR_TYPE, A1, A2, 
+      A3, A4, A5, LAST_UPDATE_TIME, 
+      LAST_UPDATE_BY, EXCEPTION)
+    values (#{id,jdbcType=BIGINT}, #{entityName,jdbcType=VARCHAR}, #{entityValue,jdbcType=VARCHAR}, 
+      #{operatorType,jdbcType=VARCHAR}, #{a1,jdbcType=VARCHAR}, #{a2,jdbcType=VARCHAR}, 
+      #{a3,jdbcType=VARCHAR}, #{a4,jdbcType=VARCHAR}, #{a5,jdbcType=VARCHAR}, #{lastUpdateTime,jdbcType=TIMESTAMP}, 
+      #{lastUpdateBy,jdbcType=VARCHAR}, #{exception,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.github.support.model.MigratonErrLog" >
+    insert into t_log_migraion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="entityName != null" >
+        ENTITY_NAME,
+      </if>
+      <if test="entityValue != null" >
+        ENTITY_VALUE,
+      </if>
+      <if test="operatorType != null" >
+        OPERATOR_TYPE,
+      </if>
+      <if test="a1 != null" >
+        A1,
+      </if>
+      <if test="a2 != null" >
+        A2,
+      </if>
+      <if test="a3 != null" >
+        A3,
+      </if>
+      <if test="a4 != null" >
+        A4,
+      </if>
+      <if test="a5 != null" >
+        A5,
+      </if>
+      <if test="lastUpdateTime != null" >
+        LAST_UPDATE_TIME,
+      </if>
+      <if test="lastUpdateBy != null" >
+        LAST_UPDATE_BY,
+      </if>
+      <if test="exception != null" >
+        EXCEPTION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="entityName != null" >
+        #{entityName,jdbcType=VARCHAR},
+      </if>
+      <if test="entityValue != null" >
+        #{entityValue,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorType != null" >
+        #{operatorType,jdbcType=VARCHAR},
+      </if>
+      <if test="a1 != null" >
+        #{a1,jdbcType=VARCHAR},
+      </if>
+      <if test="a2 != null" >
+        #{a2,jdbcType=VARCHAR},
+      </if>
+      <if test="a3 != null" >
+        #{a3,jdbcType=VARCHAR},
+      </if>
+      <if test="a4 != null" >
+        #{a4,jdbcType=VARCHAR},
+      </if>
+      <if test="a5 != null" >
+        #{a5,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null" >
+        #{lastUpdateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="exception != null" >
+        #{exception,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.github.support.model.MigratonErrLog" >
+    update t_log_migraion
+    <set >
+      <if test="entityName != null" >
+        ENTITY_NAME = #{entityName,jdbcType=VARCHAR},
+      </if>
+      <if test="entityValue != null" >
+        ENTITY_VALUE = #{entityValue,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorType != null" >
+        OPERATOR_TYPE = #{operatorType,jdbcType=VARCHAR},
+      </if>
+      <if test="a1 != null" >
+        A1 = #{a1,jdbcType=VARCHAR},
+      </if>
+      <if test="a2 != null" >
+        A2 = #{a2,jdbcType=VARCHAR},
+      </if>
+      <if test="a3 != null" >
+        A3 = #{a3,jdbcType=VARCHAR},
+      </if>
+      <if test="a4 != null" >
+        A4 = #{a4,jdbcType=VARCHAR},
+      </if>
+      <if test="a5 != null" >
+        A5 = #{a5,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null" >
+        LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null" >
+        LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="exception != null" >
+        EXCEPTION = #{exception,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.github.support.model.MigratonErrLog" >
+    update t_log_migraion
+    set ENTITY_NAME = #{entityName,jdbcType=VARCHAR},
+      ENTITY_VALUE = #{entityValue,jdbcType=VARCHAR},
+      OPERATOR_TYPE = #{operatorType,jdbcType=VARCHAR},
+      A1 = #{a1,jdbcType=VARCHAR},
+      A2 = #{a2,jdbcType=VARCHAR},
+      A3 = #{a3,jdbcType=VARCHAR},
+      A4 = #{a4,jdbcType=VARCHAR},
+      A5 = #{a5,jdbcType=VARCHAR},
+      LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR},
+      EXCEPTION = #{exception,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.github.support.model.MigratonErrLog" >
+    update t_log_migraion
+    set ENTITY_NAME = #{entityName,jdbcType=VARCHAR},
+      ENTITY_VALUE = #{entityValue,jdbcType=VARCHAR},
+      OPERATOR_TYPE = #{operatorType,jdbcType=VARCHAR},
+      A1 = #{a1,jdbcType=VARCHAR},
+      A2 = #{a2,jdbcType=VARCHAR},
+      A3 = #{a3,jdbcType=VARCHAR},
+      A4 = #{a4,jdbcType=VARCHAR},
+      A5 = #{a5,jdbcType=VARCHAR},
+      LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.github.support</groupId>
+		<artifactId>support-service</artifactId>
+		<version>1.0.1-SNAPSHOT</version>
+	</parent>
+	
+	<artifactId>support-service-api</artifactId>
+	<packaging>jar</packaging>
+	<name>support-service-api</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<cxf.version>3.1.9</cxf.version>
+		<spring.version>4.1.9.RELEASE</spring.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>apache-cxf</artifactId>
+			<version>${cxf.version}</version>
+			<type>pom</type>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>support-ws-api</finalName>
+		<plugins>
+		
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		
+		</plugins>
+	</build>
+</project>

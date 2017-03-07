@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="books" namespace="/books" extends="json-default">
+
+		<action name="listCatelogs" class="org.fkjava.books.action.ListBookCatelogsAction">
+		</action>
+
+		<action name="getBooksByCategory" class="org.fkjava.books.action.GetBooksByCategoryAction">
+			<!--json result 类型hu9baAction实例转换成json 字符串返回给页面显示 -->
+			<result type="json" />
+		</action>
+
+		<action name="excel" class="org.fkjava.books.action.ExportExcellAction">
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="inputName">excelStream</param>
+				<param name="contentDisposition">filename="export.xls"</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>
+
+		<action name="*">
+			<!-- 直接跳转到*所代表的页面页面， 比如用户访问abc Action，此时*代表abc， Struts 2将会跳转到abc.jsp页面 -->
+			<result>/WEB-INF/content/books/{1}.jsp</result>
+		</action>
+	</package>
+</struts>
