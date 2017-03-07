@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="default" location="260,114" size="227,462">
+    <action name="loginPro" location="76,82" size="150,83">
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="loginForm.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="success.jsp" />
+      </result>
+    </action>
+    <action name="registPro" location="20,320" size="150,83">
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="loginForm.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="success.jsp" />
+      </result>
+    </action>
+    <action name="viewUsers" location="20,420" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="listUsers.jsp" />
+      </result>
+    </action>
+    <action name="*" location="76,243" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="{1}.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="loginForm.jsp" path="/WEB-INF/login/loginForm.jsp" location="733,179" size="150,55" />
+  <webResource name="error.jsp" path="/WEB-INF/login/error.jsp" location="48,66" size="150,55" />
+  <webResource name="success.jsp" path="/WEB-INF/login/success.jsp" location="16,293" size="150,55" />
+  <webResource name="{1}.jsp" path="/WEB-INF/login/{1}.jsp" location="741,317" size="150,55" />
+  <webResource name="loginForm.jsp" path="/login/loginForm.jsp" location="50,500" size="150,55" />
+  <webResource name="error.jsp" path="/login/error.jsp" location="532,75" size="150,55" />
+  <webResource name="success.jsp" path="/login/success.jsp" location="712,439" size="150,55" />
+  <webResource name="listUsers.jsp" path="/login/listUsers.jsp" location="656,543" size="150,55" />
+  <webResource name="{1}.jsp" path="/{1}.jsp" location="50,650" size="150,55" />
+</Struts2Diagram>
+
