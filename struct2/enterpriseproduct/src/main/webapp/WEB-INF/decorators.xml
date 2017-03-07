@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<decorators defaultdir="/decorators">
+	<!-- 其中/decorators是装饰文件默认路径.也可以配置为其他路径 -->
+	<!--excludes結點則指定了哪些路徑的請求不使用任何模板 -->
+	<excludes>
+		<pattern>/index.jsp*</pattern>
+		<pattern>/login/*</pattern>
+	</excludes>
+	
+	<!-- 创建一个名为main的装饰器，该装饰器页面为main.jsp,
+	     用于装饰pattern指定的URL的所有页面-->
+    <decorator name="main" page="main.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+    
+	<!-- 定义一个装饰器,但该装饰器默认不装饰任何页面 -->
+    <decorator name="panel" page="panel.jsp"/>
+	
+</decorators>
