@@ -32,34 +32,63 @@ public class SessionFilter implements Filter
 		else return false;
 	}
 
+	/**
+	 * 判断是否为移动端请求
+	 * 
+	 * @param request
+	 * @return 是true, 否false
+	 * @see [类、类#方法、类#成员]
+	 */
+	public static boolean isMobileRequest(HttpServletRequest request)
+	{
+		String ua = request.getHeader("User-Agent");
+
+		final String[] agent = {"Android", "iPhone", "iPod", "iPad", "Windows Phone", "MQQBrowser"};
+
+		boolean flag = false;
+		if (!ua.contains("Windows NT") || (ua.contains("Windows NT") && ua.contains("compatible; MSIE 9.0;")))
+		{
+			// 排除 苹果桌面系统
+			if (!ua.contains("Windows NT") && !ua.contains("Macintosh"))
+			{
+				for (String item : agent)
+				{
+					if (ua.contains(item))
+					{
+						flag = true;
+						break;
+					}
+				}
+			}
+		}
+		return flag;
+	}
+
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException
 	{
 		// TODO Auto-generated method stub
-
 	}
 
 	/**
 	 * 登录验证过滤器
 	 */
 	@Override
-	public
-			void
-			doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
-																												throws IOException,
-																												ServletException
+	public void doFilter(ServletRequest rq, ServletResponse rs, FilterChain chain) throws IOException, ServletException
 	{
+
 		// 不过滤的uri
 		String[] notFilter = new String[]{"/images", "/js", "/css", "/login", "/login/mainframe", "/user/exist", "/user/checkPassword", "/signcode"};
 
-		HttpServletRequest request = (HttpServletRequest) servletRequest;
-		HttpServletResponse response = (HttpServletResponse) servletResponse;
+		HttpServletRequest request = (HttpServletRequest) rq;
+		HttpServletResponse response = (HttpServletResponse) rs;
+
+		LOG.info(request.getRequestURI());
 
 		HttpSession session = request.getSession();
 
 		// 请求的uri
 		String uri = request.getRequestURI();
-		LOG.info(uri);
 		// 是否过滤
 		boolean doFilter = true;
 		for (String s : notFilter)
@@ -71,8 +100,6 @@ public class SessionFilter implements Filter
 				break;
 			}
 		}
-
-
 
 		if (doFilter)
 		{
@@ -88,9 +115,9 @@ public class SessionFilter implements Filter
 					response.sendError(HttpStatus.UNAUTHORIZED.value(), "您已经太长时间没有操作,请刷新页面");
 					return;
 				}
-
-				response.sendRedirect(request.getContextPath() + "/login/tologin.jsp");
-				return;
+				chain.doFilter(request, response);
+				// response.sendRedirect(request.getContextPath() + "/doc/index");
+				// return;
 			}
 			else
 			{
@@ -99,13 +126,13 @@ public class SessionFilter implements Filter
 				// response.sendRedirect(request.getContextPath() +
 				// url.toString());
 				// 如果session中存在登录者实体，则继续
-				filterChain.doFilter(request, response);
+				chain.doFilter(request, response);
 			}
 		}
 		else
 		{
 			// 如果不执行过滤，则继续
-			filterChain.doFilter(request, response);
+			chain.doFilter(request, response);
 		}
 
 	}

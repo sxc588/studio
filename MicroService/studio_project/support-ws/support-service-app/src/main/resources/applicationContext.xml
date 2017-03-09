@@ -12,7 +12,6 @@
                         http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
 	<!--配置CXF扫描，并制定包目录 -->
-<!-- 	<context:component-scan base-package="com.github.support" /> -->
-	
-	<import resource="spring-cfx-server.xml" />
+	<context:component-scan base-package="com.github" />
+	<import resource="spring-cfx-service.xml" />
 </beans>

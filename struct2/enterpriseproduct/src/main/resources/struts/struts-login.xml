@@ -16,7 +16,7 @@
 
 	<package name="logout" namespace="/" extends="struts-default">
 		<action name="logout" class="com.huawei.support.enterprise.web.action.login.LoginAction20" method="logout">
-			<result name="exit">/exit.jsp</result>
+			<result name="logout">/exit.jsp</result>
 		</action>
 	</package>
 

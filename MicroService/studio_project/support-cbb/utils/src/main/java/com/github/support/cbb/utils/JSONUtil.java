@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
@@ -20,9 +21,17 @@ public abstract class JSONUtil
 	private static ObjectMapper mapper = new ObjectMapper();
 
 	// Convert object to JSON string
-	public static String toJson(Object obj) throws JsonProcessingException
+	public static String toJson(Object obj)
 	{
-		String Json = mapper.writeValueAsString(obj);
+		String Json = StringUtils.EMPTY;
+		try
+		{
+			Json = mapper.writeValueAsString(obj);
+		}
+		catch (JsonProcessingException e)
+		{
+			e.printStackTrace();
+		}
 		return Json;
 	}
 

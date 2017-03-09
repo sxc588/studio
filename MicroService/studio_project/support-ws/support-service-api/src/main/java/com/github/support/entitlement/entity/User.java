@@ -1,6 +1,10 @@
 package com.github.support.entitlement.entity;
 
-public class User
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "User")
+public class User implements Serializable
 {
 	float userage;
 	String useremail;

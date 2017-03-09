@@ -16,12 +16,13 @@
 	<constant name="struts.configuration.xml.reload" value="false" />
 	<!-- 默认后缀名 -->
 	<constant name="struts.action.extension" value="action," />
-	
+
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
-	
-<!-- 	<include file="struts/struts-books.xml"/> -->
-<!-- 	<include file="struts/struts-users.xml"/> -->
-<!-- 	<include file="struts/struts_tags_ui.xml"/> -->
-<!-- 	<include file="struts/struts-main.xml"/> -->
-	<include file="struts/struts-login.xml"/>
+
+	<!-- <include file="struts/struts-books.xml"/> -->
+	<!-- <include file="struts/struts-users.xml"/> -->
+	<!-- <include file="struts/struts_tags_ui.xml"/> -->
+	<include file="struts/struts-main.xml" />
+	<include file="struts/struts-doc.xml" />
+	<include file="struts/struts-login.xml" />
 </struts>
