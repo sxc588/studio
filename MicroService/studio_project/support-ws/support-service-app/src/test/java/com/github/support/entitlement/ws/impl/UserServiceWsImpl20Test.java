@@ -28,7 +28,7 @@ public class UserServiceWsImpl20Test
 	@Test
 	public void test()
 	{
-		String baseAddress = "http://localhost:7050/rest/ws/entitlement";
+		String baseAddress = "http://localhost:7050/rest/v1/entitlement";
 
 
 		JacksonJsonProvider jsonProvider = new JacksonJsonProvider();

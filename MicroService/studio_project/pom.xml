@@ -16,20 +16,19 @@
 	</modules>
 
 	<properties>
-		<Flyway.version>4.0.1</Flyway.version>
 		<!-- Generic properties -->
 		<javaee-api.version>3.1</javaee-api.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<spring.version>4.3.4.RELEASE</spring.version>
+		<spring.version>4.3.5.RELEASE</spring.version>
 		<quartz.version>2.2.3</quartz.version>
 		<junit.version>4.12</junit.version>
 		<!-- Logging -->
 		<logback.version>1.0.13</logback.version>
 		<slf4j.version>1.7.5</slf4j.version>
 
-		<ehcache.version>2.6.6</ehcache.version>
+		<ehcache.version>2.9.0</ehcache.version>
 		<activemq.version>5.14.0</activemq.version>
 
 		<aopalliance.ver>1.0</aopalliance.ver>
@@ -42,11 +41,10 @@
 
 	<dependencyManagement>
 		<dependencies>
-
 			<dependency>
 				<groupId>org.flywaydb</groupId>
 				<artifactId>flyway-core</artifactId>
-				<version>${Flyway.version}</version>
+				<version>4.0.1</version>
 			</dependency>
 
 			<dependency>
@@ -125,7 +123,6 @@
 				<artifactId>activemq-all</artifactId>
 				<version>${activemq.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.quartz-scheduler</groupId>
 				<artifactId>quartz</artifactId>
@@ -171,20 +168,17 @@
 				<version>${commons-logging.version}</version>
 			</dependency>
 
-
 			<dependency>
 				<groupId>commons-dbcp</groupId>
 				<artifactId>commons-dbcp</artifactId>
 				<version>1.4</version>
 			</dependency>
 
-
 			<dependency>
 				<groupId>commons-dbcp</groupId>
 				<artifactId>commons-dbcp2</artifactId>
 				<version>2.1.1</version>
 			</dependency>
-
 
 			<dependency>
 				<groupId>mysql</groupId>

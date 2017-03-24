@@ -19,7 +19,6 @@
 			<ref bean="outMessageInterceptor" />
 		</jaxrs:outInterceptors>
 		<jaxrs:serviceBeans>
-			<bean class="com.github.support.demo.RestHelloWordImpl" />
 			<bean class="com.github.weir.UserExitImpl" />
 		</jaxrs:serviceBeans>
 		<jaxrs:extensionMappings>
@@ -42,6 +41,32 @@
 		<jaxrs:serviceBeans>
 			<bean class="com.github.support.entitlement.ws.impl.UserServiceWsImpl10" />
 			<bean class="com.github.support.entitlement.ws.impl.UserServiceWsImpl20" />
+		</jaxrs:serviceBeans>
+		<jaxrs:extensionMappings>
+			<entry key="json" value="application/json" />
+			<entry key="xml" value="application/xml" />
+		</jaxrs:extensionMappings>
+		<jaxrs:languageMappings>
+			<entry key="en" value="en-gb" />
+		</jaxrs:languageMappings>
+		<jaxrs:providers>
+			<bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
+			<!-- <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider"/> -->
+			<bean class="org.apache.cxf.jaxrs.provider.jsonp.JsonpPreStreamInterceptor" />
+		</jaxrs:providers>
+	</jaxrs:server>
+	
+	
+	<jaxrs:server id="entitlement" address="/i18n">
+		<jaxrs:inInterceptors>
+				 <ref bean="inMessageInterceptor" />
+		</jaxrs:inInterceptors>
+		<jaxrs:outInterceptors>
+			<bean class="org.apache.cxf.jaxrs.provider.jsonp.JsonpPostStreamInterceptor" />
+			<!-- <ref bean="outMessageInterceptor" /> -->
+		</jaxrs:outInterceptors>
+		<jaxrs:serviceBeans>
+			<bean class=" com.github.support.i18n.ws.impl.I18nWSImpl" />
 		</jaxrs:serviceBeans>
 		<jaxrs:extensionMappings>
 			<entry key="json" value="application/json" />

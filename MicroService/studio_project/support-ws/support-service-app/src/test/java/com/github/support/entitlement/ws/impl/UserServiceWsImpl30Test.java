@@ -29,7 +29,7 @@ public class UserServiceWsImpl30Test
 	@Test
 	public void test()
 	{
-		String baseAddress = "http://localhost:7050/rest/ws/entitlement";
+		String baseAddress = "http://localhost:7050/rest/v1/entitlement";
 
 
 		List<Object> providerList = new ArrayList<Object>();

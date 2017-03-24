@@ -1,4 +1,4 @@
-package org.fkjava.action.uitags;
+package org.fkjava.action.users;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,12 +18,12 @@ import com.opensymphony.xwork2.ActionSupport;
  * setter，getter 方法 3. 无构造参数的构造器
  */
 @Controller
-public class CopyOfViewUsersAction extends ActionSupport
+public class UsersViewAction extends ActionSupport
 {
 
 	private static final long serialVersionUID = 2635886475870205495L;
 
-	private static Logger log = Logger.getLogger(CopyOfViewUsersAction.class);
+	private static Logger log = Logger.getLogger(UsersViewAction.class);
 
 	private List<User> users;
 

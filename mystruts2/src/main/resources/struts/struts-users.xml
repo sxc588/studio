@@ -7,16 +7,16 @@
 
 	<!-- Struts 2的Action必须放在指定的包空间下定义 -->
 	<package name="users" namespace="/users" extends="struts-default">
-		<action name="registPro" class="org.fkjava.action.users.RegistAction">
+		<action name="registPro" class="org.fkjava.action.users.UserRegistAction">
 			<result name="success" type="chain">viewUsers</result>
 			<result name="error">/WEB-INF/content/users/error.jsp</result>
 		</action>
 
-		<action name="viewUsers" class="org.fkjava.action.users.ViewUsersAction">
+		<action name="viewUsers" class="org.fkjava.action.users.UsersViewAction">
 			<result name="success">/WEB-INF/content/users/listUsers.jsp</result>
 		</action>
 		
-		<action name="validateName" class="org.fkjava.action.users.ValidateNameAction">
+		<action name="validateName" class="org.fkjava.action.users.UserValidateNameAction">
 			<result type="stream">tip</result>
 		</action>
 

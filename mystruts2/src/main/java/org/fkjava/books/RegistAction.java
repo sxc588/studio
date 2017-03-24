@@ -1,6 +1,6 @@
-package org.fkjava.books.action;
-import java.util.List;
-import org.fkjava.books.service.BooksService;
+package org.fkjava.books;
+import org.fkjava.domain.User;
+import org.fkjava.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import com.github.cbb.utils.json.JSONUtil;
@@ -11,30 +11,30 @@ import com.opensymphony.xwork2.Action;
  * setter，getter 方法 3. 无构造参数的构造器
  */
 @Controller
-public class ListBookCatelogsAction implements Action
+public class RegistAction implements Action
 {
-	private List<String> bookCatlogs;
+	private User user;
 
-	public List<String> getBookCatlogs()
+	public User getUser()
 	{
-		return bookCatlogs;
+		return user;
 	}
 
-	public void setBookCatlogs(List<String> bookCatlogs)
+	public void setUser(User user)
 	{
-		this.bookCatlogs = bookCatlogs;
+		this.user = user;
 	}
 
 	@Autowired
-	BooksService booksService = new BooksService();
+	UserService userService = new UserService();
 
 	@Override
 	public String execute()
 	{
-		bookCatlogs = booksService.getCatlogs();
-
-		String json = JSONUtil.toJson(bookCatlogs);
+		userService.add(user);
+		String json = JSONUtil.toJson(user);
 		System.err.println(json);
 		return SUCCESS;
 	}
+
 }
