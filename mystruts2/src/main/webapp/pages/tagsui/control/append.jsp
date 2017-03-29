@@ -9,9 +9,6 @@
 <body>
 	<h2>集合并 - s:merge</h2>
 	<s:debug />
-
-	
-
 	<p>有序列表：</p>
 	<s:append var='newList'>
 	 <s:param value="{'孙悟空','白骨精','唐僧','猪八戒','牛魔王'}" ></s:param>

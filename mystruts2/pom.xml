@@ -4,52 +4,50 @@
 	<groupId>org.fkjava</groupId>
 	<artifactId>mystruts2</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>2017.03.29-SNAPSHOT</version>
 	<name>mystruts2</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
 		<log4j.version>1.2.17</log4j.version>
-
-		<struts.version>2.3.30</struts.version>
+		<struts.version>2.3.31</struts.version>
+		<spring.version>4.3.4.RELEASE</spring.version>
+		<jasckson.version>2.8.1</jasckson.version>
 	</properties>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>4.1.9.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>4.1.9.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
-			<version>4.1.9.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>4.1.9.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
-			<version>4.1.9.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<dependency>
@@ -79,26 +77,25 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.5</version>
+			<version>1.7.7</version>
 		</dependency>
 
 
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.7.4</version>
+			<version>${jasckson.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
-			<version>2.7.4</version>
+			<version>${jasckson.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
-			<version>2.7.4</version>
+			<version>${jasckson.version}</version>
 		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -106,14 +103,48 @@
 		<defaultGoal>compile</defaultGoal>
 		<plugins>
 			<plugin>
+				<!-- YUI Compressor Maven压缩插件 -->
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>yuicompressor-maven-plugin</artifactId>
+				<version>1.3.0</version>
+				<executions>
+					<execution>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>compress</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<skip>true</skip>
+					<encoding>UTF-8</encoding>
+					<jswarn>false</jswarn>
+					<force>false</force>
+					<!-- <suffix>${dui.suffix}</suffix> -->
+					<excludes>
+						<exclude>**/*.min.js</exclude>
+						<exclude>**/*.min.css</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<warSourceExcludes>**/*.js,**/*.css</warSourceExcludes>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
