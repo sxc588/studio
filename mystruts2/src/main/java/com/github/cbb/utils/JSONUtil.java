@@ -1,14 +1,16 @@
-package com.github.cbb.utils.json;
+package com.github.cbb.utils;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import org.springframework.beans.BeanUtils;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.util.BeanUtil;
 
 /**
  * 使用Jackson进行Java对象与JSON的互相转换
@@ -46,6 +48,7 @@ public abstract class JSONUtil
 		JavaType tp = mapper.getTypeFactory().constructType(valueType);
 		@SuppressWarnings("unchecked")
 		T bj2 = (T) mapper.readValue(json, tp);
+	
 		return bj2;
 	}
 	//

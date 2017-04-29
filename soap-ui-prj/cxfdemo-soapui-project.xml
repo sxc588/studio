@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="15c3a399-8565-480c-a84d-8fc3c72d53f3" activeEnvironment="Default" name="cxf-demo" resourceRoot="" soapui-version="5.1.2" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="ce863895-9f7c-4e76-9e56-27e1e33185a1" wsaVersion="NONE" name="HelloWorldSoapBinding" type="wsdl" bindingName="{http://impl.demo.cxf.support.github.com/}HelloWorldSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/services/cxfdemo?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/services/cxfdemo?wsdl"><con:part><con:url>http://localhost:8080/services/cxfdemo?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="HelloWorld" targetNamespace="http://impl.demo.cxf.support.github.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://impl.demo.cxf.support.github.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://demo.cxf.support.github.com/">
+  <wsdl:import location="http://localhost:8080/services/cxfdemo?wsdl=CXFDemo.wsdl" namespace="http://demo.cxf.support.github.com/"></wsdl:import>
+  <wsdl:binding name="HelloWorldSoapBinding" type="ns1:CXFDemo">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="executeQuery">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="executeQuery">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="executeQueryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sayHello">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sayHello">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sayHelloResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HelloWorld">
+    <wsdl:port binding="tns:HelloWorldSoapBinding" name="CXFDemoImplPort">
+      <soap:address location="http://localhost:8080/services/cxfdemo"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8080/services/cxfdemo?wsdl=CXFDemo.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="CXFDemo" targetNamespace="http://demo.cxf.support.github.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://demo.cxf.support.github.com/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://demo.cxf.support.github.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://demo.cxf.support.github.com/">
+      <xs:element name="executeQuery" type="tns:executeQuery"/>
+      <xs:element name="executeQueryResponse" type="tns:executeQueryResponse"/>
+      <xs:element name="sayHello" type="tns:sayHello"/>
+      <xs:element name="sayHelloResponse" type="tns:sayHelloResponse"/>
+      <xs:complexType name="executeQuery">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+          <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+          <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+          <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+          <xs:element minOccurs="0" name="arg4" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="executeQueryResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:hashMap"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="hashMap">
+        <xs:complexContent>
+          <xs:extension base="tns:abstractMap">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType abstract="true" name="abstractMap">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="sayHello">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sayHelloResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SQLException" type="tns:SQLException"/>
+      <xs:complexType name="SQLException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="errorCode" type="xs:int"/>
+          <xs:element minOccurs="0" name="sQLState" type="xs:string"/>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="executeQuery">
+    <wsdl:part element="ns1:executeQuery" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="executeQueryResponse">
+    <wsdl:part element="ns1:executeQueryResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sayHelloResponse">
+    <wsdl:part element="ns1:sayHelloResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SQLException">
+    <wsdl:part element="ns1:SQLException" name="SQLException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sayHello">
+    <wsdl:part element="ns1:sayHello" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CXFDemo">
+    <wsdl:operation name="executeQuery">
+      <wsdl:input message="ns1:executeQuery" name="executeQuery"></wsdl:input>
+      <wsdl:output message="ns1:executeQueryResponse" name="executeQueryResponse"></wsdl:output>
+      <wsdl:fault message="ns1:SQLException" name="SQLException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sayHello">
+      <wsdl:input message="ns1:sayHello" name="sayHello"></wsdl:input>
+      <wsdl:output message="ns1:sayHelloResponse" name="sayHelloResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/services/cxfdemo</con:endpoint></con:endpoints><con:operation id="19410a90-2bd1-42ae-92bf-3bde98262b7b" isOneWay="false" action="" name="sayHello" bindingOperationName="sayHello" type="Request-Response" outputName="sayHelloResponse" inputName="sayHello" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ea7a98aa-135f-41c6-b399-22d1de2d649f" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/cxfdemo</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:demo="http://demo.cxf.support.github.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <demo:sayHello>\r
+         <!--Optional:-->\r
+         <arg0>ddfd</arg0>\r
+      </demo:sayHello>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://impl.demo.cxf.support.github.com/CXFDemo/sayHello"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="c1aae4a6-0b44-447a-ad0a-1adb6c27ecfb" isOneWay="false" action="" name="executeQuery" bindingOperationName="executeQuery" type="Request-Response" outputName="executeQueryResponse" inputName="executeQuery" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6a066a14-cdc2-4dde-94d9-e3afddff3f99" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/cxfdemo</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:demo="http://demo.cxf.support.github.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <demo:executeQuery>
+         <!--Optional:-->
+         
+         <!--Optional:-->
+         <arg0>com.mysql.jdbc.Driver</arg0>
+         <!--Optional:-->
+         <arg1>jdbc:mysql://localhost:3306/test</arg1>
+         <!--Optional:-->
+         <arg2>root</arg2>
+         <!--Optional:-->
+         <arg3>root</arg3><arg4>select *  from t_account where 1=1</arg4>
+      </demo:executeQuery>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://impl.demo.cxf.support.github.com/CXFDemo/executeQuery"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="dc9f253b-e6d0-430a-b0e3-e668901ba094" name="TestSuite 1"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="6cd1d0d5-44cb-414d-bd90-2cca61631431" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase 1" searchProperties="true"><con:settings/><con:testStep type="request" id="73cdf39b-f038-4a03-93eb-6feac8237f44" name="sayHello - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>HelloWorldSoapBinding</con:interface><con:operation>sayHello</con:operation><con:request name="sayHello - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="1f253862-0834-493b-a17b-a46ff4345037"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/cxfdemo</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:demo="http://demo.cxf.support.github.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <demo:sayHello>\r
+         <!--Optional:-->\r
+         <arg0>ddfd</arg0>\r
+      </demo:sayHello>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="81805223-7ff5-45b6-a59f-42769f187162" name="SOAP Response"/><con:assertion type="Valid HTTP Status Codes" id="26495431-f8f8-44bf-9f55-33173eeac3d3" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="804c8904-cf4e-4e10-a70b-06956e7c9c49" name="Response SLA"><con:configuration><SLA>500</SLA></con:configuration></con:assertion><con:assertion type="GroovyScriptAssertion" id="4b3b2484-56f3-4af4-ba4a-f3e14bc25ca2" name="Script Assertion"><con:configuration><scriptText>def rawRequest = context.expand( '${sayHello - Request 1#RawRequest#declare namespace soapenv=\'http://schemas.xmlsoap.org/soap/envelope/\'; //soapenv:Header[1]}' )
+</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://impl.demo.cxf.support.github.com/CXFDemo/sayHello"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:properties/><con:reportParameters/></con:testSuite><con:requirements/><con:properties/><con:wssContainer/><con:databaseConnectionContainer/><con:oAuth2ProfileContainer/><con:reporting><con:reportTemplates/><con:xmlTemplates/><con:parameters/></con:reporting><con:sensitiveInformation/></con:soapui-project>
