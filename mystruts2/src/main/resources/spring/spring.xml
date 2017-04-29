@@ -11,6 +11,7 @@
 	<!-- 引入属性文件 -->
 	<context:property-placeholder location="classpath:config.properties" />
 	
+	<import resource="classpath:spring/spring-mybatis.xml"/>
 	<!-- 自动扫描(自动注入) -->
 	<context:component-scan base-package="org.fkjava" />
 </beans>

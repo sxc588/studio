@@ -17,13 +17,13 @@ public class DeleteBookInfoServlet extends HttpServlet {
 		int bookId = Integer.parseInt(request.getParameter("bookId"));
 		BookInfoDAO bookInfoDAO = new BookInfoDAO();
 		
-		String msg = "Ê§°Ü";
+		String msg = "å¤±è´¥";
 		if (bookInfoDAO.updateStates(3, bookId)) {
-			msg = "³É¹¦";
+			msg = "æˆåŠŸ";
 		}
-		//ÌáÊ¾ÏûÏ¢
-		request.setAttribute("msg", "Í¼ÊéĞÅÏ¢²»¿ÉÓÃ£¨É¾³ı£©" + msg);
-		//·µ»ØÂ·¾¶
+		//æç¤ºæ¶ˆæ¯
+		request.setAttribute("msg", "å›¾ä¹¦ä¿¡æ¯ä¸å¯ç”¨ï¼ˆåˆ é™¤ï¼‰" + msg);
+		//è¿”å›è·¯å¾„
 		request.setAttribute("returnPath", "/FindAllBookInfoServlet");
 		request.getRequestDispatcher("/background/message.jsp").forward(request, response);
 		

@@ -6,15 +6,19 @@
 <struts>
 
 	<!-- Struts 2的Action必须放在指定的包空间下定义 -->
-	<package name="users" namespace="/users" extends="struts-default">
+	<package name="users" namespace="/" extends="struts-default">
 		<action name="registPro" class="org.fkjava.action.users.UserRegistAction">
 			<result name="success" type="chain">viewUsers</result>
 			<result name="error">/WEB-INF/content/users/error.jsp</result>
 		</action>
 
-		<action name="viewUsers" class="org.fkjava.action.users.UsersViewAction">
-			<result name="success">/WEB-INF/content/users/listUsers.jsp</result>
+		<action name="Alpha" class="org.fkjava.action.users.VirtualMechineAction">
+			<result name="success">/WEB-INF/content/users/stageinfo.jsp</result>
 		</action>
+		
+		<action name="addone" class="org.fkjava.action.users.VirtualMechineAction"  method="addone">
+		</action>
+		
 		
 		<action name="validateName" class="org.fkjava.action.users.UserValidateNameAction">
 			<result type="stream">tip</result>

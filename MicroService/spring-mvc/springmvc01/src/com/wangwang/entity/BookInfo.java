@@ -14,7 +14,7 @@ public class BookInfo {
 	private float price;// money not null,
 	private Date pbDate;// datetime not null,
 	private float ygcPrice;// money not null,
-	private int bookStates;// ¿ÉÓÃ£¬ÉÏ¼Ü£¬²»¿ÉÓÃ
+	private int bookStates;// å¯ç”¨ï¼Œä¸Šæ¶ï¼Œä¸å¯ç”¨
 	
 	public BookInfo() {
 		super();

@@ -1,4 +1,4 @@
-package com.wangwang.db;
+ï»¿package com.wangwang.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,13 +7,13 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
 
-//´úÌæÁËÔ­À´DBManagerµÄ¹¦ÄÜ
+//ä»£æ›¿äº†åŸæ¥DBManagerçš„åŠŸèƒ½
 public class JdbcTemplate {
 	
 	/**
-	 * ÓÃÀ´Ö´ĞĞinsert update deleteÓï¾ä
-	 * @param sql ÊÇ´øÕ¼Î»·ûµÄsqlÓï¾ä
-	 * @param values sqlÕ¼Î»·û¾ßÌåµÄÖµ
+	 * ç”¨æ¥æ‰§è¡Œinsert update deleteè¯­å¥
+	 * @param sql æ˜¯å¸¦å ä½ç¬¦çš„sqlè¯­å¥
+	 * @param values sqlå ä½ç¬¦å…·ä½“çš„å€¼
 	 * @return
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
@@ -25,7 +25,7 @@ public class JdbcTemplate {
 		try {
 			Connection con = DBManager.getConnection();
 			psta = con.prepareStatement(sql);
-			//¸øÕ¼Î»·û¸³Öµ
+			//ç»™å ä½ç¬¦èµ‹å€¼
 			for (int i = 0; i < values.length; i++) {
 				psta.setObject(i + 1, values[i]);
 			}
@@ -39,7 +39,7 @@ public class JdbcTemplate {
 		return row;
 	}
 	/**
-	 * µÃµ½Ä³¸ö±í·ûºÏÌõ¼şµÄÊı¾İµÄ×ÜĞĞÊı
+	 * å¾—åˆ°æŸä¸ªè¡¨ç¬¦åˆæ¡ä»¶çš„æ•°æ®çš„æ€»è¡Œæ•°
 	 * @param sql
 	 * @return
 	 * @throws ClassNotFoundException
@@ -70,9 +70,9 @@ public class JdbcTemplate {
 		return result; 
 	}
 	/**
-	 * ÓÃÀ´Ö´ĞĞselectÓï¾ä
+	 * ç”¨æ¥æ‰§è¡Œselectè¯­å¥
 	 * @param sql 
-	 * @param mapping ×ª»»µÄÊµÌå¶ÔÏó
+	 * @param mapping è½¬æ¢çš„å®ä½“å¯¹è±¡
 	 * @param values
 	 * @return
 	 * @throws ClassNotFoundException

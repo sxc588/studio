@@ -16,6 +16,7 @@
 	<constant name="struts.configuration.xml.reload" value="false" />
 	<!-- 默认后缀名 -->
 	<constant name="struts.action.extension" value="action," />
+	<constant name="struts.convention.action.mapallmatches" value="true"/>
 	
 	<include file="struts/struts-servers.xml"/>
 	<include file="struts/struts-books.xml"/>

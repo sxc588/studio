@@ -5,9 +5,9 @@ import java.sql.SQLException;
 
 public interface EntityMapping {
 	/**
-	 * °Ñrsµ±Ç°ĞĞÊı¾İ×ª»»ÎªÒ»¸öÊµÌå¶ÔÏó
+	 * æŠŠrså½“å‰è¡Œæ•°æ®è½¬æ¢ä¸ºä¸€ä¸ªå®ä½“å¯¹è±¡
 	 * @param rs
-	 * @return ¾ßÌåÊµÌåÀà
+	 * @return å…·ä½“å®ä½“ç±»
 	 * @throws SQLException
 	 */
 	public Object mapping(ResultSet rs) throws SQLException ;

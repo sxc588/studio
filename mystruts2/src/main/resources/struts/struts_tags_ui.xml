@@ -5,13 +5,12 @@
 <!-- 配置Struts 2配置文件的根元素 -->
 <struts>
 	<!-- Struts 2的Action必须放在指定的包空间下定义 -->
-	<package name="tagsui" namespace="/tagsui" extends="struts-default">
+	<package name="tagsui" namespace="/tagsui" extends="json-default">
 		<action name="listXueli" class="org.fkjava.action.XueLiAction">
 		</action>
 		
 		
 		<action name="vm" class="org.fkjava.action.XueLiAction">
-		
 			<result name="success">/pages/tagsui/control/vms.jsp</result>
 		</action>
 		

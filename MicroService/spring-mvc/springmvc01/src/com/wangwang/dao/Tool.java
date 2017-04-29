@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class Tool {
 	/**
-	 * ÈÕÆÚ×ª×Ö·û´®
+	 * æ—¥æœŸè½¬å­—ç¬¦ä¸²
 	 * @param df.format(date) 
 	 * @return strDate
 	 */
@@ -18,7 +18,7 @@ public class Tool {
 		return strDate;
 	}
 	 /**
-	  * ×Ö·û´®×ªÈÕÆÚ
+	  * å­—ç¬¦ä¸²è½¬æ—¥æœŸ
 	  * @param df.parse(strDate)
 	  * @return date
 	  * @throws ParseException

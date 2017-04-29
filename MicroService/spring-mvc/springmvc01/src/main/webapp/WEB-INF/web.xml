@@ -9,14 +9,14 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:spring.xml,classpath:spring-mybatis.xml</param-value>
 	</web:context-param>
-	<web:filter>
-		<web:filter-name>sessionFilter</web:filter-name>
-		<web:filter-class>com.github.support.filter.SessionFilter</web:filter-class>
-	</web:filter>
-	<web:filter-mapping>
-		<web:filter-name>sessionFilter</web:filter-name>
-		<web:url-pattern>/*</web:url-pattern>
-	</web:filter-mapping>
+<!-- 	<web:filter> -->
+<!-- 		<web:filter-name>sessionFilter</web:filter-name> -->
+<!-- 		<web:filter-class>com.github.support.filter.SessionFilter</web:filter-class> -->
+<!-- 	</web:filter> -->
+<!-- 	<web:filter-mapping> -->
+<!-- 		<web:filter-name>sessionFilter</web:filter-name> -->
+<!-- 		<web:url-pattern>/*</web:url-pattern> -->
+<!-- 	</web:filter-mapping> -->
 	<web:filter>
 		<description>字符集过滤器</description>
 		<web:filter-name>encodingFilter</web:filter-name>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.support.work.mapper.VirtualMeshineInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.github.support.work.model.VirtualMeshineInfo" >
+    <id column="instance" property="instance" jdbcType="CHAR" />
+    <result column="ip" property="ip" jdbcType="CHAR" />
+    <result column="pass" property="pass" jdbcType="CHAR" />
+    <result column="pass2" property="pass2" jdbcType="CHAR" />
+    <result column="stage" property="stage" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    instance, ip, pass, pass2, stage
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_vm
+    where instance = #{instance,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_vm
+    where instance = #{instance,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.github.support.work.model.VirtualMeshineInfo" >
+    insert into t_vm (instance, ip, pass, pass2, 
+      stage)
+    values (#{instance,jdbcType=CHAR}, #{ip,jdbcType=CHAR}, #{pass,jdbcType=CHAR}, #{pass2,jdbcType=CHAR}, 
+      #{stage,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.github.support.work.model.VirtualMeshineInfo" >
+    insert into t_vm
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="instance != null" >
+        instance,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="pass != null" >
+        pass,
+      </if>
+      <if test="pass2 != null" >
+        pass2,
+      </if>
+      <if test="stage != null" >
+        stage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="instance != null" >
+        #{instance,jdbcType=CHAR},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=CHAR},
+      </if>
+      <if test="pass != null" >
+        #{pass,jdbcType=CHAR},
+      </if>
+      <if test="pass2 != null" >
+        #{pass2,jdbcType=CHAR},
+      </if>
+      <if test="stage != null" >
+        #{stage,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.github.support.work.model.VirtualMeshineInfo" >
+    update t_vm
+    <set >
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=CHAR},
+      </if>
+      <if test="pass != null" >
+        pass = #{pass,jdbcType=CHAR},
+      </if>
+      <if test="pass2 != null" >
+        pass2 = #{pass2,jdbcType=CHAR},
+      </if>
+      <if test="stage != null" >
+        stage = #{stage,jdbcType=CHAR},
+      </if>
+    </set>
+    where instance = #{instance,jdbcType=CHAR}
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="com.github.support.work.model.VirtualMeshineInfo" >
+    update t_vm
+    set ip = #{ip,jdbcType=CHAR},
+      pass = #{pass,jdbcType=CHAR},
+      pass2 = #{pass2,jdbcType=CHAR},
+      stage = #{stage,jdbcType=CHAR}
+    where instance = #{instance,jdbcType=CHAR}
+  </update>
+    <select id="selectBySelection" resultMap="BaseResultMap" parameterType="VirtualMeshineInfo">
+    select 
+    <include refid="Base_Column_List" />
+    from t_vm
+    where stage = #{stage,jdbcType=CHAR}
+  </select>
+  
+  
+</mapper>

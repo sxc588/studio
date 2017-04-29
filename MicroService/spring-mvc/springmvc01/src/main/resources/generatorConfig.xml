@@ -36,8 +36,8 @@
 		</sqlMapGenerator>
 
 		<!-- 生成DAO的包名和位置 -->
-		<javaClientGenerator type="XMLMAPPER" targetPackage="com.github.support.entitement.mybatis.dao" implementationPackage="com.github.support.entitement.mybatis.dao.impl"
-			targetProject="src/main/java">
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.github.support.entitement.mybatis.dao"
+			implementationPackage="com.github.support.entitement.mybatis.dao.impl" targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
@@ -51,8 +51,6 @@
 
 		<table tableName="t_online" domainObjectName="Online" enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-
-
 
 		<table tableName="t_resource" domainObjectName="Resource" enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
@@ -69,9 +67,53 @@
 		<table tableName="t_userrole" domainObjectName="UserRole" enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 
-		<table tableName="t_migration_task" domainObjectName="MigrationTask" enableCountByExample="false" enableUpdateByExample="false"
+		<table tableName="t_migration_task" domainObjectName="MigrationTask" enableCountByExample="false"
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+
+
+	</context>
+
+	<context id="I18n" targetRuntime="MyBatis3" defaultModelType="flat">
+		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"></plugin>
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>
+		<plugin type="org.mybatis.generator.plugins.CachePlugin"></plugin>
+		<commentGenerator>
+			<!-- 这个元素用来去除指定生成的注释中是否包含生成的日期 false:表示保护 -->
+			<!-- 如果生成日期，会造成即使修改一个字段，整个实体类所有属性都会发生变化，不利于版本控制，所以设置为true -->
+			<property name="suppressDate" value="true" />
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="false" />
+		</commentGenerator>
+		<!--数据库链接URL，用户名、密码 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/i18n"
+			userId="root" password="root">
+		</jdbcConnection>
+		<javaTypeResolver>
+			<!-- This property is used to specify whether MyBatis Generator should force the use of java.math.BigDecimal for DECIMAL 
+				and NUMERIC fields, -->
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- 生成模型的包名和位置 -->
+		<javaModelGenerator targetPackage="com.github.support.mybatis.i18n.model" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- 生成映射文件的包名和位置 -->
+		<sqlMapGenerator targetPackage="com.github.support.mybatis.i18n.mapper" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- 生成DAO的包名和位置 -->
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.github.support.mybatis.i18n.dao"
+			implementationPackage="com.github.support.mybatis.i18n.dao.impl" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<!-- 要生成哪些表 -->
+		<table tableName="t_i18n" domainObjectName="I18nBean" enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-
-
 	</context>
 </generatorConfiguration>

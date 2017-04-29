@@ -1,3 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/main/resources=UTF-8
 encoding//src/main/webapp/WEB-INF/content/tagsui/html5.jsp=UTF-8
-encoding/<project>=UTF-8
+encoding//src/main/webapp/WEB-INF/content/users/dialog/addone.jsp=UTF-8
+encoding//src/test/resources=UTF-8

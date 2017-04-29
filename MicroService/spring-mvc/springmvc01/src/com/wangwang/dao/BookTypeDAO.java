@@ -1,4 +1,4 @@
-package com.wangwang.dao;
+ï»¿package com.wangwang.dao;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -72,7 +72,7 @@ public class BookTypeDAO {
 		return (rows == 1);
 	}
 	/**
-	 * Âß¼­É¾³ı
+	 * é€»è¾‘åˆ é™¤
 	 * @param id
 	 * @return
 	 */
@@ -91,7 +91,7 @@ public class BookTypeDAO {
 	}
 	
 	/**
-	 * ÎïÀíÉ¾³ı
+	 * ç‰©ç†åˆ é™¤
 	 * @param id
 	 * @return
 	 */

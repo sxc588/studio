@@ -62,6 +62,12 @@
 </script>
 </head>
 <body>
+
+
+
+
+
+
 	<h2>当前的用户列表</h2>
 	<h2><a href="${pageContent.requert.contextPath}/mystruts2/login/registForm.jsp">注册一个用户</a></h2>
 	<table width="600" border="1">

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.fkjava.domain.User;
 import org.junit.Test;
-import com.github.cbb.utils.json.JSONUtil;
+import com.github.cbb.utils.JSONUtil;
 
 public class JSONUtilTest
 {

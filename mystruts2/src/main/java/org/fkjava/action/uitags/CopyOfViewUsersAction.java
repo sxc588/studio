@@ -10,7 +10,7 @@ import org.fkjava.service.AssociatedPersonnelService;
 import org.fkjava.service.JSON;
 import org.fkjava.service.UserService;
 import org.springframework.stereotype.Controller;
-import com.github.cbb.utils.json.JSONUtil;
+import com.github.cbb.utils.JSONUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
