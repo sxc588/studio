@@ -12,7 +12,7 @@
 				<h4 class="modal-title" id="myModalLabel">【${stage}】请添加服务的URL
 					${request.getContextPath()}</h4>
 			</div>
-			<form role="form" action="${request.getContextPath()}/addone">
+			<form role="form" action="${request.getContextPath()}/addone"  method ='get'>
 				<div class="modal-body">
 					<div class="form-group">
 						<label for="urls">Alpha</label> <input type="text" class="form-control" id="urls" name="urls" placeholder="请输入url">
