@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%
 	String path = request.getContextPath();
@@ -9,7 +9,7 @@
 <HTML>
 <HEAD>
 <base href="<%=basePath%>">
-<TITLE>管理中心 V1.0</TITLE>
+<TITLE>鏈嶅姟鍖朥RL绠＄悊 V1.0</TITLE>
 <META http-equiv=Content-Type content="text/html; charset=gb2312">
 <META http-equiv=Pragma content=no-cache>
 <META http-equiv=Cache-Control content=no-cache>

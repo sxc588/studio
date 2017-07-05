@@ -2,17 +2,17 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.fkjava</groupId>
-	<artifactId>mystruts2</artifactId>
+	<artifactId>usermanagersystem</artifactId>
 	<packaging>war</packaging>
 	<version>2017.03.29-SNAPSHOT</version>
-	<name>mystruts2</name>
+	<name>UserManagerSystem</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
 		<log4j.version>1.2.17</log4j.version>
 		<struts.version>2.3.31</struts.version>
 		<spring.version>4.3.4.RELEASE</spring.version>
-		     <aspectj.version>1.6.11</aspectj.version>  
+		<aspectj.version>1.6.11</aspectj.version>
 		<jasckson.version>2.8.1</jasckson.version>
 		<cxf.version>3.1.4</cxf.version>
 	</properties>
@@ -72,57 +72,55 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
-		
-		<dependency>  
-        <groupId>org.springframework</groupId>  
-        <artifactId>spring-webmvc</artifactId>  
-        <version>${spring.version}</version>  
-      </dependency>  
-      <dependency>  
-        <groupId>org.springframework</groupId>  
-        <artifactId>spring-orm</artifactId>  
-        <version>${spring.version}</version>  
-      </dependency>  
-<dependency>  
-        <groupId>org.springframework</groupId>  
-        <artifactId>spring-context-support</artifactId>  
-        <version>${spring.version}</version>  
-     </dependency>  
-		
-		<dependency>    
-        <groupId>javax.mail</groupId>    
-        <artifactId>mail</artifactId>    
-        <version>1.4.7</version>    
-    </dependency>  
-    
-    
-     <!--不用说，肯定是spring aop包-->  
-      <dependency>  
-            <groupId>org.springframework</groupId>  
-            <artifactId>spring-aop</artifactId>  
-            <version>${spring.version}</version>  
-    </dependency>  
-    <!--spring上下文包，在加载spring配置文件时用到-->  
-<!--       <dependency>   -->
-<!--             <groupId>org.springframework</groupId>   -->
-<!--             <artifactId>spring-context</artifactId>   -->
-<!--             <version>${spring.version}</version>   -->
-<!--     </dependency>   -->
-    <!--使用AspectJ方式注解需要相应的包-->  
-      <dependency>  
-            <groupId>org.aspectj</groupId>  
-            <artifactId>aspectjrt</artifactId>  
-            <version>${aspectj.version}</version>  
-        </dependency>  
-         <!--使用AspectJ方式注解需要相应的包-->  
-        <dependency>  
-            <groupId>org.aspectj</groupId>  
-            <artifactId>aspectjweaver</artifactId>  
-            <version>${aspectj.version}</version>  
-        </dependency>  
-      
-		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+
+
+		<!--不用说，肯定是spring aop包 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!--spring上下文包，在加载spring配置文件时用到 -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework</groupId> -->
+		<!-- <artifactId>spring-context</artifactId> -->
+		<!-- <version>${spring.version}</version> -->
+		<!-- </dependency> -->
+		<!--使用AspectJ方式注解需要相应的包 -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		<!--使用AspectJ方式注解需要相应的包 -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
@@ -208,22 +206,22 @@
 			<artifactId>httpclient</artifactId>
 			<version>4.5.2</version>
 		</dependency>
-		
-		<dependency>  
-    <groupId>org.apache.poi</groupId>  
-    <artifactId>poi</artifactId>  
-    <version>3.14</version>  
-</dependency>  
-<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->  
-<dependency>  
-    <groupId>org.apache.poi</groupId>  
-    <artifactId>poi-ooxml</artifactId>  
-    <version>3.14</version>  
-</dependency>  
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.14</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.14</version>
+		</dependency>
 	</dependencies>
 
 	<build>
-		<finalName>mystruts2</finalName>
+		<finalName>usermanager</finalName>
 		<defaultGoal>compile</defaultGoal>
 		<plugins>
 			<plugin>
