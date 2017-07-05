@@ -19,7 +19,6 @@
 		<action name="addone" class="org.fkjava.action.users.VirtualMechineAction"  method="addone">
 		</action>
 		
-		
 		<action name="validateName" class="org.fkjava.action.users.UserValidateNameAction">
 			<result type="stream">tip</result>
 		</action>

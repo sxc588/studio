@@ -9,6 +9,7 @@ import org.apache.activemq.command.ActiveMQObjectMessage;
 import org.apache.activemq.util.GenerateJDBCStatements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.github.support.cbb.enums.jms.CacheEvent;
 import com.mchange.v2.async.StrandedTaskReporting;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.Element;

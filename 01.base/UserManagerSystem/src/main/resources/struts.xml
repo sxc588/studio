@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.i18n.encoding" value="GBK" />
+	<package name="common" extends="struts-default" namespace="/common">
+		<!-- 定义拦截器 -->
+		<interceptors>
+			<interceptor name="initdata" class="com.usermanagersystem.Interceptor.GetAllUserInterceptor"></interceptor>
+			<interceptor name="checklogin" class="com.usermanagersystem.Interceptor.UserExitAction"></interceptor>
+			<!-- 登录系统时初始化数据 -->
+			<interceptor-stack name="init_interceptor">
+				<interceptor-ref name="defaultStack"></interceptor-ref><!-- 使用系统的默认拦截栈 -->
+				<interceptor-ref name="initdata"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<action name="login" class="com.usermanagersystem.actions.UserLoginAction"><!-- 用户登录Action -->
+			<result>/index.jsp</result>
+			<result name="input">/login.jsp</result>
+			<interceptor-ref name="init_interceptor" />
+		</action>
+		<action name="exit" class="com.usermanagersystem.actions.UserExitAction"><!-- 退出系统Action -->
+			<result>/login.jsp</result>
+		</action>
+		<action name="scan" class="com.usermanagersystem.actions.UserScanAction"><!-- 查看个人信息Action -->
+			<result>/userinfo.jsp</result>
+		</action>
+		<action name="modifydispatch" class="com.usermanagersystem.actions.ModifyDispatchAction">
+			<result name="usermodify">/usermodify.jsp</result>
+			<result name="othersmodify">/othersmodify.jsp</result>
+		</action>
+		<action name="modifyuser" class="com.usermanagersystem.actions.UserModifyAction"><!-- 修改用户信息Action -->
+			<result>/modify_user_success.jsp</result>
+			<result name="error">modify_user_error.jsp</result>
+		</action>
+		<action name="getallusers" class="com.usermanagersystem.actions.GetAllUsersAction"><!-- 查询所有用户信息Action -->
+			<result name="userselect">/main.jsp</result>
+			<result name="adminselect">/adminselectuser.jsp</result>
+		</action>
+	</package>
+	<package name="admin" extends="struts-default" namespace="/admin">
+		<action name="adduser" class="com.usermanagersystem.actions.AddUserAction"><!-- 添加新用户Action -->
+			<result>/adduser_success.jsp</result>
+			<result name="input">/AddUser.jsp</result>
+		</action>
+		<action name="ifcanadd" class="com.usermanagersystem.actions.IfCanAddUser">
+			<result>/AddUser.jsp</result>
+			<result name="failure">/failure.jsp</result>
+		</action>
+		<action name="selectnewuser" class="com.usermanagersystem.actions.AdminFindNewUsersAction"><!--查看新增用户Action -->
+			<result>/newuserlist.jsp</result>
+			<result name="failure">/failure.jsp</result>
+		</action>
+		<action name="deleteadmin" class="com.usermanagersystem.actions.AdminDeleteAdminAction"><!--删除管理员Action -->
+			<result name="success">/failure.jsp</result>
+		</action>
+		<action name="deleteuser" class="com.usermanagersystem.actions.AdminDeleteUserAction"><!--删除用户Action -->
+			<result name="success">/failure.jsp</result>
+		</action>
+		<action name="scan" class="com.usermanagersystem.actions.AdminScanAction"><!--查看管理员Action返回个人信息页面 -->
+			<result>/userinfo.jsp</result>
+			<result name="failure">/failure.jsp</result>
+		</action>
+		<action name="getdata" class="com.usermanagersystem.actions.AdminGetDataAction"><!--查看管理员Action返回修改页面 -->
+			<result>/adminmodify.jsp</result>
+		</action>
+		<action name="modifyadmin" class="com.usermanagersystem.actions.AdminModifyAction"><!--修该管理员Action -->
+			<result>/modify_success.jsp</result>
+		</action>
+		<action name="selectalladmin" class="com.usermanagersystem.actions.AdminSelectAllAdminsActon"><!--查看所有管理员Action -->
+			<result name="smalladmin">/showadmins.jsp</result>
+			<result name="bigadmin">/selectAllAdmins.jsp</result>
+			<result name="failure">/failure.jsp</result>
+		</action>
+		<action name="addadmin" class="com.usermanagersystem.actions.AddAdminAction"><!--添加管理员Action -->
+			<result>/addadmin_success.jsp</result>
+			<result name="input">/AddAdmin.jsp</result>
+		</action>
+		<action name="ifcanaddadmin" class="com.usermanagersystem.actions.IfCanAddAdmin">
+			<result>/AddAdmin.jsp</result>
+			<result name="failure">/failure.jsp</result>
+		</action>
+	</package>
+</struts>

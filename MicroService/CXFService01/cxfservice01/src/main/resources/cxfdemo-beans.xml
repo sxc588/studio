@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:jaxws="http://cxf.apache.org/jaxws"
-	xsi:schemaLocation="http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd 
-http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+     http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd 
+     http://camel.apache.org/schema/osgi 
+     http://camel.apache.org/schema/osgi/camel-osgi.xsd 
+     		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd
+     http://camel.apache.org/schema/spring 
+     http://camel.apache.org/schema/spring/camel-spring.xsd 
+     http://camel.apache.org/schema/cxf 
+ http://camel.apache.org/schema/cxf/camel-cxf.xsd">
 
-
-
-	<jaxws:endpoint id="cxfDemo" implementor="com.github.support.cxf.demo.impl.CXFDemoImpl" address="/cxfdemo" />
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	
+	<jaxrs:server id="userRestService" address="/userservices/v1.0">
+		<jaxrs:serviceBeans>
+			<ref bean="userServiceImpl" />
+			<ref bean="cxfdemoImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<bean id="userServiceImpl" class="com.github.support.cxf.demo.impl.UserWsImpl" />
+	<bean id="cxfdemoImpl" class="com.github.support.cxf.demo.impl.CXFDemoImpl" />
 </beans>

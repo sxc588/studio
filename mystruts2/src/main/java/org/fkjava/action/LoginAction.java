@@ -3,7 +3,7 @@ import org.fkjava.domain.User;
 import org.fkjava.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import com.github.cbb.utils.JSONUtil;
+import com.github.cbb.json.JSONUtil;
 import com.opensymphony.xwork2.Action;
 
 /**

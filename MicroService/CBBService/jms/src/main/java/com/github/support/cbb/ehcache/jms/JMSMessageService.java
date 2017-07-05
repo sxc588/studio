@@ -1,5 +1,6 @@
 package com.github.support.cbb.ehcache.jms;
 
+import java.io.Serializable;
 import java.util.Map;
 import javax.jms.Destination;
 import javax.jms.JMSException;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
+import com.github.support.cbb.enums.jms.NotifiyEvent;
 
 @Service
 public class JMSMessageService
@@ -111,14 +113,14 @@ public class JMSMessageService
 		return topic;
 	}
 
-	public void sendMessage(Destination queue, final JMSMessage msg)
+	public void sendMessage(Destination queue, final Serializable oldBean, final Serializable newBean, NotifiyEvent notify)
 	{
 		jmsTemplate.send(queue, new MessageCreator()
 		{
 			@Override
 			public Message createMessage(Session session) throws JMSException
 			{
-				ObjectMessage textMessage = session.createObjectMessage(msg);
+				ObjectMessage textMessage = session.createObjectMessage(newBean);
 				return textMessage;
 			}
 		});

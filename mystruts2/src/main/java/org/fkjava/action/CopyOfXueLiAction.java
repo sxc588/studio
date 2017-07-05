@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.fkjava.domain.Xueli;
 import org.springframework.stereotype.Controller;
-import com.github.cbb.utils.JSONUtil;
+import com.github.cbb.json.JSONUtil;
 import com.opensymphony.xwork2.Action;
 
 

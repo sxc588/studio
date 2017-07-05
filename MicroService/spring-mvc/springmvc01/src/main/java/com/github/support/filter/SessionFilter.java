@@ -45,7 +45,7 @@ public class SessionFilter extends OncePerRequestFilter
 		{
 			// 执行过滤
 			// 从session中获取登录者实体
-			Object obj = request.getSession().getAttribute(SessionKeyContent.SESSION_KEY_OBJ_USER_BEAN);
+			Object obj = request.getSession().getAttribute(SessionKeyConstants.SESSION_KEY_OBJ_USER_BEAN);
 			if (null == obj)
 			{
 				boolean isAjaxRequest = isAjaxRequest(request);
@@ -60,7 +60,7 @@ public class SessionFilter extends OncePerRequestFilter
 			}
 			else
 			{
-				Object url = request.getSession().getAttribute(SessionKeyContent.SESSION_KEY_URL);
+				Object url = request.getSession().getAttribute(SessionKeyConstants.SESSION_KEY_URL);
 
 				// response.sendRedirect(request.getContextPath() +
 				// url.toString());

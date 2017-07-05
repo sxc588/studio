@@ -8,7 +8,7 @@
 		<action name="listCatelogs" class="org.fkjava.books.action.ListBookCatelogsAction">
 		</action>
 
-		<action name="getBooksByCategory" class="org.fkjava.books.action.GetBooksByCategoryAction">
+		<action name="getBooksByCategory" class="org.fkjava.books.action.DocListAction">
 			<!--json result 类型hu9baAction实例转换成json 字符串返回给页面显示 -->
 			<result type="json" />
 		</action>

@@ -34,7 +34,6 @@ public class CXFDemoImpl implements CXFDemo
 			MigratonErrLog log = new MigratonErrLog();
 			log.setEntityName("ddfdf");
 		
-			
 			logMapper.insertSelective( log);
 		}
 		catch (Throwable e)
