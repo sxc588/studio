@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.github.support.filter.SessionKeyConstants;
-import com.github.support.mybatis.entitement.model.User;
 
 @Controller
 @RequestMapping("/user")
@@ -59,62 +58,62 @@ public class UserController
 	{
 		System.err.println("---- 登录验证-----");
 
-		String username = request.getParameter("username");
-
-		String password = request.getParameter("password");
-
-		Cookie cookie = new Cookie("user", username + "," + password);
-
-		cookie.setMaxAge(2 * 60);
-
-		response.addCookie(cookie);
-
-		User currentuser = new User();
-		currentuser.setUsrname(username);
-		currentuser.setPassword(password);
-
-		HttpSession session = request.getSession();
-
-		session.setAttribute("user", currentuser);
-
-		request.setAttribute("currentuser", currentuser);
+//		String username = request.getParameter("username");
+//
+//		String password = request.getParameter("password");
+//
+//		Cookie cookie = new Cookie("user", username + "," + password);
+//
+//		cookie.setMaxAge(2 * 60);
+//
+//		response.addCookie(cookie);
+//
+//		User currentuser = new User();
+//		currentuser.setUsrname(username);
+//		currentuser.setPassword(password);
+//
+//		HttpSession session = request.getSession();
+//
+//		session.setAttribute("user", currentuser);
+//
+//		request.setAttribute("currentuser", currentuser);
 		return "redirect:/main.jsp";
 	}
 
-	@RequestMapping("/ajax0")
-	public User ajax0()
-	{
-
-		User currentuser = new User();
-		currentuser.setUsrname("username");
-		currentuser.setPassword("password");
-		return currentuser;
-	}
-
-	@RequestMapping("/ajax")
-	public @ResponseBody User ajax()
-	{
-		System.err.println("triagle ==>ajas" + new Date().getTime());
-		User currentuser = new User();
-		currentuser.setUsrname("username");
-		currentuser.setPassword("password");
-		return currentuser;
-	}
-
-	@RequestMapping("/login2")
-	public void login2(HttpServletRequest request, HttpServletResponse response) throws IOException
-	{
-		System.err.println("triagle ==>ajas" + new Date().getTime());
-		User currentuser = new User();
-		currentuser.setUsrname("username");
-		currentuser.setPassword("password");
-
-		request.getSession().setAttribute(SessionKeyConstants.SESSION_KEY_OBJ_USER_BEAN, "aaaa");
-
-		String uri = (String) request.getSession().getAttribute(SessionKeyConstants.SESSION_KEY_URL);
-
-		System.err.println(uri);
-		response.sendRedirect(uri);
-	}
+//	@RequestMapping("/ajax0")
+//	public User ajax0()
+//	{
+//
+//		User currentuser = new User();
+//		currentuser.setUsrname("username");
+//		currentuser.setPassword("password");
+//		return currentuser;
+//	}
+//
+//	@RequestMapping("/ajax")
+//	public @ResponseBody User ajax()
+//	{
+//		System.err.println("triagle ==>ajas" + new Date().getTime());
+//		User currentuser = new User();
+//		currentuser.setUsrname("username");
+//		currentuser.setPassword("password");
+//		return currentuser;
+//	}
+//
+//	@RequestMapping("/login2")
+//	public void login2(HttpServletRequest request, HttpServletResponse response) throws IOException
+//	{
+//		System.err.println("triagle ==>ajas" + new Date().getTime());
+//		User currentuser = new User();
+//		currentuser.setUsrname("username");
+//		currentuser.setPassword("password");
+//
+//		request.getSession().setAttribute(SessionKeyConstants.SESSION_KEY_OBJ_USER_BEAN, "aaaa");
+//
+//		String uri = (String) request.getSession().getAttribute(SessionKeyConstants.SESSION_KEY_URL);
+//
+//		System.err.println(uri);
+//		response.sendRedirect(uri);
+//	}
 
 }
