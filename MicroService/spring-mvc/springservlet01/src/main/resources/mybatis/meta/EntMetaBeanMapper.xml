@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.support.dao.meta.mapper.EntMetaBeanMapper">
+	<resultMap id="BaseResultMap" type="com.github.support.dao.meta.model.EntMetaBean">
+		<id column="CODE" property="code" jdbcType="VARCHAR" />
+		<result column="VID" property="vid" jdbcType="VARCHAR" />
+		<result column="PARENT_CODE" property="parentCode" jdbcType="VARCHAR" />
+		<result column="ZH_NAME" property="zhName" jdbcType="VARCHAR" />
+		<result column="EN_NAME" property="enName" jdbcType="VARCHAR" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="LAST_UPDATE_TIME" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+		<result column="LAST_UPDATE_BY" property="lastUpdateBy" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		VID,
+		PARENT_CODE,
+		CODE,
+		ZH_NAME,
+		EN_NAME,
+		CREATE_TIME,
+		LAST_UPDATE_TIME,
+		LAST_UPDATE_BY
+	</sql>
+	<select id="select" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from t_meta
+		where CODE = #{code,jdbcType=VARCHAR}
+	</select>
+
+	<insert id="insert" parameterType="com.github.support.dao.meta.model.EntMetaBean">
+		insert into t_meta (
+		CODE,
+		PARENT_CODE,
+		VID,
+		ZH_NAME,
+		EN_NAME,
+		CREATE_TIME,
+		LAST_UPDATE_TIME,
+		LAST_UPDATE_BY)
+		values (
+		#{code,jdbcType=VARCHAR},
+		#{parentCode,jdbcType=VARCHAR},
+		#{vid,jdbcType=VARCHAR},
+		#{zhName,jdbcType=VARCHAR},
+		#{enName,jdbcType=VARCHAR},
+		now(),
+		now(),
+		#{lastUpdateBy,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="update" parameterType="com.github.support.dao.meta.model.EntMetaBean">
+		update t_meta
+		set PARENT_CODE=#{parentCode,jdbcType=VARCHAR},
+		VID
+		=#{vid,jdbcType=VARCHAR},
+		ZH_NAME = #{zhName,jdbcType=VARCHAR},
+		EN_NAME = #{enName,jdbcType=VARCHAR},
+		LAST_UPDATE_TIME =
+		now(),
+		LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR}
+		where CODE =
+		#{code,jdbcType=VARCHAR}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.String">
+		delete from t_meta_term
+		and TID = #{tid,jdbcType=VARCHAR}
+	</delete>
+
+	<!-- ##### -->
+
+	<select id="getSubMeta" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from t_meta
+		where PARENT_CODE = #{code,jdbcType=VARCHAR}
+	</select>
+
+	<select id="getTopMetaByVid" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from t_meta
+		where CODE = #{code,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectByVid" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from t_meta
+		where VID = #{vid,jdbcType=VARCHAR}
+	</select>
+
+	<delete id="deleteByVid" parameterType="java.lang.String">
+		delete from t_meta
+		where VID = #{vid,jdbcType=VARCHAR}
+	</delete>
+
+	<insert id="importMeta" parameterType="java.util.List">
+		insert into t_meta(
+		CODE,
+		PARENT_CODE,
+		VID,
+		ZH_NAME,
+		EN_NAME,
+		CREATE_TIME,
+		LAST_UPDATE_TIME,
+		LAST_UPDATE_BY)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+			(
+			#{item.code,jdbcType=VARCHAR},
+			#{item.parentCode,jdbcType=VARCHAR},
+			#{item.vid,jdbcType=VARCHAR},
+			#{item.zhName,jdbcType=VARCHAR},
+			#{item.enName,jdbcType=VARCHAR},
+			#{item.createTime,jdbcType=TIMESTAMP},
+			#{item.lastUpdateTime,jdbcType=TIMESTAMP},
+			#{item.lastUpdateBy,jdbcType=VARCHAR}
+			)
+		</foreach>
+	</insert>
+
+</mapper>
