@@ -192,9 +192,9 @@
 				<version>2.2</version>
 				<configuration>
 					<port>9090</port>
-					<path>/mgr</path>
+					<path>/mgr00</path>
 					<uriEncoding>UTF-8</uriEncoding>
-					<finalName>mgr</finalName>
+					<finalName>mgr00</finalName>
 					<server>tomcat7</server>
 				</configuration>
 			</plugin>
