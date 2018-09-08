@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration debug="true" scan="true" scanPeriod="30 seconds">
+	
+	<property name="format" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %logger{25} - %line %msg%n" />
+	<property name="APP_Name" value="myAppName" /> 
+	
+	
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${format}</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="test1" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/applog/test1.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/applog/test1.log.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${format}</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="test2" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/applog/test2.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/applog/test2.log.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${format}</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="sy.test2" level="info" addtivity="true">
+		<appender-ref ref="test1" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+	
+	<logger name="sy.test1" level="info" addtivity="true">
+		<appender-ref ref="test2" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<!--myibatis log configure -->
+	<logger name="com.apache.ibatis" level="TRACE" />
+	<logger name="java.sql.Connection" level="DEBUG" />
+	<logger name="java.sql.Statement" level="DEBUG" />
+	<logger name="java.sql.PreparedStatement" level="DEBUG" />
+
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+		<!-- <appender-ref ref="ERROR-OUT" /> -->
+		<!-- <appender-ref ref="INFO-OUT" /> -->
+		<!-- <appender-ref ref="DEBUG-OUT" /> -->
+		<!-- <appender-ref ref="SUM-OUT" /> -->
+	</root>
+</configuration>

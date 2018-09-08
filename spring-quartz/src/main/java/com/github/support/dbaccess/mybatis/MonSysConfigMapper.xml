@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.support.dbaccess.mapper.MonSysConfigMapper" >
+  <resultMap id="BaseResultMap" type="com.github.support.dbaccess.dto.MonSysConfig" >
+    <id column="KEY" property="key" jdbcType="INTEGER" />
+    <result column="VALUE" property="value" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="LAST_UPDATE_TIME" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="LAST_UPDATE_BY" property="lastUpdateBy" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    `KEY`, 
+    VALUE,
+    DESCRIPTION,
+    LAST_UPDATE_TIME,
+    LAST_UPDATE_BY
+  </sql>
+  
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mon_sys_config
+    where `KEY` = #{key,jdbcType=INTEGER}
+  </select>
+  
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mon_sys_config
+    where `KEY` = #{key,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="com.github.support.dbaccess.dto.MonSysConfig" >
+    insert into mon_sys_config (
+      `KEY`,
+      VALUE,
+      DESCRIPTION, 
+      LAST_UPDATE_TIME,
+      LAST_UPDATE_BY)
+    values (
+      #{key,jdbcType=INTEGER},
+      #{value,jdbcType=VARCHAR},
+      #{description,jdbcType=VARCHAR}, 
+      now(), 
+      #{lastUpdateBy,jdbcType=VARCHAR})
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.github.support.dbaccess.dto.MonSysConfig" >
+    update mon_sys_config
+    set VALUE = #{value,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      now(),
+      LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR}
+    where KEY = #{key,jdbcType=INTEGER}
+  </update>
+  
+  	<!--无条件分页分页查询-->
+    <select id="getList" parameterType="map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		FROM mon_sys_config
+        LIMIT #{offset}, #{limit}
+    </select>
+	
+</mapper>

@@ -30,12 +30,14 @@ public class TestMybatis {
 	public void setUserService(UserServiceI userService) {
 		this.userService = userService;
 	}
-//
-//	@Test
-//	public void test1() {
-//		User u = userService.getUserById("1");
+
+	@Test
+	public void test1() {
+		User u = userService.getUserById("1");
 //		logger.info(JSON.toJSONStringWithDateFormat(u, "yyyy-MM-dd HH:mm:ss"));
-//	}
+		
+
+	}
 //
 //	@Test
 //	public void test2() {

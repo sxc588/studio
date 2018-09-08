@@ -1,0 +1,72 @@
+#include("top.vm")
+<a href="input-schedule-job.shtml" class="btn btn-success" role="button">添加任务</a>
+
+<<script type="text/javascript">
+$('#table').bootstrapTable({
+    url: 'data1.json',
+    columns: [{
+        field: 'id',
+        title: 'Item ID'
+    }, {
+        field: 'name',
+        title: 'Item Name'
+    }, {
+        field: 'price',
+        title: 'Item Price'
+    }, ]
+});
+</script>
+ <script src="//cd"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+
+<table class="table table-bordered table-margin-top">
+    <tr>
+        <td>产品名</td>
+        <td>产品描述</td>
+        <td>产品owner</td>
+        <td>触发器</td>
+        <td>任务状态</td>
+        <td>时间表达式</td>
+        <td>是否异步</td>
+        <td>任务执行url</td>
+        <td>任务描述</td>
+        <td>操作</td>
+    </tr>
+    #foreach($item in $scheduleJobVoList)
+        <tr>
+            <td>$!{item.jobName}</td>
+            <td>$!{item.aliasName}</td>
+            <td>$!{item.jobGroup}</td>
+            <td>$!{item.jobTrigger}</td>
+            #if ($!{item.status}=="PAUSED")
+                <td class="status-color">$!{item.status}</td>
+            #else
+                <td>$!{item.status}</td>
+            #end
+            <td>$!{item.cronExpression}</td>
+            <td>
+            #if ($!{item.isSync})
+                异步
+            #else
+                同步
+            #end
+            </td>
+            <td>$!{item.url}</td>
+            <td>$!{item.description}</td>
+            <td>
+                <!--<a href="input-schedule-job.shtml?scheduleJobId=$!{item.scheduleJobId}">修改</a>-->
+                <a class="btn btn-danger" role="button"
+                   href="pause-schedule-job.shtml?scheduleJobId=$!{item.scheduleJobId}"><i class="fa fa-pause-circle-o" aria-hidden="true"></i>暂停</a>
+                <a class="btn btn-danger" role="button"
+                   href="resume-schedule-job.shtml?scheduleJobId=$!{item.scheduleJobId}"><i class="fa fa-reply" aria-hidden="true"></i>恢复</a>
+                <a class="btn btn-danger" role="button"
+                   href="run-once-schedule-job.shtml?scheduleJobId=$!{item.scheduleJobId}"><i class="fa fa-play" aria-hidden="true"></i>运行一次</a>
+                <a class="btn btn-danger" role="button"
+                   href="input-schedule-job.shtml?scheduleJobId=$!{item.scheduleJobId}&keywords=delUpdate"><i class="fa fa-pencil" aria-hidden="true"></i>修改</a>
+                <a class="btn btn-danger" role="button"
+                   href="delete-schedule-job.shtml?scheduleJobId=$!{item.scheduleJobId}"><i class="fa fa-trash" aria-hidden="true"></i>删除</a>
+            </td>
+        </tr>
+    #end
+</table>
+#include("foot.vm")

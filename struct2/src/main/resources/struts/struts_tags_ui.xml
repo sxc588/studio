@@ -6,6 +6,9 @@
 <struts>
 	<!-- Struts 2的Action必须放在指定的包空间下定义 -->
 	<package name="tagsui" namespace="/tagsui" extends="struts-default">
+		
+		<action name="write" class="json.JsonAction" method="write" />
+		
 		<action name="listXueli" class="org.fkjava.action.XueLiAction">
 		</action>
 		

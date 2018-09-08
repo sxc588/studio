@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"   
+       xmlns:aop="http://www.springframework.org/schema/aop"   
+       xmlns:context="http://www.springframework.org/schema/context"  
+       xmlns:mvc="http://www.springframework.org/schema/mvc"   
+       xmlns:tx="http://www.springframework.org/schema/tx"   
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+       xsi:schemaLocation="http://www.springframework.org/schema/aop   
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd   
+        http://www.springframework.org/schema/beans   
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+        http://www.springframework.org/schema/context   
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd   
+        http://www.springframework.org/schema/mvc   
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd   
+        http://www.springframework.org/schema/tx   
+        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">  
+
+    <context:component-scan base-package="com.github.support" />  
+   	<mvc:annotation-driven/>
+	<mvc:default-servlet-handler/>
+	
+	<mvc:resources location="/3rd/" mapping="/3rd/**"/>
+    <mvc:resources location="/3rd/" mapping="/3rd/**"/>
+    
+    
+    
+        <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">  
+        <!-- 拦截器注册   
+        <property name="interceptors">  
+            <bean class="javacommon.springmvc.interceptor.SharedRenderVariableInterceptor"/>  
+        </property>-->  
+    </bean>  
+  
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>  
+     
+      <!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 -->  
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+    <!-- set the max upload size100MB -->  
+      <property name="defaultEncoding" value="utf-8" />  
+        <property name="maxUploadSize">  
+            <value>104857600</value>  
+        </property>  
+    </bean>  
+	
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+        <property name="prefix" value="/WEB-INF/pages" />  
+        <property name="suffix" value=".jsp" /> 
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" /> 
+    </bean>  
+</beans>
