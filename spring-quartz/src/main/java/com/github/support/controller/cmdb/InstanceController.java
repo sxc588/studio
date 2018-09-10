@@ -3,7 +3,6 @@ package com.github.support.controller.cmdb;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -12,32 +11,25 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.github.support.service.ScheduleJobService;
-import com.github.support.vo.ScheduleJobVo;
-
 /**
- * author : benjamin
- * createTime : 2017.06.06
- * description : 应用实例控制器
- * version : 1.0
+ * author : benjamin createTime : 2017.06.06 description : 应用实例控制器 version : 1.0
  */
 @Controller
 @RequestMapping(value = "/cmdb/inst")
-public class InstanceController {
+public class InstanceController
+{
 	private static Logger logger = LoggerFactory.getLogger(InstanceController.class);
 
-	//@Autowired
-	//private HostService hostService;
+	// @Autowired
+	// private HostService hostService;
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public String regist(HttpServletRequest request, Model model)
@@ -47,7 +39,6 @@ public class InstanceController {
 		return "cmdb/host/listView3";
 	}
 
-	
 	@RequestMapping(value = "chart", method = RequestMethod.GET)
 	public String chart(HttpServletRequest request, Model model)
 	{
@@ -55,26 +46,23 @@ public class InstanceController {
 		model.addAttribute("msg", "username");
 		return "cmdb/host/chart";
 	}
-	
-	
+
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String page (HttpServletRequest request, Model model)
+	public String page(HttpServletRequest request, Model model)
 	{
 		// https://blog.csdn.net/ruthywei/article/details/74295612
-		
+
 		String page = request.getParameter("page");
-		
+
 		if (StringUtils.isBlank(page))
 		{
 			page = "chart";
 		}
-		
+
 		model.addAttribute("msg", "username");
-		return "cmdb/host/" +page;
+		return "cmdb/host/" + page;
 	}
-	
-	
-	
+
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public String upload(HttpServletRequest request,
 			// @RequestParam("description") String description,
@@ -116,7 +104,7 @@ public class InstanceController {
 					("UserInfo " + new SimpleDateFormat("yyyy-MM-dd").format(new Date())).getBytes(), "UTF-8");
 			response.setHeader("Content-disposition", "attachment; filename=" + fileName + ".xls");
 			String[] titles = { "用户编号", "用户姓名", "用户密码", "用户年龄" };
-			//hostService.export(titles, out);
+			// hostService.export(titles, out);
 			return "success";
 		} catch (Exception e)
 		{

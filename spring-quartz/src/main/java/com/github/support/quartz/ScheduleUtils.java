@@ -1,13 +1,13 @@
-package com.github.support.utils;
+package com.github.support.quartz;
 
 import org.quartz.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.support.exceptions.ScheduleException;
-import com.github.support.model.ScheduleJob;
-import com.github.support.quartz.AsyncJobFactory;
-import com.github.support.quartz.SyncJobFactory;
+import com.github.support.quartz.jobs.SyncJobFactory;
+import com.github.support.quartz.model.ScheduleJob;
+import com.github.support.quartz.jobs.AsyncJobFactory;
 import com.github.support.vo.ScheduleJobVo;
 
 /**

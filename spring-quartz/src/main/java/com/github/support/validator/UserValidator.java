@@ -3,7 +3,7 @@ package com.github.support.validator;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import com.github.support.model.User;
+import com.github.support.quartz.model.User;
 
 
 

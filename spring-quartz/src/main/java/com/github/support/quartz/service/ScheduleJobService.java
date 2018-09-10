@@ -1,4 +1,4 @@
-package com.github.support.service;
+package com.github.support.quartz.service;
 
 import java.util.List;
 

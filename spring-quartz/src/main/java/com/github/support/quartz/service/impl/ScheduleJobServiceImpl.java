@@ -1,4 +1,22 @@
-package com.github.support.service.impl;
+package com.github.support.quartz.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.collections.CollectionUtils;
+import org.quartz.CronTrigger;
+import org.quartz.Job;
+import org.quartz.JobDataMap;
+import org.quartz.JobDetail;
+import org.quartz.JobKey;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
+import org.quartz.Trigger;
+import org.quartz.impl.matchers.GroupMatcher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.dexcoder.commons.bean.BeanConverter;
 import com.dexcoder.dal.JdbcDao;
@@ -6,23 +24,11 @@ import com.dexcoder.dal.build.Criteria;
 import com.github.support.dbaccess.dto.MonScheduleJob;
 import com.github.support.dbaccess.service.MonScheduleJobService;
 import com.github.support.dbaccess.service.ScheduleJobServiceDb;
-import com.github.support.event.ScheduleJobInit;
-import com.github.support.model.ScheduleJob;
-import com.github.support.service.ScheduleJobService;
+import com.github.support.quartz.ScheduleUtils;
+import com.github.support.quartz.model.ScheduleJob;
+import com.github.support.quartz.service.ScheduleJobService;
 import com.github.support.utils.CodeCCUtil;
-import com.github.support.utils.ScheduleUtils;
 import com.github.support.vo.ScheduleJobVo;
-
-import org.apache.commons.collections.CollectionUtils;
-import org.quartz.*;
-import org.quartz.impl.matchers.GroupMatcher;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * author : benjamin createTime : 2017.06.06 description : 定时任务服务实现 version :
@@ -57,6 +63,18 @@ public class ScheduleJobServiceImpl implements ScheduleJobService
 			return;
 		}
 
+		try
+		{
+			scheduler.clear();
+			LOG.info("scheduler.clear()....");
+
+		} catch (SchedulerException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		LOG.info("scheduler.loading....");
 		for (ScheduleJob scheduleJob : scheduleJobList)
 		{
 			CronTrigger cronTrigger = ScheduleUtils.getCronTrigger(scheduler, scheduleJob.getJobName(),
@@ -71,6 +89,8 @@ public class ScheduleJobServiceImpl implements ScheduleJobService
 				// 已存在，那么更新相应的定时设置
 				ScheduleUtils.updateScheduleJob(scheduler, scheduleJob);
 			}
+
+			LOG.info("scheduler.loaded" + scheduleJob.getJobName());
 		}
 
 	}
@@ -89,7 +109,7 @@ public class ScheduleJobServiceImpl implements ScheduleJobService
 		jdbcDao.update(scheduleJob);
 	}
 
-	public void delUpdate(ScheduleJobVo scheduleJobVo,Class<? extends Job> jobClass)
+	public void delUpdate(ScheduleJobVo scheduleJobVo, Class<? extends Job> jobClass)
 	{
 		ScheduleJob scheduleJob = scheduleJobVo.getTargetObject(ScheduleJob.class);
 		// 先删除
@@ -102,6 +122,7 @@ public class ScheduleJobServiceImpl implements ScheduleJobService
 
 	public void delete(Long scheduleJobId)
 	{
+
 		ScheduleJob scheduleJob = jdbcDao.get(ScheduleJob.class, scheduleJobId);
 		// 删除运行的任务
 		ScheduleUtils.deleteScheduleJob(scheduler, scheduleJob.getJobName(), scheduleJob.getJobGroup());
@@ -334,6 +355,6 @@ public class ScheduleJobServiceImpl implements ScheduleJobService
 	public void delUpdate(ScheduleJobVo scheduleJobVo)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 }

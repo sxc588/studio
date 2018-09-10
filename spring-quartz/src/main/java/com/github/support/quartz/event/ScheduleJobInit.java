@@ -1,4 +1,4 @@
-package com.github.support.event;
+package com.github.support.quartz.event;
 
 
 import java.util.concurrent.ExecutorService;
@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.github.support.service.ScheduleJobService;
+import com.github.support.quartz.service.ScheduleJobService;
 import com.github.support.vo.ScheduleJobVo;
 
 /**
@@ -48,7 +48,7 @@ public class ScheduleJobInit
 		{
 			LOG.info("init");
 		}
-
+		//scheduleJobService.initScheduleJob();
 		
 //		
 //		fixedThreadPool.execute(new Runnable()

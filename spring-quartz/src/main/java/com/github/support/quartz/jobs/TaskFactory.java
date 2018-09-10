@@ -1,4 +1,4 @@
-package com.github.support.quartz;
+package com.github.support.quartz.jobs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,25 +12,6 @@ public class TaskFactory
 {
 	List<ScheduleJobVo> getTaskTimer()
 	{
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		return new ArrayList<ScheduleJobVo>();
 	}
 	

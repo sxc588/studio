@@ -22,8 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.github.support.model.User;
-import com.github.support.service.ScheduleJobService;
+import com.github.support.quartz.model.User;
 import com.github.support.validator.UserValidator;
 import com.github.support.vo.ScheduleJobVo;
 

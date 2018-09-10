@@ -1,4 +1,4 @@
-package com.github.support.model;
+package com.github.support.quartz.model;
 
 import java.util.Date;
 

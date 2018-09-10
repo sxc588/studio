@@ -1,11 +1,11 @@
-package com.github.support.quartz;
+package com.github.support.quartz.jobs;
 
 import org.quartz.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
-import com.github.support.model.ScheduleJob;
+import com.github.support.quartz.model.ScheduleJob;
 import com.github.support.vo.ScheduleJobVo;
 
 /**
