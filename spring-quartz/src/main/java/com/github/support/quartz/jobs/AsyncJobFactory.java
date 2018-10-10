@@ -26,6 +26,6 @@ public class AsyncJobFactory extends QuartzJobBean {
     protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
         LOG.info("AsyncJobFactory execute");
         ScheduleJob scheduleJob = (ScheduleJob) context.getMergedJobDataMap().get(ScheduleJobVo.JOB_PARAM_KEY);
-        System.out.println("jobName:" + scheduleJob.getJobName() + "  " + scheduleJob);
+        //System.out.println("jobName:" + scheduleJob.getJobName() + "  " + scheduleJob);
     }
 }

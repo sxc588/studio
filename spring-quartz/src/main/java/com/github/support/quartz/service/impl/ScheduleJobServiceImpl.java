@@ -1,9 +1,15 @@
 package com.github.support.quartz.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.activemq.store.kahadb.disk.index.Index;
 import org.apache.commons.collections.CollectionUtils;
+import org.quartz.CronExpression;
+import org.quartz.CronScheduleBuilder;
 import org.quartz.CronTrigger;
 import org.quartz.Job;
 import org.quartz.JobDataMap;
@@ -12,11 +18,14 @@ import org.quartz.JobKey;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.Trigger;
+import org.quartz.TriggerBuilder;
+import org.quartz.TriggerKey;
 import org.quartz.impl.matchers.GroupMatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import com.dexcoder.commons.bean.BeanConverter;
 import com.dexcoder.dal.JdbcDao;
@@ -55,6 +64,31 @@ public class ScheduleJobServiceImpl implements ScheduleJobService
 	@Autowired
 	private MonScheduleJobService scheduleJobService;
 
+	public void init() throws SchedulerException
+	{
+		
+		//https://blog.csdn.net/u010558660/article/details/51500986
+		JobKey jobKey = JobKey.jobKey("customJob_name", "customJob_group");
+		// clusterScheduler = new StdSchedulerFactory().getScheduler();
+		JobDetail jobDetail = scheduler.getJobDetail(jobKey);// xml中配置了
+		TriggerKey triggerKey = TriggerKey.triggerKey("customTrigger_name", "customTrigger_group");
+		boolean isExists = scheduler.checkExists(triggerKey);
+		if (isExists)
+		{
+			scheduler.unscheduleJob(triggerKey);// 停止调度当前Job任务
+		}
+		String cron = (10 % 50) + " 0/1 * ? * *";// Cron表达式:每隔一分钟执行一次
+		Assert.isTrue(CronExpression.isValidExpression(cron), "invalid cron = " + cron);
+		Date startDate = new Date(System.currentTimeMillis() + 1 * 60 * 1000);// 开始执行时间
+		Map<String, Object> dataMap = new HashMap<String, Object>();// 参数
+		dataMap.put("params", "taiyang");
+
+		Trigger trigger = TriggerBuilder.newTrigger().withIdentity(triggerKey).forJob(jobDetail)
+				.withSchedule(CronScheduleBuilder.cronSchedule(cron)).startAt(startDate).build();
+		trigger.getJobDataMap().putAll(dataMap);// 传参
+		scheduler.scheduleJob(trigger);
+	}
+
 	public void initScheduleJob()
 	{
 		List<ScheduleJob> scheduleJobList = jdbcDao.queryList(Criteria.select(ScheduleJob.class));
@@ -75,6 +109,8 @@ public class ScheduleJobServiceImpl implements ScheduleJobService
 		}
 
 		LOG.info("scheduler.loading....");
+
+		int index = 1;
 		for (ScheduleJob scheduleJob : scheduleJobList)
 		{
 			CronTrigger cronTrigger = ScheduleUtils.getCronTrigger(scheduler, scheduleJob.getJobName(),
@@ -84,13 +120,13 @@ public class ScheduleJobServiceImpl implements ScheduleJobService
 			{
 				// 不存在，创建一个
 				ScheduleUtils.createScheduleJob(scheduler, scheduleJob);
+				LOG.info("scheduler.loaded createScheduleJob" + scheduleJob.getJobName() + " >>" + index++);
 			} else
 			{
 				// 已存在，那么更新相应的定时设置
 				ScheduleUtils.updateScheduleJob(scheduler, scheduleJob);
+				LOG.info("scheduler.loaded updateScheduleJob" + scheduleJob.getJobName() + " >>" + index++);
 			}
-
-			LOG.info("scheduler.loaded" + scheduleJob.getJobName());
 		}
 
 	}
@@ -356,5 +392,21 @@ public class ScheduleJobServiceImpl implements ScheduleJobService
 	{
 		// TODO Auto-generated method stub
 
+	}
+
+	public void cleanJobs()
+	{
+		// TODO Auto-generated method stub
+		try
+		{
+			LOG.info("scheduler.clear()....");
+			scheduler.clear();
+
+			LOG.info("scheduler.clear()....Done.");
+		} catch (SchedulerException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

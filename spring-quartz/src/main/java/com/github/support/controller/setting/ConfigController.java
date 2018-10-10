@@ -1,6 +1,7 @@
 package com.github.support.controller.setting;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.support.controller.setting.validate.ConfigValidator;
+import com.github.support.dbaccess.dto.ConfigDto;
 import com.github.support.quartz.model.User;
 import com.github.support.validator.UserValidator;
 import com.github.support.vo.ScheduleJobVo;
@@ -32,7 +35,7 @@ import com.github.support.vo.ScheduleJobVo;
  *
  */
 @Controller
-@RequestMapping(value = "setting/config")
+@RequestMapping(value = "/setting/config")
 public class ConfigController
 {
 	private static Logger log = LoggerFactory.getLogger(ConfigController.class);
@@ -41,22 +44,59 @@ public class ConfigController
     //所以在这里注册校验器
     @InitBinder
     public void initBainder(DataBinder binder){
-        binder.replaceValidators(new UserValidator());
+        binder.replaceValidators(new ConfigValidator());
 
     }
     //这个方法主要是跳转到登录页面
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
-    public String login(Model model){
-        model.addAttribute(new User());
-        return "/hello/login";
+    @RequestMapping(value = "/edit",method = RequestMethod.GET)
+    public String edit(Model model){
+        model.addAttribute(new ConfigDto());
+        return "/settings/configsEdit";
     }
+    
+    
     //处理登录表单
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public String login(@Validated User user, BindingResult br){
+    @RequestMapping(value = "/edit",method = RequestMethod.POST)
+    public String save(@Validated ConfigDto configDto, BindingResult br){
 
-        if (br.hasErrors()){
-            return "hello/login";
+        if (br.hasErrors())
+        {
+            return "/settings/configsEdit";
         }
-        return "--";
+        
+        return "redirect:list";
     }
+    
+	/**
+	 * 任务列表页
+	 **/
+    @RequestMapping(value = "list",method = RequestMethod.GET)
+    public String list(ModelMap modelMap)
+    {
+    
+    	log.info(">>list");
+    	
+    	ConfigDto dto = new ConfigDto();
+    	dto.setKey("Key01");
+    	dto.setValue("value01");
+    	dto.setDescription("des");
+    	
+    	List<ConfigDto> dtos = new ArrayList<ConfigDto>();
+    	dtos.add(dto);
+     	dtos.add(dto);
+     	dtos.add(dto);
+     	dtos.add(dto);
+     	dtos.add(dto);
+     	
+     	dtos.add(dto);
+     	dtos.add(dto);
+     	dtos.add(dto);
+     	dtos.add(dto);
+    	
+    	modelMap.put("dtoList", dtos);
+
+        return "/settings/configsList";
+    }
+    
+    
 }

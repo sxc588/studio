@@ -8,7 +8,7 @@
     <!-- 启用@Aspect支持 -->
     <aop:aspectj-autoproxy />
     <!-- 加载数据库配置 -->
-<!--     <context:property-placeholder location="classpath:jdbc.properties" /> -->
+    <!-- <context:property-placeholder location="classpath:jdbc.properties" /> -->
     <!-- 引入配置文件 -->
     <bean id="mybatisPropertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="order" value="1" />
@@ -19,7 +19,8 @@
             </list>
         </property>
     </bean>
-        <!-- 数据源 -->
+    <!-- https://blog.csdn.net/guowujun321/article/details/79315328 -->
+    <!-- 数据源 -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
         destroy-method="close">
         <property name="url" value="${url}" />
@@ -51,9 +52,14 @@
     <bean id="jdbcDao" class="com.dexcoder.dal.spring.JdbcDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
+    
+    
+    <bean id="jobFactoryBean" class="com.github.support.quartz.service.SpringScheduleJobFactory" />
+    
     <!-- 配置quartz调度器 -->
-    <bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    <bean id="schedul0er" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="dataSource" ref="dataSource" />
+        <property name="jobFactory" ref="jobFactoryBean"></property>
         <!--可选，QuartzScheduler 启动时更新己存在的Job，这样就不用每次修改targetObject后删除qrtz_job_details表对应记录了 -->
         <property name="overwriteExistingJobs" value="true" />
         <!--必须的，QuartzScheduler 延时启动，应用启动完后 QuartzScheduler 再启动 -->
@@ -95,5 +101,5 @@
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
     <context:component-scan base-package="com.github.support.*" />
-<!--     <import resource="spring/ActiveMQ.xml" /> -->
+    <!-- <import resource="spring/ActiveMQ.xml" /> -->
 </beans>

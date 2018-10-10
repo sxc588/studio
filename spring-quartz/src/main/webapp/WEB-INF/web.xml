@@ -42,7 +42,7 @@
         <init-param>
             <!-- 密码 -->
             <param-name>loginPassword</param-name>
-            <param-value>123456</param-value>
+            <param-value>druid</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>

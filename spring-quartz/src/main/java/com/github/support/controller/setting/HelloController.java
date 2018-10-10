@@ -8,6 +8,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
+import org.quartz.CronExpression;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,8 @@ public class HelloController
     @InitBinder
     public void initBainder(DataBinder binder){
         binder.replaceValidators(new UserValidator());
+
+      //  CronExpression.isValidExpression(cronExpression)
 
     }
     //这个方法主要是跳转到登录页面

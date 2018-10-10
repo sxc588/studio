@@ -10,7 +10,7 @@
 <head>
 <meta charset="utf-8">
 <title>用户登录</title>
-</head>
+<script src="<%=request.getContextPath()%>/3rd/My97DatePicker/WdatePicker.js"></script>
 <body>
 	<sf:form modelAttribute="user" method="post">
 		<table>
@@ -29,7 +29,6 @@
 				<td><sf:input path="nickname" /></td>
 				<td><sf:errors path="nickname" /></td>
 			</tr>
-
 			<tr>
 				<td>产品:</td>
 				<td><select>
@@ -115,69 +114,78 @@
 			type="checkbox" name=items id="003" />黎明 <br> <input
 			type="checkbox" name=items id="004" />郭富城 <br>
 	</fieldset>
-	
+
 	<div>
-	
-	<div style="float:left">
-		<fieldset style="width: 230px">
-		<legend>产品：</legend>
-		<input type="radio" name=feature id="001" />Support v8 <br> <input
-			type="radio" name=feature id="002" />Supppor-E v2 <br> <input
-			type="radio" name=feature id="003" />DFX <br> <input
-			type="radio" name=feature id="004" />PlatForm <br>
-	</fieldset>
-	</div>
-	<div style="float:left">
-	<fieldset style="width: 230px">
-		<legend>特性:</legend>
-		<input type="radio" name=feature id="001" />Support v8 <br> <input
-			type="radio" name=feature id="002" />Supppor-E v2 <br> <input
-			type="radio" name=feature id="003" />DFX <br> <input
-			type="radio" name=feature id="004" />PlatForm <br>
-	</fieldset>
-	</div>
-	<div style="float:left">
-	<fieldset style="width: 230px">
-		<legend>应用:</legend>
-		<input type="radio" name=feature id="001" />应用一 <br> <input
-			type="radio" name=feature id="002" />应用二<br> <input
-			type="radio" name=feature id="003" />引用三 <br> <input
-			type="radio" name=feature id="004" />应用四<br>
-	</fieldset>
-	
+
+		<div style="float: left">
+			<fieldset style="width: 230px">
+				<legend>产品：</legend>
+				<input type="radio" name=feature id="001" />Support v8 <br> <input
+					type="radio" name=feature id="002" />Supppor-E v2 <br> <input
+					type="radio" name=feature id="003" />DFX <br> <input
+					type="radio" name=feature id="004" />PlatForm <br>
+			</fieldset>
 		</div>
-	<div>
-	
-	</div>
-
-	<div>
-	<fieldset style="width: 230px">
-		<legend>告警通知群组:</legend>
-		<input type="checkbox" name=items id="001" />刘德华 <br> <input
-			type="checkbox" name=items id="002" />张学友 <br> <input
-			type="checkbox" name=items id="003" />黎明 <br> <input
-			type="checkbox" name=items id="004" />郭富城 <br>
-	</fieldset>
+		<div style="float: left">
+			<fieldset style="width: 230px">
+				<legend>特性:</legend>
+				<input type="radio" name=feature id="001" />Support v8 <br> <input
+					type="radio" name=feature id="002" />Supppor-E v2 <br> <input
+					type="radio" name=feature id="003" />DFX <br> <input
+					type="radio" name=feature id="004" />PlatForm <br>
+			</fieldset>
 		</div>
-		
-		
-		
-		<div id=win style="display:none; POSITION:absolute; left:50%; top:50%; width:600px; height:400px; margin-left:-300px; margin-top:-200px; border:1px solid #888; background-color:#edf; text-align:center">这是DIV登录框示例<br><a href="javascript:closeLogin();">关闭登录框</a></div>
-<script>
-function openLogin(){
-   document.getElementById("win").style.display="";
-}
-function closeLogin(){
-   document.getElementById("win").style.display="none";
-}
-</script>
+		<div style="float: left">
+			<fieldset style="width: 230px">
+				<legend>应用:</legend>
+				<input type="radio" name=feature id="001" />应用一 <br> <input
+					type="radio" name=feature id="002" />应用二<br> <input
+					type="radio" name=feature id="003" />引用三 <br> <input
+					type="radio" name=feature id="004" />应用四<br>
+			</fieldset>
+
+		</div>
+		<div></div>
+
+		<div>
+			<fieldset style="width: 230px">
+				<legend>告警通知群组:</legend>
+				<input type="checkbox" name=items id="001" />刘德华 <br> <input
+					type="checkbox" name=items id="002" />张学友 <br> <input
+					type="checkbox" name=items id="003" />黎明 <br> <input
+					type="checkbox" name=items id="004" />郭富城 <br>
+			</fieldset>
+		</div>
 
 
-<a href="javascript:openLogin();">打开登录框</a>
+
+		<div id=win
+			style="display: none; POSITION: absolute; left: 50%; top: 50%; width: 600px; height: 400px; margin-left: -300px; margin-top: -200px; border: 1px solid #888; background-color: #edf; text-align: center">
+			这是DIV登录框示例<br> <a href="javascript:closeLogin();">关闭登录框</a>
+		</div>
+		<script>
+			function openLogin() {
+				document.getElementById("win").style.display = "";
+			}
+			function closeLogin() {
+				document.getElementById("win").style.display = "none";
+			}
+		</script>
 
 
-</script>
-		
-		
+		<a href="javascript:openLogin();">打开登录框</a>
+
+
+		</script>
+
+
+		<input type="date" value="2015-09-24" />
+
+
+
+<!-- 		<span id="demospan ">2008-01-01</span> <img -->
+<!-- 			onClick="WdatePicker({el: 'demospan' })" -->
+<%-- 			src="<%=request.getContextPath()%>/3rd/My97DatePicker/skin/datePicker.gif" --%>
+<!-- 			width="16" height="22" align="absmiddle" style="cursor: pointer" /> -->
 </body>
 </html>

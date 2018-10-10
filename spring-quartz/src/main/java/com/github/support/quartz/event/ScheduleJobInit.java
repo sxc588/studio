@@ -48,7 +48,7 @@ public class ScheduleJobInit
 		{
 			LOG.info("init");
 		}
-		//scheduleJobService.initScheduleJob();
+		// scheduleJobService.initScheduleJob();
 		
 //		
 //		fixedThreadPool.execute(new Runnable()
