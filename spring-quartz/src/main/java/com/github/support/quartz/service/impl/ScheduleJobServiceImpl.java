@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.activemq.store.kahadb.disk.index.Index;
 import org.apache.commons.collections.CollectionUtils;
@@ -66,8 +67,8 @@ public class ScheduleJobServiceImpl implements ScheduleJobService
 
 	public void init() throws SchedulerException
 	{
-		
-		//https://blog.csdn.net/u010558660/article/details/51500986
+
+		// https://blog.csdn.net/u010558660/article/details/51500986
 		JobKey jobKey = JobKey.jobKey("customJob_name", "customJob_group");
 		// clusterScheduler = new StdSchedulerFactory().getScheduler();
 		JobDetail jobDetail = scheduler.getJobDetail(jobKey);// xml中配置了
@@ -245,66 +246,83 @@ public class ScheduleJobServiceImpl implements ScheduleJobService
 	 */
 	public List<ScheduleJobVo> queryExecutingJobList()
 	{
+
+		// 存放结果集
+		List<ScheduleJobVo> jobList = new ArrayList<ScheduleJobVo>();
 		try
 		{
-			// 存放结果集
-			List<ScheduleJobVo> jobList = new ArrayList<ScheduleJobVo>();
+			List<String> groupNames = scheduler.getJobGroupNames();
+
+			LOG.info("groupNames:" + groupNames);
 
 			// 获取scheduler中的JobGroupName
-			for (String group : scheduler.getJobGroupNames())
+			for (String group : groupNames)
 			{
+
+				Set<JobKey> jobKeys = scheduler.getJobKeys(GroupMatcher.<JobKey>groupEquals(group));
+
+				//LOG.info(jobKeys.size() + "jobKeys:" + jobKeys);
 				// 获取JobKey 循环遍历JobKey
-				for (JobKey jobKey : scheduler.getJobKeys(GroupMatcher.<JobKey>groupEquals(group)))
+				for (JobKey jobKey : jobKeys)
 				{
-					JobDetail jobDetail = scheduler.getJobDetail(jobKey);
-					JobDataMap jobDataMap = jobDetail.getJobDataMap();
-					ScheduleJob scheduleJob = (ScheduleJob) jobDataMap.get(ScheduleJobVo.JOB_PARAM_KEY);
-					ScheduleJobVo scheduleJobVo = new ScheduleJobVo();
-					BeanConverter.convert(scheduleJobVo, scheduleJob);
-					List<? extends Trigger> triggers = scheduler.getTriggersOfJob(jobKey);
-					Trigger trigger = triggers.iterator().next();
-					Trigger.TriggerState triggerState = scheduler.getTriggerState(trigger.getKey());
-					scheduleJobVo.setJobTrigger(trigger.getKey().getName());
-					scheduleJobVo.setStatus(triggerState.name());
-					if (trigger instanceof CronTrigger)
+					try
 					{
-						CronTrigger cronTrigger = (CronTrigger) trigger;
-						String cronExpression = cronTrigger.getCronExpression();
-						scheduleJobVo.setCronExpression(cronExpression);
-					}
-					// 获取正常运行的任务列表
-					// if (triggerState.name().equals("NORMAL"))
+						JobDetail jobDetail = scheduler.getJobDetail(jobKey);
+						JobDataMap jobDataMap = jobDetail.getJobDataMap();
+						ScheduleJob scheduleJob = (ScheduleJob) jobDataMap.get(ScheduleJobVo.JOB_PARAM_KEY);
+						ScheduleJobVo scheduleJobVo = new ScheduleJobVo();
+						BeanConverter.convert(scheduleJobVo, scheduleJob);
+						List<? extends Trigger> triggers = scheduler.getTriggersOfJob(jobKey);
+						Trigger trigger = triggers.iterator().next();
+						Trigger.TriggerState triggerState = scheduler.getTriggerState(trigger.getKey());
+						scheduleJobVo.setJobTrigger(trigger.getKey().getName());
+						scheduleJobVo.setStatus(triggerState.name());
+						if (trigger instanceof CronTrigger)
+						{
+							CronTrigger cronTrigger = (CronTrigger) trigger;
+							String cronExpression = cronTrigger.getCronExpression();
+							scheduleJobVo.setCronExpression(cronExpression);
+							
+							Date nextFireTime = trigger.getNextFireTime();
+							scheduleJobVo.setNextFireTime(nextFireTime);
+						}
+						// 获取正常运行的任务列表
+						// if (triggerState.name().equals("NORMAL"))
+						{
+							jobList.add(scheduleJobVo);
+						}
+					} catch (SchedulerException e)
 					{
-						jobList.add(scheduleJobVo);
+
 					}
 				}
+
 			}
-
-			/** 非集群环境获取正在执行的任务列表 */
-			/**
-			 * List<JobExecutionContext> executingJobs =
-			 * scheduler.getCurrentlyExecutingJobs(); List<ScheduleJobVo>
-			 * jobList = new ArrayList<ScheduleJobVo>(executingJobs.size()); for
-			 * (JobExecutionContext executingJob : executingJobs) {
-			 * ScheduleJobVo job = new ScheduleJobVo(); JobDetail jobDetail =
-			 * executingJob.getJobDetail(); JobKey jobKey = jobDetail.getKey();
-			 * Trigger trigger = executingJob.getTrigger();
-			 * job.setJobName(jobKey.getName());
-			 * job.setJobGroup(jobKey.getGroup());
-			 * job.setJobTrigger(trigger.getKey().getName());
-			 * Trigger.TriggerState triggerState =
-			 * scheduler.getTriggerState(trigger.getKey());
-			 * job.setStatus(triggerState.name()); if (trigger instanceof
-			 * CronTrigger) { CronTrigger cronTrigger = (CronTrigger) trigger;
-			 * String cronExpression = cronTrigger.getCronExpression();
-			 * job.setCronExpression(cronExpression); } jobList.add(job); }
-			 */
-
-			return jobList;
 		} catch (SchedulerException e)
 		{
-			return null;
+
 		}
+
+		/** 非集群环境获取正在执行的任务列表 */
+		/**
+		 * List<JobExecutionContext> executingJobs =
+		 * scheduler.getCurrentlyExecutingJobs(); List<ScheduleJobVo> jobList =
+		 * new ArrayList<ScheduleJobVo>(executingJobs.size()); for
+		 * (JobExecutionContext executingJob : executingJobs) { ScheduleJobVo
+		 * job = new ScheduleJobVo(); JobDetail jobDetail =
+		 * executingJob.getJobDetail(); JobKey jobKey = jobDetail.getKey();
+		 * Trigger trigger = executingJob.getTrigger();
+		 * job.setJobName(jobKey.getName()); job.setJobGroup(jobKey.getGroup());
+		 * job.setJobTrigger(trigger.getKey().getName()); Trigger.TriggerState
+		 * triggerState = scheduler.getTriggerState(trigger.getKey());
+		 * job.setStatus(triggerState.name()); if (trigger instanceof
+		 * CronTrigger) { CronTrigger cronTrigger = (CronTrigger) trigger;
+		 * String cronExpression = cronTrigger.getCronExpression();
+		 * job.setCronExpression(cronExpression); } jobList.add(job); }
+		 */
+
+
+		return jobList;
 
 	}
 
@@ -344,6 +362,8 @@ public class ScheduleJobServiceImpl implements ScheduleJobService
 			try
 			{
 				JobDetail jobDetail = scheduler.getJobDetail(jobKey);
+				if (jobDetail == null)
+				continue;
 
 				JobDataMap jobDataMap = jobDetail.getJobDataMap();
 				ScheduleJob scheduleJob = (ScheduleJob) jobDataMap.get(ScheduleJobVo.JOB_PARAM_KEY);

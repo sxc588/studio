@@ -19,6 +19,11 @@
 <script src="/springmvc/3rd/bootstrap/assets/index.js"></script>
 <script src="/springmvc/3rd/bootstrap/ga.js"></script>
 
+<%
+String contextPath = request.getContextPath();
+%>
+
+
 <style type="text/css">
 body {
 	padding: 20px;

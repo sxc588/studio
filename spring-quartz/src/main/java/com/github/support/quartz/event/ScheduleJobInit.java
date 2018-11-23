@@ -48,6 +48,9 @@ public class ScheduleJobInit
 		{
 			LOG.info("init");
 		}
+		
+		// scheduleJobService.initScheduleJob();
+		
 		// scheduleJobService.initScheduleJob();
 		
 //		

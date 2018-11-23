@@ -16,7 +16,7 @@ public class PingUtils
 
 	static private Logger LOG = LoggerFactory.getLogger(PingUtils.class);
 	
-	public boolean ping(String host)
+	public static boolean ping(String host)
 	{
 		boolean connect = false;
 		Runtime runtime = Runtime.getRuntime();
@@ -35,7 +35,6 @@ public class PingUtils
 				{
 					// 网络畅通
 					connect = true;
-					
 				}
 				else
 				{
@@ -54,10 +53,9 @@ public class PingUtils
 		return connect;
 	}
 
-	public static void main(String[] args)
-	{
-		PingUtils netState = new PingUtils();
-		System.out.println(netState.ping("www.baidu.com"));
-
-	}
+//	public static void main(String[] args)
+//	{
+//		System.out.println(PingUtils.ping("www.baidu.com"));
+//
+//	}
 }

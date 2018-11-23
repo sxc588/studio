@@ -56,9 +56,24 @@
     
     <bean id="jobFactoryBean" class="com.github.support.quartz.service.SpringScheduleJobFactory" />
     
+    
+    
+      <!-- 配置线程池-->
+    <bean name="executor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="15"/>
+        <property name="maxPoolSize" value="125"/>
+        <property name="queueCapacity" value="300"/>
+    </bean>
+
+    <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+    
     <!-- 配置quartz调度器 -->
     <bean id="schedul0er" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="dataSource" ref="dataSource" />
+           <property name="transactionManager" ref="transactionManager"/>
         <property name="jobFactory" ref="jobFactoryBean"></property>
         <!--可选，QuartzScheduler 启动时更新己存在的Job，这样就不用每次修改targetObject后删除qrtz_job_details表对应记录了 -->
         <property name="overwriteExistingJobs" value="true" />
@@ -101,5 +116,5 @@
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
     <context:component-scan base-package="com.github.support.*" />
-    <!-- <import resource="spring/ActiveMQ.xml" /> -->
+  <import resource="spring/spring-activemq.xml" />
 </beans>

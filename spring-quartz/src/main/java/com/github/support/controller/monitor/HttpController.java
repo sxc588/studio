@@ -248,11 +248,11 @@ public class HttpController
 
 		List<ScheduleJob> scheduleJobVoList = scheduleJobService.getList(offset, pageSize);
 
-		modelMap.put("scheduleJobVoList", scheduleJobVoList);
+		//modelMap.put("scheduleJobVoList", scheduleJobVoList);
 
-//		List<ScheduleJobVo> executingJobList = scheduleJobService.queryExecutingJobList();
-//		modelMap.put("executingJobList", executingJobList);
-//		log.info("scheduleJobVoList" + scheduleJobVoList.size());
+		//List<ScheduleJobVo> executingJobList = scheduleJobService.queryExecutingJobList();
+		//modelMap.put("executingJobList", executingJobList);
+		//log.info("scheduleJobVoList" + scheduleJobVoList.size());
 		
 //		log.info("executingJobList" + executingJobList.size());
 		return "monitor/http/list";
