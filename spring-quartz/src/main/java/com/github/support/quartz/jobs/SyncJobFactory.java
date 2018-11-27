@@ -1,29 +1,21 @@
 package com.github.support.quartz.jobs;
 
-import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.velocity.tools.config.Data;
-import org.quartz.*;
+import org.quartz.DisallowConcurrentExecution;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
+import org.quartz.PersistJobDataAfterExecution;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
-import com.github.support.dbaccess.mapper.ScheduleJobMapper;
 import com.github.support.dbaccess.service.ScheduleJobServiceDb;
 import com.github.support.jms.ActiveMqProducerService;
-import com.github.support.quartz.model.ScheduleJob;
-import com.github.support.utils.PingUtils;
-import com.github.support.utils.TelnetUtils;
-import com.github.support.vo.ScheduleJobVo;
+import com.github.support.quartz.matrix.ABCD;
 
 /**
  * author : benjamin createTime : 2017.06.06 description : 同步任务工厂 version : 1.0
@@ -43,12 +35,17 @@ public class SyncJobFactory extends QuartzJobBean
     @Resource(name = "activeMqProducerService")
     private ActiveMqProducerService producer;
 
+    
+    @Autowired
+   private ABCD abcd;
 	
 	protected void executeInternal(JobExecutionContext context) throws JobExecutionException
 	
 	{	
 		Date date = new Date();
 		 producer.sendMessage(date.toString());
+		 
+	        abcd.inc();
 //		 producer.sendMessage(new Data().toString());
 //		 producer.sendMessage(new Data().toString());
 //		 producer.sendMessage(new Data().toString());

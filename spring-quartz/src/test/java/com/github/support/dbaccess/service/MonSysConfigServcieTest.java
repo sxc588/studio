@@ -1,14 +1,9 @@
 package com.github.support.dbaccess.service;
 
-import static org.junit.Assert.*;
-
 import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.dbcp.BasicDataSource;
-import org.apache.http.util.NetUtils;
-import org.apache.velocity.runtime.log.SystemLogChute;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.alibaba.fastjson.JSON;
-import com.github.HelloLucene;
-import com.github.support.dbaccess.dto.MonScheduleJob;
 import com.github.support.dbaccess.dto.MonSysConfig;
-import com.github.support.dbaccess.service.MonScheduleJobService;
-import com.github.support.dbaccess.service.MonSysConfigServcie;
-import com.github.support.utils.HwBeanUtils;
 import com.github.support.utils.HwNetUtil;
 
 

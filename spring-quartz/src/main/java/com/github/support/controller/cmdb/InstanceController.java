@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping(value = "/cmdb/inst")
 public class InstanceController
 {
-	private static Logger logger = LoggerFactory.getLogger(InstanceController.class);
+	//private static Logger logger = LoggerFactory.getLogger(InstanceController.class);
 
 	// @Autowired
 	// private HostService hostService;

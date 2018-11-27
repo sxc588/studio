@@ -32,13 +32,8 @@
 			<pattern>${format}</pattern>
 		</encoder>
 	</appender>
-
-	<logger name="sy.test2" level="info" addtivity="true">
-		<appender-ref ref="test1" />
-		<appender-ref ref="STDOUT" />
-	</logger>
 	
-	<logger name="sy.test1" level="info" addtivity="true">
+	<logger name="com.github.support.quartz" level="info" addtivity="true">
 		<appender-ref ref="test2" />
 		<appender-ref ref="STDOUT" />
 	</logger>
@@ -49,8 +44,8 @@
 	<logger name="java.sql.Statement" level="DEBUG" />
 	<logger name="java.sql.PreparedStatement" level="DEBUG" />
 
-	<root level="DEBUG">
-		<appender-ref ref="STDOUT" />
+	<root level="error">
+			<appender-ref ref="test2" />
 		<!-- <appender-ref ref="ERROR-OUT" /> -->
 		<!-- <appender-ref ref="INFO-OUT" /> -->
 		<!-- <appender-ref ref="DEBUG-OUT" /> -->

@@ -13,9 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -25,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.github.support.vo.IssueVo;
 import com.github.support.vo.ScheduleJobVo;
 import com.github.support.vo.UserVo;
 
@@ -36,7 +32,7 @@ import com.github.support.vo.UserVo;
 @RequestMapping(value = "/entitle/user2")
 public class UserController2
 {
-	private static Logger logger = LoggerFactory.getLogger(UserController2.class);
+	//private static Logger logger = LoggerFactory.getLogger(UserController2.class);
 
 	// @Autowired
 	// private HostService hostService;

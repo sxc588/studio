@@ -2,11 +2,15 @@ package com.github.support.jms;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 
 import com.github.support.quartz.jobs.SyncJobFactory;
+import com.github.support.service.PerformancMatrixBean;
+
+import javassist.expr.NewArray;
 
 import javax.annotation.Resource;
 import javax.jms.Destination;
@@ -26,9 +30,14 @@ public class ActiveMqProducerService
 	
 	@Resource(name = "jmsTemplate")
 	private JmsTemplate jmsTemplate;
+	
+	@Autowired
+	private PerformancMatrixBean pmb;
 
 	public void sendMessage(Destination destination, final String msg)
 	{
+		pmb.inc();
+		
 		
 		LOG.info(Thread.currentThread().getName() + " 向队列" + destination.toString()
 				+ "发送消息---------------------->" + msg);

@@ -1,31 +1,13 @@
 package com.github;
 
-import static org.junit.Assert.*;
-
-import java.util.List;
-
 import org.junit.Test;
 
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.stereotype.Service;
-
-import com.google.common.base.Optional;
 import com.google.common.net.HostAndPort;
 import com.orbitz.consul.AgentClient;
 import com.orbitz.consul.Consul;
-import com.orbitz.consul.HealthClient;
 import com.orbitz.consul.KeyValueClient;
-//import com.orbitz.consul.NotRegisteredException;
-import com.orbitz.consul.StatusClient;
 import com.orbitz.consul.model.agent.ImmutableRegCheck;
 import com.orbitz.consul.model.agent.ImmutableRegistration;
-import com.orbitz.consul.model.health.ServiceHealth;
-import com.orbitz.consul.model.kv.Value;
 
 
 public class ConsulService

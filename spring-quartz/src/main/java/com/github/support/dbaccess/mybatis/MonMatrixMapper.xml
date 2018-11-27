@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.support.dbaccess.mapper.MonMatrixMapper">
+    <insert id="insert" parameterType="com.github.support.dbaccess.dto.MonMatrixDto">
+        insert into T_MON_Matrix (
+        MECHINE_NAME, 
+        MATRIX_KEY, 
+        MATRIX_FILED,
+        MATRIX_VALUE,
+        CREATE_TIME
+        )
+        values(
+        #{machineName,jdbcType=BIGINT}, 
+        #{matrixKey,jdbcType=VARCHAR},
+        #{matrixFiled,jdbcType=VARCHAR},
+        #{matrixValue,jdbcType=VARCHAR}, 
+        now()
+        )
+    </insert>
+ </mapper>

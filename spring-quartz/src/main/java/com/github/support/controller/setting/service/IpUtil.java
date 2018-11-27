@@ -1,14 +1,6 @@
 package com.github.support.controller.setting.service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.stereotype.Repository;
-
-import com.github.support.dbaccess.dto.ConfigDto;
 
 public final class IpUtil
 {

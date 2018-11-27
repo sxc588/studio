@@ -159,7 +159,7 @@ public class SendMail {
      */
     @SuppressWarnings("static-access")
     public String setRecipients(StringBuffer sb) throws AddressException, MessagingException{
-        if(sb==null||"".equals(sb)){
+        if(sb==null||"".equals(sb.toString())){
             return "字符串数据为空!";
         }
         Address []address = new InternetAddress().parse(sb.toString());
