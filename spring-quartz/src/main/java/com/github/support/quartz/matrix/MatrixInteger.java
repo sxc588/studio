@@ -7,14 +7,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import com.github.support.dbaccess.dto.MonMatrixDto;
 import com.github.support.dbaccess.service.MonMatrixService;
+import com.github.support.utils.HostUtils;
 
 @Component
-public final class ABCD
+public final class MatrixInteger
 {
 	private Map<String, Integer> map = new HashMap<String, Integer>();
 
@@ -23,10 +25,13 @@ public final class ABCD
 	@Autowired
 	private MonMatrixService monMatrixService;
 
-	private String machineName ="124.0.0.1";
-
-	public synchronized void inc()
+	private static String machineName = HostUtils.getHostNameAndIp();
+	
+	private static String matrixFiled = "SyncJobFactory";
+	
+	public synchronized void inc(String matrixFiled)
 	{
+		
 		
 		String tm = sdf.format(new Date());
 		
@@ -49,7 +54,7 @@ public final class ABCD
 			MonMatrixDto record = new MonMatrixDto();
 
 			record.setMachineName(machineName);
-			record.setMatrixFiled("dddd");
+			record.setMatrixFiled(matrixFiled);
 			record.setMatrixKey(entry.getKey());
 			record.setMatrixValue(entry.getValue());
 			monMatrixService.insert(record);

@@ -37,10 +37,8 @@ public class ActiveMqProducerService
 	public void sendMessage(Destination destination, final String msg)
 	{
 		pmb.inc();
+		LOG.info("{}向队列{}发送消息：{}" + Thread.currentThread().getName() ,destination.toString(), msg);
 		
-		
-		LOG.info(Thread.currentThread().getName() + " 向队列" + destination.toString()
-				+ "发送消息---------------------->" + msg);
 		jmsTemplate.send(destination, new MessageCreator()
 		{
 			public Message createMessage(Session session) throws JMSException
@@ -53,7 +51,7 @@ public class ActiveMqProducerService
 	public void sendMessage(final String msg)
 	{
 		String destination = jmsTemplate.getDefaultDestinationName();
-		LOG.info(Thread.currentThread().getName() + " 向队列" + destination + "发送消息---------------------->" + msg);
+		LOG.info("{}向缺省队列{}发送消息：{}" , Thread.currentThread().getName() ,destination, msg);
 		jmsTemplate.send(new MessageCreator()
 		{
 			public Message createMessage(Session session) throws JMSException

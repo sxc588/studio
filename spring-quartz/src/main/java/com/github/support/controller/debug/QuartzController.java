@@ -47,6 +47,6 @@ public class QuartzController
 		System.err.println(scheduleJobVoList.size());
 		
 		modelMap.put("scheduleJobVoList", scheduleJobVoList);
-		return "debug/quarzJobList";
+		return "debug/quartzJobList";
 	}
 }

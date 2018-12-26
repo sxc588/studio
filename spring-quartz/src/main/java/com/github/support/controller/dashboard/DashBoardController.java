@@ -136,14 +136,15 @@ public class DashBoardController
 	public String listScheduleJob(ScheduleJobVo scheduleJobVo, ModelMap modelMap)
 	{
 
-		List<ScheduleJobVo> scheduleJobVoList = scheduleJobService.queryList(scheduleJobVo);
+		List<ScheduleJobVo> scheduleJobVoList = scheduleJobService.queryExecutingJobList();
+
 		modelMap.put("scheduleJobVoList", scheduleJobVoList);
 
 		// List<ScheduleJobVo> executingJobList =
 		// scheduleJobService.queryExecutingJobList();
 		// modelMap.put("executingJobList", executingJobList);
 
-		return "dashboard";
+		return "dashboard/dashboard";
 	}
 
 	/**
@@ -157,7 +158,7 @@ public class DashBoardController
 	public List<ScheduleJobVo> search(ScheduleJobVo scheduleJobVo, ModelMap modelMap)
 	{
 
-		List<ScheduleJobVo> scheduleJobVoList = scheduleJobService.queryList(scheduleJobVo);
+		List<ScheduleJobVo> scheduleJobVoList = scheduleJobService.queryExecutingJobList();
 		// modelMap.put("scheduleJobVoList", scheduleJobVoList);
 		// JSON.toJSONString(scheduleJobVoList);
 

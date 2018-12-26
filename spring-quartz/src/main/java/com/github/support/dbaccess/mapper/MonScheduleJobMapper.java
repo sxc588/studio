@@ -3,6 +3,7 @@ package com.github.support.dbaccess.mapper;
 import java.util.List;
 import java.util.Map;
 
+import com.github.support.dbaccess.dto.MonScheduleCronExpression;
 import com.github.support.dbaccess.dto.MonScheduleJob;
 
 public interface MonScheduleJobMapper
@@ -20,4 +21,14 @@ public interface MonScheduleJobMapper
 	int updateByPrimaryKey(MonScheduleJob record);
 	
 	List<MonScheduleJob> getList(Map<String, Object> map);
+	
+	
+	/**
+	 * 
+	 */
+	List<MonScheduleCronExpression> getSeudleCorns();
+	
+	List<MonScheduleJob> getScheduleByCorn(Map<String, Object> map);
+	
+	Integer getScheduleCountByCorn(String cronExpression);
 }

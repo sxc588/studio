@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
-import com.github.support.quartz.matrix.ABCD;
+import com.github.support.quartz.matrix.MatrixInteger;
 import com.github.support.quartz.model.ScheduleJob;
 import com.github.support.vo.ScheduleJobVo;
 
@@ -25,7 +25,7 @@ public class HttpJobFactory extends QuartzJobBean {
     
     
     @Autowired
-   private ABCD abcd;
+   private MatrixInteger abcd;
 
     protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
         LOG.info("SyncJobFactory execute");
@@ -33,7 +33,7 @@ public class HttpJobFactory extends QuartzJobBean {
         ScheduleJob scheduleJob = (ScheduleJob) mergedJobDataMap.get(ScheduleJobVo.JOB_PARAM_KEY);
         System.out.println("jobName:" + scheduleJob.getJobName() + "  " + scheduleJob);
         
-        abcd.inc();
+        abcd.inc("HttpJobFactory");
 //        String url = scheduleJob.getUrl();
 //        CloseableHttpClient httpclient = HttpClients.createDefault();
 //        HttpGet httpGet = new HttpGet(url);

@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.github.support.dbaccess.dto.MonScheduleCronExpression;
 import com.github.support.dbaccess.dto.MonScheduleJob;
 import com.github.support.dbaccess.mapper.MonScheduleJobMapper;
 
@@ -58,5 +59,20 @@ public class MonScheduleJobService
 		map.put("limit", pagesize);
 		return mapper.getList(map);
 	}
+	
+	public List<MonScheduleCronExpression> getSeudleCorns()
+	{
+		return mapper.getSeudleCorns();
+	}
+
+	public List<MonScheduleJob> getScheduleByCorn(String cronExpression, int offset, int pagesize)
+	{
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("cronExpression", cronExpression);
+		map.put("offset", offset);
+		map.put("limit", pagesize);
+		return mapper.getScheduleByCorn(map);
+	}
+	
 
 }

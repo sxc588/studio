@@ -1,5 +1,7 @@
 package com.github.support.quartz.jobs;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.annotation.Resource;
@@ -15,7 +17,7 @@ import org.springframework.scheduling.quartz.QuartzJobBean;
 
 import com.github.support.dbaccess.service.ScheduleJobServiceDb;
 import com.github.support.jms.ActiveMqProducerService;
-import com.github.support.quartz.matrix.ABCD;
+import com.github.support.quartz.matrix.MatrixInteger;
 
 /**
  * author : benjamin createTime : 2017.06.06 description : 同步任务工厂 version : 1.0
@@ -35,17 +37,22 @@ public class SyncJobFactory extends QuartzJobBean
     @Resource(name = "activeMqProducerService")
     private ActiveMqProducerService producer;
 
-    
+    private final static DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//等价于now.toLocaleString()
+   
     @Autowired
-   private ABCD abcd;
+   private MatrixInteger abcd;
 	
 	protected void executeInternal(JobExecutionContext context) throws JobExecutionException
 	
 	{	
 		Date date = new Date();
-		 producer.sendMessage(date.toString());
-		 
-	        abcd.inc();
+		String msg =  sdf.format(date);
+		producer.sendMessage(msg);
+	    abcd.inc("SyncJobFactory");
+	    
+	    
+	    
+	    
 //		 producer.sendMessage(new Data().toString());
 //		 producer.sendMessage(new Data().toString());
 //		 producer.sendMessage(new Data().toString());
