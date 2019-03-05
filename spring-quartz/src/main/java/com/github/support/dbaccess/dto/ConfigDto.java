@@ -1,10 +1,15 @@
 package com.github.support.dbaccess.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ConfigDto
+public class ConfigDto implements Serializable
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String key;
 	private String value;
 	private String description;
