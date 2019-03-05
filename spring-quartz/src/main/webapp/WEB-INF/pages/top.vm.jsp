@@ -9,15 +9,22 @@ String contextPath = request.getContextPath();
 	<!-- Bootstrap -->
 	<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
 		rel="stylesheet">
-	<link
-		href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css"
-		rel="stylesheet">
+<!-- 	<link -->
+<!-- 		href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" -->
+<!-- 		rel="stylesheet"> -->
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
     <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+     <link rel="stylesheet" href="/springmvc/3rd/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/springmvc/3rd/assets/index.css">
+    <script src="/springmvc/3rd/assets/jquery.min.js"></script>
+    <script src="/springmvc/3rd/assets/bootstrap/js/bootstrap.min.js"></script>
+
+    
 	<style type="text/css">
 .jumbotron-margin-top {
 	margin-top: 95px;
