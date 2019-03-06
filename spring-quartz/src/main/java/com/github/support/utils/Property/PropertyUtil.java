@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import org.apache.commons.io.IOUtils;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -89,7 +88,7 @@ public class PropertyUtil
 	    return defaultValue;
 	}
 	
-	@Test
+
 	public void aaa()
 	{
 		for (int i=0; i<90000; i++)

@@ -1,6 +1,5 @@
 package com.github.support.controller.setting.config.cbb.net;
 
-import static org.hamcrest.CoreMatchers.nullValue;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -10,7 +9,6 @@ import java.io.OutputStream;
 import javax.activation.DataHandler;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-import com.amazonaws.services.kinesisanalytics.model.Input;
 
 public final class CodeCCUtils
 {
