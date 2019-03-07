@@ -45,5 +45,18 @@ public class ConfigServcie
 		// return configs.get(key);
 		return redisConfig.get(key);
 	}
+	
+	
+
+	public void get(String key)
+	{
+		if (StringUtils.isBlank(key))
+		{
+			return ;
+		}
+		// return configs.get(key);
+		 redisConfig.del(key);
+	}
+
 
 }

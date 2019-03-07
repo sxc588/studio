@@ -117,5 +117,20 @@ public class ConfigController extends SimpleFormatter
 		log.info(">>edit.save" + (end - begin));
 		return "/settings/configsList";
 	}
+	
+	
+	 /**
+	  * * 任务列表页
+	 **/
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String list(String key, ModelMap modelMap)
+	{
+		long begin = System.currentTimeMillis();
+		log.info(">>list");
+		configService.del(key);
+		long end = System.currentTimeMillis();
+		log.info(">>edit.save" + (end - begin));
+		return "/settings/configsList";
+	}
 
 }
