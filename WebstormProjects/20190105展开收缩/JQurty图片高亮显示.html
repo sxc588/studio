@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+   
+<title>图片高亮显示</title>
+<style type="text/css">
+#mainboard div img {
+	border: 1px solid #cccccc;
+	/* width:88px; 
+    height:31px; */
+	margin: 3px 0px;
+	cursor: pointer;
+}
+#mainboard img:hover {
+	/*background-color: #FF3d67;*/
+	border-color: red;
+	border-width: 3px;
+	box-shadow: 10px 10px 5px #888888;
+}
+</style>
+<script type="text/javascript" src="../3rd/jquery-3.1.1/jquery-3.1.1.min.js"></script>
+<script language="javascript" type="text/javascript"> 
+$(function(){ 
+    $("#mainboard img").bind("click",function(){ 
+        $(this).css("border","1px solid red").siblings().css("border","1px solid #cccccc"); 
+    }) 
+}) 
+</script>
+</head><body>
+<div id="mainboard">
+  <div><img src="http://www.jb51.net/images/logo.gif" class="b" /> </div>
+  <div><img src="http://support.huawei.com/enterpriseindex/layout/v4/img/logo_huawei.png"/> </div>
+</div>
+<div id="content">
+  <div id="content_top"></div>
+  <div class="reset_pw">
+    <div class="reset_tab_box"> <span onclick="switchto('byUid');" class="set_ontab" id="js_tabon"> 账号/邮箱登录 </span> <span onclick="switchto('byPhone');" class="set_offtab" id="tab_phone"> 手机号码登录 </span> <span onclick="switchto('bySmscode');" class="set_offtab" id="tab_smscode"> 短信登录 </span> </div>
+    <div class="login_main">
+      <div class="login_box">
+        <div id="errormessage" class="errormessage"> </div>
+        <div class="modify_oneline">
+          <div class="modify_text">帐号/邮箱</div>
+          <input type="text" name="uid" size="20" tabindex="1" value="" class="inputBgLine modify_pw_input" id="uid">
+        </div>
+        <div class="modify_oneline">
+          <div class="modify_text">密码</div>
+          <input type="password" name="password" size="20" tabindex="2" value="" class="inputBgLine modify_pw_input" id="password">
+        </div>
+        <div style="margin-left:20px;">
+          <div class="modify_oneline">
+            <div class="modify_text"></div>
+            <div><a class="underline" title="" href="#">忘记密码</a><a class="underline" title="" href="#">修改密码</a> </div>
+          </div>
+        </div>
+        <div class="modify_oneline">
+          <center>
+            <input class="login_submit_pwd" type="button" tabindex="4" value="登录" onclick="javascript:form_submit();" onfocus="javascript:flagA=false;" onblur="javascript:flagA=true;">
+          </center>
+        </div>
+      </div>
+      <div class="login_welcome">
+        <h2>欢迎注册华为网站</h2>
+        <div class="gap32px"></div>
+        <p>您可以免费注册一个帐号，以获取更多的便利，例如下载或浏览更有价值的信息，获取针对您的内容推送等。</p>
+        <div class="gap16px"></div>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <input name="button1" class="buttom_register_btn" id="button1" type="button" value="注&nbsp;&nbsp;册" onclick="javascript:forwardtoregister();">
+      </div>
+      <div class="clearBoth"></div>
+    </div>
+    <script type="text/javascript">
+
+var com_CheckSubmitFlg = false; 
+var flagA = true;
+
+window.onload = function() {
+    try{
+		var expire = new Date();
+		expire.setTime((new Date()).getTime() + 28800000);
+		document.cookie = "testcookie=1;Expires=" + expire.toGMTString();
+		rejectHijacking(true);
+		if(document.loginForm) {
+			var uid = document.loginForm.uid;
+			if(uid.value == null || uid.value == "") {
+				uid.focus();
+			} else {
+				document.loginForm.password.focus();
+			}
+		}
+	}catch(e){
+	}
+}
+
+function com_CheckSubmit(){ 
+	if(com_CheckSubmitFlg==true){
+		return false; 
+	}
+	com_CheckSubmitFlg=true;
+	return true; 
+}
+
+
+function form_submit(){
+	var form=document.loginForm;
+	form.actionFlag.value="loginAuthenticate";
+	if(!chkLen(form.uid,60,'帐号/邮箱',false)){
+		return ;
+	}
+	if(!chkLen(form.password,60,'密码',false)){
+		return ;
+	}
+	
+	
+   if (com_CheckSubmit()){
+		form.submit(); 
+	}else{
+		alert('在上一个动作未执行完成之前，请不要重复提交。');
+		com_CheckSubmitFlg=false;
+	}
+}
+
+function enterkey(e){
+	var form=document.loginForm;
+	var ev = window.event || e;
+	if (ev.keyCode==13 && flagA){
+		if(form.uid.value==""){
+			form.uid.focus();
+		}else if(form.password.value==""){
+			form.password.focus();
+		}else if(form.verifyCode && form.verifyCode.value==""){
+			form.verifyCode.focus();
+		}else{
+			form_submit();
+		}
+	}
+}
+
+function chgLang(str){
+	var form=document.loginForm;
+	form.lang.value=str;
+	form.actionFlag.value="changeLang";
+	form.submit();
+}
+
+function forwardtoregister(){
+	window.location = "https://uniportal.huawei.com/accounts/register.do?method=toRegister&regsiterMethod=byEmail&nls=zh_CN&appurl=https%3A%2F%2Fsupport.huawei.com%2Fenterprisemysupport%2Fmysupport%23click%3Dmysupport";
+}
+
+function loadimage() {
+	document.getElementById("verifycodeimage").src = "/uniportal/jsp/image.jsp?" + Math.random();
+}
+
+
+function hideTips(){}
+</script>
+    <input type="hidden" name="loginFlag" value="byUid">
+  </div>
+  <div id="content_bottom"></div>
+</div>
+</body>
+</html>

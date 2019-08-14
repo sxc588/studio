@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>鼠标滑过背景变色</title>
+    <style type="text/css">
+.bg {
+	width: 150px;
+	height: 150px;
+	background-color: red;
+}
+.bg:hover {
+	background-color: burlywood;
+}
+.bcloer {
+	background-color: Red;
+}
+</style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //$("#UL_id li:even").addClass("bcloer");         //方式一
+            $("#UL_id li:even").attr("className", "bcloer");  //方式二
+        })
+    </script>
+    </head>
+    <body>
+<div class="bg"> </div>
+<div>
+      <ul id="UL_id">
+    <li>单数</li>
+    <li>双数</li>
+    <li>双数</li>
+    <li>单数</li>
+    <li>双数</li>
+    <li>双数</li>
+  </ul>
+    </div>
+div li鼠标悬浮高亮显示
+<style type="text/css">
+        .blue{background: #bcd4ec;}
+    </style>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $("#orderedlist li").hover(function () {
+                $(this).addClass("blue");
+            }, function () {
+                $(this).removeClass("blue");
+            });
+        });
+    </script>
+<div>
+      <ul id="orderedlist">
+    <li>11111111111111111111111111111111</li>
+    <li>22222222222222222222222222222222</li>
+    <li>33333333333333333333333333333333</li>
+    <li>44444444444444444444444444444444</li>
+    <li>55555555555555555555555555555555</li>
+    <li>66666666666666666666666666666666</li>
+    <li>77777777777777777777777777777777</li>
+  </ul>
+    </div>
+div li隔行变色，鼠标悬浮高亮显示
+<style type="text/css">
+        /*.hover的样式是必须得,具体样式效果自行设置*/
+        .hover{ background-color:#222C35; color:#FFF;}
+        .hover,.hover a{color:#FFF;}
+    </style>
+<script type="text/javascript">
+        $(document).ready(function () {
+            jQuery.hoverPlugin = {
+                hover: function (hoverid) {
+                    $(hoverid).hover(function () {
+                        $(this).addClass("hover")
+                    }, function () {
+                        $(this).removeClass("hover")
+                    })
+                }
+            };
+            $.hoverPlugin.hover('#hoverul li');
+            $.hoverPlugin.hover('#hoverdiv a')
+        });
+    </script>
+<div>
+      <ul id="hoverul">
+    <li>jquery图片左右来回循环飘动</li>
+    <li>jquery图片左右来回循环飘动</li>
+    <li>jquery图片左右来回循环飘动</li>
+    <li>jquery图片左右来回循环飘动</li>
+    <li><a href="#">jquery 特效</a></li>
+    <li><a href="#">jquery 特效</a></li>
+    <li><a href="#">jquery 特效</a></li>
+    <li><a href="#">jquery 特效</a></li>
+  </ul>
+    </div>
+</body>
+</html>
