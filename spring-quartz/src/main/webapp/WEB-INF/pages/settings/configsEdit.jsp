@@ -34,7 +34,7 @@ table {
 	min-height: 25px;
 	line-height: 25px;
 	text-align: left;
-	/* 	border-collapse: collapse; */
+/* 	border-collapse: collapse; */
 }
 
 .container input:focus, .container input:HOVER {
@@ -47,51 +47,39 @@ table {
 	width: 100%
 }
 </style>
-    </head>
 <body>
-	<!-- 导航 -->
-	<div class="navbar">
-		<jsp:include page="../top.vm.jsp"></jsp:include>
-	</div>
+	<jsp:include page="../top.vm.jsp"></jsp:include>
 
-	<!-- 图片轮播 -->
-	<div class="carousel"></div>
-
-<!-- <td>${item.key}</td> -->
-<!-- 					<td>${item.value}</td> -->
-<!-- 					<td>${item.description}</td> -->
-<!-- 					<td>${item.lastUpdateBy}</td> -->
-	<!-- 内容展示 container 里面分两个 6 -->
 	<div class="container" role="main">
-		<div class="container col-md-12" role="sub1">
+		<div class="container" role="main">
 			<sf:form modelAttribute="configDto" method="post">
-			<table class="table">
+				<table>
 					<tr>
-						<td class="col-md-2"><label for="key">注册表-Key:</label></td>
-						<td class="col-md-6"><sf:input path="key" type="text" class="form-control" id="key" placeholder="请输入名称"/></td>
+						<td>注册表-Key:</td>
+						<td><sf:input path="key" /></td>
 						<td class="hse1">*</td>
-						<td class="col-md-6"><sf:errors path="key" /></td>
+						<td class="hse2"><sf:errors path="key" /></td>
 					<tr>
-						<td><label for="value">注册表-Value:</td>
-						<td><sf:input path="value" type="text" class="form-control" id="value" placeholder="请输入名称"/></td>
+						<td>注册表-Value:</td>
+						<td><sf:input path="value" /></td>
 						<td class="hse1">*</td>
 						<td class="hse2"><sf:errors path="value" /></td>
 					</tr>
 					<tr>
-						<td><label for="description">注册表-描述:</label></td>
-						<td><sf:input path="description" type="text" class="form-control" id="description" placeholder="请输入名称" /></td>
+						<td>注册表-描述:</td>
+						<td><sf:input path="description" /></td>
 						<td class="hse1">*</td>
 						<td class="hse2"><sf:errors path="description" /></td>
 					</tr>
 					<tr>
-						<td><label for="lastUpdateBy">注册表-最后更新人:</label></td>
-						<td><sf:input path="lastUpdateBy" type="password" class="form-control" id="lastUpdateTime" placeholder="请输入名称"/></td>
+						<td>注册表-最后更新人:</td>
+						<td><sf:input path="lastUpdateBy" /></td>
 						<td class="hse1">*</td>
 						<td class="hse2"><sf:errors path="lastUpdateBy" /></td>
 					</tr>
 					<tr>
-						<td><label for="key">注册表-最后更新时间:</label></td>
-						<td><sf:input path="lastUpdateTime" type="text" class="form-control" id="lastUpdateTime" placeholder="请输入名称" /></td>
+						<td>注册表-最后更新时间:</td>
+						<td><sf:input path="lastUpdateTime" /></td>
 						<td class="hse1">*</td>
 						<td class="hse2"><sf:errors path="lastUpdateTime" /></td>
 					</tr>
@@ -99,52 +87,30 @@ table {
 						<td colspan=4><input type="submit" value="提交"></td>
 					</tr>
 				</table>
-			</sf:form>
-</div>
-			<ul class="pager">
-				<li class="previous"><a href="#">&larr; Older</a></li>
-				<li class="next"><a href="#">Newer &rarr;</a></li>
-			</ul>
-		</div>
-		</div>
-		
-	</div>
+							</sf:form>
+				<form role="form">
+  <div class="form-group">
+    <label for="name">名称</label>
+    <input type="text" class="form-control" id="name" placeholder="请输入名称">
+  </div>
+  <div class="form-group">
+    <label for="inputfile">文件输入</label>
+    <input type="file" id="inputfile">
+    <p class="help-block">这里是块级帮助文本的实例。</p>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox">请打勾
+    </label>
+  </div>
+  <button type="submit" class="btn btn-default">提交</button>
+</form>
 
+		</div>
+	</div>
+	
+	
+	
 	<jsp:include page="../foot.vm.jsp"></jsp:include>
-
-	</div>
-
-<h2>创建模态框（Modal）</h2>
-<!-- 按钮触发模态框 -->
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-	开始演示模态框
-</button>
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-					&times;
-				</button>
-				<h4 class="modal-title" id="myModalLabel">
-					模态框（Modal）标题
-				</h4>
-			</div>
-			<div class="modal-body">
-				在这里添加一些文本
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
-				</button>
-				<button type="button" class="btn btn-primary">
-					提交更改
-				</button>
-			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal -->
-</div>
-
-
 </body>
 </html>

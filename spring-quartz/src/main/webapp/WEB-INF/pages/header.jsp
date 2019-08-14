@@ -19,10 +19,10 @@
     
     <link rel="stylesheet" href="/springmvc/3rd/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/springmvc/3rd/assets/index.css">
-    <script src="/springmvc/WEB-INFO/3rd/assets/jquery.min.js"></script>
-    <script src="/springmvc/WEB-INFO/3rd/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/springmvc/WEB-INFO/3rd/assets/index.js"></script>
-    <script src="/springmvc/WEB-INFO/3rd/ga.js"></script>
+    <script src="/springmvc/3rd/assets/jquery.min.js"></script>
+    <script src="/springmvc/3rd/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/springmvc/3rd/assets/index.js"></script>
+    <script src="/springmvc/3rd/ga.js"></script>
     
     <style type="text/css">
         .jumbotron-margin-top {

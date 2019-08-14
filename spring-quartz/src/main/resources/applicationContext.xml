@@ -125,4 +125,5 @@ xmlns:task="http://www.springframework.org/schema/task"
     </bean>
     <context:component-scan base-package="com.github.support.*" />
   <import resource="spring/spring-activemq.xml" />
+   <import resource="spring/spring-dubbox.xml" />
 </beans>

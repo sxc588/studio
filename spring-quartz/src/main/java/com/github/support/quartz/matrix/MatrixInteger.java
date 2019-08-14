@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 import com.github.support.dbaccess.dto.MonMatrixDto;
 import com.github.support.dbaccess.service.MonMatrixService;
-import com.github.support.utils.http.HostUtils;
+import com.github.support.utils.HostUtils;
 
 @Component
 public final class MatrixInteger

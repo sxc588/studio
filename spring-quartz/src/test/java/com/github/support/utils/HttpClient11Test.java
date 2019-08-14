@@ -6,7 +6,6 @@ import java.net.URL;
 import java.util.List;
 
 import org.junit.Test;
-import com.github.support.utils.http.HttpClient11;
 
 public class HttpClient11Test extends HttpClient11
 {

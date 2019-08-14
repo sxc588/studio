@@ -1,6 +1,0 @@
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(50) NOT NULL,
-  `age` tinyint(10) NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8

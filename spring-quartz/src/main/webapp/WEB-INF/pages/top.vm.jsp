@@ -18,13 +18,6 @@ String contextPath = request.getContextPath();
     <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
-     <link rel="stylesheet" href="/springmvc/3rd/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/springmvc/3rd/assets/index.css">
-    <script src="/springmvc/3rd/assets/jquery.min.js"></script>
-    <script src="/springmvc/3rd/assets/bootstrap/js/bootstrap.min.js"></script>
-
-    
 	<style type="text/css">
 .jumbotron-margin-top {
 	margin-top: 95px;

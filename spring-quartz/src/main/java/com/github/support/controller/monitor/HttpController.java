@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.github.support.dbaccess.dto.ScheduleJob;
 import com.github.support.dbaccess.service.ScheduleJobServiceDb;
 import com.github.support.quartz.service.ScheduleJobService;
-import com.github.support.utils.http.HttpRequestUtil;
+import com.github.support.utils.HttpRequestUtil;
 import com.github.support.vo.ScheduleJobVo;
 
 /**

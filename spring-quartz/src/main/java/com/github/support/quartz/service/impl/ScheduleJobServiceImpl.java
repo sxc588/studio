@@ -338,7 +338,7 @@ public class ScheduleJobServiceImpl implements ScheduleJobService
 
 		} catch (SchedulerException e)
 		{
-			CodeCCUtil.errLog(LOG, "SchedulerException", e);
+			CodeCCUtil.LogException(LOG, "SchedulerException", e);
 			e.printStackTrace();
 		}
 		return null;
