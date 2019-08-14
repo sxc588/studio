@@ -31,7 +31,7 @@
 	
 	
 	<!-- 声明需要暴露的服务接口 -->
-	<dubbo:service interface="com.github.support.api.TestRegistryService" ref="testRegistryService" timeout="600000" />      
+	<dubbo:service interface="com.github.support.api.TestRegistryService" ref="testRegistryService" timeout="6000" />      
 
 <!-- 消费者方的spring配置 -->
 <!-- <dubbo:application name="consumer"/> -->
