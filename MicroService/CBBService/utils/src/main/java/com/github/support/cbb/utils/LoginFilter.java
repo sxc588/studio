@@ -32,9 +32,7 @@ public class LoginFilter implements Filter
 	public void init(FilterConfig config) throws ServletException
 	{
 		ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(config.getServletContext());
-
 		// ssows = context.getBean(String.class);
-
 	}
 
 	@Override

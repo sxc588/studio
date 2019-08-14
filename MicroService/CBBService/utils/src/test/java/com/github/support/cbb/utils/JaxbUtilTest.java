@@ -1,6 +1,5 @@
 package com.github.support.cbb.utils;
 
-import static org.junit.Assert.*;
 import java.util.Date;
 import org.junit.Test;
 import com.github.support.cbb.utils.bean.Book;

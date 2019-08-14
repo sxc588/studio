@@ -5,7 +5,7 @@
 
 <struts>
 	<constant name="struts.devMode" value="true" />
-	<constant name="struts.i18n.encoding" value="GBK" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
 	<package name="common" extends="struts-default" namespace="/common">
 		<!-- 定义拦截器 -->
 		<interceptors>

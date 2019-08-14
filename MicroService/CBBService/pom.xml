@@ -39,14 +39,11 @@
 				<artifactId>flyway-core</artifactId>
 				<version>${Flyway.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>javax</groupId>
 				<artifactId>javaee-api</artifactId>
 				<version>${javaee-api.version}</version>
 			</dependency>
-
-
 			<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>javax.servlet-api</artifactId>
@@ -55,17 +52,13 @@
 			<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>servlet-api</artifactId>
-				<version>2.5</version>
+				<version>3.0.1</version>
 			</dependency>
-
-
-
 			<dependency>
 				<groupId>net.sf.ehcache</groupId>
 				<artifactId>ehcache-core</artifactId>
 				<version>${ehcache.version}</version>
 			</dependency>
-
 			<!-- Spring MVC -->
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -221,6 +214,8 @@
 		<module>utils</module>
 		<module>quartz</module>
 		<module>web-common</module>
+		<module>poi</module>
+		<module>tohtml</module>
 	</modules>
 
 	<build>

@@ -3,20 +3,16 @@
         "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
 <!-- 用户登录时定义校验器 -->
 <validators>
-    <field name="user.username">
-        <field-validator type="requiredstring"><!-- 用户名不能为空 -->
-            <message>用户名不能为空</message>
-        </field-validator>
-        <!-- 
-        <field-validator type="regex">   
-          <param name="expression"><![CDATA[(\w{6,25})]]></param>
-          <message>用户名长度必须在6到25之间，且必须是字母和数字</message>
-         </field-validator>
-       -->
-    </field>
-    <field name="user.password"><!-- 密码不能为空 -->
-        <field-validator type="requiredstring">
-            <message>密码不能为空</message>
-        </field-validator>
-    </field>
+	<field name="user.username">
+		<field-validator type="requiredstring"><!-- 用户名不能为空 -->
+			<message>用户名不能为空</message>
+		</field-validator>
+		<!-- <field-validator type="regex"> <param name="expression"><![CDATA[(\w{6,25})]]></param> 
+			<message>用户名长度必须在6到25之间，且必须是字母和数字</message> </field-validator> -->
+	</field>
+	<field name="user.password"><!-- 密码不能为空 -->
+		<field-validator type="requiredstring">
+			<message>密码不能为空</message>
+		</field-validator>
+	</field>
 </validators>
