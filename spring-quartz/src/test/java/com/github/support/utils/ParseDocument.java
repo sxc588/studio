@@ -15,18 +15,50 @@ import org.junit.Test;
  * @日期 2014-4-2上午10:54:53
  * @描述
  */
-public class ParseDocument
-{
+public class ParseDocument {
 
 	/**
-	 * 将String转换成Document
+	 * 从文件加载
 	 * 
-	 * @return org.jsoup.nodes.Document
+	 * @return Document
 	 */
-	public static Document parseHtmlFromString()
-	{
-		String html = "<html><head><title>标题</title></head>" + "<body><p>段落</p></body></html>";
-		Document doc = Jsoup.parse(html);
+	public static Document parseDocumentFromFile() {
+		File input = new File("/tmp/input.html");
+		Document doc = null;
+		try {
+			// 从文件加载Document文档
+			doc = Jsoup.parse(input, "UTF-8");
+			System.out.println(doc.title());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return doc;
+	}
+
+	/**
+	 * 从URL加载
+	 * 
+	 * @return Document
+	 */
+	public static Document parseDocumentFromUrl() {
+		Document doc = null;
+		try {
+			doc = Jsoup.connect("https://www.baidu.com/").get();
+			// 获取标题
+			String title = doc.title();
+			String value = doc.body().html();
+			System.out.println(value);// 输出：Google
+			// data(key,value)是该URL要求的参数
+			// userAgent制定用户使用的代理类型
+			// cookie带上cookie，如cookie("JSESSIONID","FDE234242342342423432432")
+			// 连接超时时间
+			// post或者get方法
+			doc = Jsoup.connect("https://www.baidu.com/").data("query", "Java").userAgent("Mozilla")
+					.cookie("auth", "token").timeout(3000).post();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return doc;
 	}
 
@@ -35,8 +67,7 @@ public class ParseDocument
 	 * 
 	 * @return Element
 	 */
-	public static Element parseHtmlFragmentFromStringNotSafe()
-	{
+	public static Element parseHtmlFragmentFromStringNotSafe() {
 		String html = "<div><p>Lorem ipsum.</p>";
 		Document doc = Jsoup.parseBodyFragment(html);
 		Element body = doc.body();
@@ -48,8 +79,7 @@ public class ParseDocument
 	 * 
 	 * @return Element
 	 */
-	public static Element parseHtmlFragmentFromStringSafe()
-	{
+	public static Element parseHtmlFragmentFromStringSafe() {
 		String html = "<div><p>Lorem ipsum.</p>";
 		// 白名单列表定义了哪些元素和属性可以通过清洁器，其他的元素和属性一律移除
 		Whitelist wl = new Whitelist();
@@ -84,60 +114,19 @@ public class ParseDocument
 	}
 
 	/**
-	 * 从URL加载
+	 * 将String转换成Document
 	 * 
-	 * @return Document
+	 * @return org.jsoup.nodes.Document
 	 */
-	public static Document parseDocumentFromUrl()
-	{
-		Document doc = null;
-		try
-		{
-			doc = Jsoup.connect("https://www.baidu.com/").get();
-			// 获取标题
-			String title = doc.title();
-			String value = doc.body().html();
-			System.out.println(value);// 输出：Google
-			// data(key,value)是该URL要求的参数
-			// userAgent制定用户使用的代理类型
-			// cookie带上cookie，如cookie("JSESSIONID","FDE234242342342423432432")
-			// 连接超时时间
-			// post或者get方法
-			doc = Jsoup.connect("https://www.baidu.com/").data("query", "Java").userAgent("Mozilla")
-					.cookie("auth", "token").timeout(3000).post();
-
-		} catch (IOException e)
-		{
-			e.printStackTrace();
-		}
+	public static Document parseHtmlFromString() {
+		String html = "<html><head><title>标题</title></head>" + "<body><p>段落</p></body></html>";
+		Document doc = Jsoup.parse(html);
 		return doc;
 	}
 
 	@Test
-	public void test()
-	{
+	public void test() {
 		parseDocumentFromUrl();
-	}
-
-	/**
-	 * 从文件加载
-	 * 
-	 * @return Document
-	 */
-	public static Document parseDocumentFromFile()
-	{
-		File input = new File("/tmp/input.html");
-		Document doc = null;
-		try
-		{
-			// 从文件加载Document文档
-			doc = Jsoup.parse(input, "UTF-8");
-			System.out.println(doc.title());
-		} catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-		return doc;
 	}
 
 }

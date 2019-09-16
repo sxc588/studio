@@ -11,23 +11,19 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by Administrator on 2017/1/5.
  */
-public class QueueMessageListener implements MessageListener
-{
-	
+public class QueueMessageListener implements MessageListener {
 
 	/* 日志对象 */
 	private static final Logger LOG = LoggerFactory.getLogger(ActiveMqProducerService.class);
-	
-	public void onMessage(Message message)
-	{
+
+	@Override
+	public void onMessage(Message message) {
 		TextMessage tm = (TextMessage) message;
-		try
-		{
-			
+		try {
+
 			LOG.info(Thread.currentThread().getName() + "QueueMessageListener监听到了文本消息：\t" + tm.getText());
 			// do something ...
-		} catch (JMSException e)
-		{
+		} catch (JMSException e) {
 			e.printStackTrace();
 		}
 	}

@@ -6,8 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class LoginController
-{
+public class LoginController {
 	@RequestMapping(value = "/login")
 	public String login(HttpSession session, String username, String password) throws Exception {
 		System.out.println("-----login------");
@@ -21,7 +20,7 @@ public class LoginController
 	public String logout(HttpSession session) throws Exception {
 		// 清除Session
 		session.invalidate();
- 
+
 		return "hello";
 	}
 

@@ -12,15 +12,13 @@ import org.springframework.scheduling.quartz.AdaptableJobFactory;
  * @author Administrator
  *
  */
-public final class SpringScheduleJobFactory extends AdaptableJobFactory
-{
+public final class SpringScheduleJobFactory extends AdaptableJobFactory {
 
 	@Autowired
 	private AutowireCapableBeanFactory capableBeanFactory;
 
 	@Override
-	protected Object createJobInstance(TriggerFiredBundle bundle) throws Exception
-	{
+	protected Object createJobInstance(TriggerFiredBundle bundle) throws Exception {
 		// 调用父类的方法
 		Object jobInstance = super.createJobInstance(bundle);
 		// 进行注入

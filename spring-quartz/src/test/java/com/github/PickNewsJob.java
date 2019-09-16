@@ -17,25 +17,20 @@ import org.quartz.SimpleTrigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
 
-public class PickNewsJob implements Job
-{
+public class PickNewsJob implements Job {
 
 	@Override
-	public void execute(JobExecutionContext arg0) throws JobExecutionException
-	{
+	public void execute(JobExecutionContext arg0) throws JobExecutionException {
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 		System.err.println("在" + sdf.format(new Date()) + "扒取新闻");
 
 	}
 
 	@Test
-	public void main() throws SchedulerException, InterruptedException
-	{
-		Long dt =  new Date().getTime();
-		
-		
-		
-		JobDetail jobDetail = JobBuilder.newJob(PickNewsJob.class).withIdentity("job1", "jgroup1" +dt).build();
+	public void main() throws SchedulerException, InterruptedException {
+		Long dt = new Date().getTime();
+
+		JobDetail jobDetail = JobBuilder.newJob(PickNewsJob.class).withIdentity("job1", "jgroup1" + dt).build();
 		SimpleTrigger simpleTrigger = TriggerBuilder.newTrigger().withIdentity("trigger1" + dt)
 				.withSchedule(SimpleScheduleBuilder.repeatSecondlyForTotalCount(10, 2)).startNow().build();
 
@@ -44,7 +39,7 @@ public class PickNewsJob implements Job
 		Scheduler scheduler = schedulerFactory.getScheduler();
 		scheduler.scheduleJob(jobDetail, simpleTrigger);
 		scheduler.start();
-		
+
 		Thread.sleep(10000);
 	}
 

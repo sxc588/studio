@@ -1,58 +1,50 @@
 package com.github.support.quartz.event;
 
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
 
-import org.apache.lucene.document.Field.Index;
-import org.quartz.JobDetail;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.github.support.quartz.service.ScheduleJobService;
-import com.github.support.vo.ScheduleJobVo;
 
 /**
  * author : benjamin createTime : 2017.06.06 description : 定时任务初始化 version : 1.0
  */
 @Component
-public class ScheduleJobInit
-{
+public class ScheduleJobInit {
 
 	// ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
 
-	 ExecutorService fixedThreadPool = Executors.newFixedThreadPool(300);
-	
-	ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
-
 	/** 日志对象 */
 	private static final Logger LOG = LoggerFactory.getLogger(ScheduleJobInit.class);
+
+	ExecutorService fixedThreadPool = Executors.newFixedThreadPool(300);
 
 	/** 定时任务service */
 	@Autowired
 	private ScheduleJobService scheduleJobService;
 
+	ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
+
 	/**
 	 * 项目启动时初始化
 	 */
 	@PostConstruct
-	public void init()
-	{
+	public void init() {
 
-		if (LOG.isInfoEnabled())
-		{
+		if (LOG.isInfoEnabled()) {
 			LOG.info("init");
 		}
-		
+
 		// scheduleJobService.initScheduleJob();
-		
+
 		// scheduleJobService.initScheduleJob();
-		
+
 //		
 //		fixedThreadPool.execute(new Runnable()
 //		{
@@ -105,10 +97,9 @@ public class ScheduleJobInit
 //			}
 //		});
 
-	//	scheduleJobService.initScheduleJob();
+		// scheduleJobService.initScheduleJob();
 
-		if (LOG.isInfoEnabled())
-		{
+		if (LOG.isInfoEnabled()) {
 			LOG.info("end");
 		}
 	}

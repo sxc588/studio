@@ -30,81 +30,59 @@ import com.github.support.vo.UserVo;
  */
 @Controller
 @RequestMapping(value = "/entitle/user2")
-public class UserController2
-{
-	//private static Logger logger = LoggerFactory.getLogger(UserController2.class);
+public class UserController2 {
+	// private static Logger logger =
+	// LoggerFactory.getLogger(UserController2.class);
 
 	// @Autowired
 	// private HostService hostService;
 
-	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public String regist(HttpServletRequest request, Model model)
-	{
-		// https://blog.csdn.net/ruthywei/article/details/74295612
-		model.addAttribute("msg", "username");
-		return "cmdb/user/listView";
-	}
-
 	@RequestMapping(value = "chart", method = RequestMethod.GET)
-	public String chart(HttpServletRequest request, Model model)
-	{
+	public String chart(HttpServletRequest request, Model model) {
 		// https://blog.csdn.net/ruthywei/article/details/74295612
 		model.addAttribute("msg", "username");
 		return "cmdb/host/chart";
 	}
 
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String page(HttpServletRequest request, Model model)
-	{
-		// https://blog.csdn.net/ruthywei/article/details/74295612
-
-		String page = request.getParameter("page");
-
-		if (StringUtils.isBlank(page))
-		{
-			page = "chart";
+	@RequestMapping("/doget")
+	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+		String page = "1";
+		String rows = "1";
+		page = request.getParameter("page");
+		rows = request.getParameter("rows");
+		if (page == null) {
+			page = "1";
 		}
-
-		model.addAttribute("msg", "username");
-		return "cmdb/host/" + page;
-	}
-
-	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public String upload(HttpServletRequest request,
-			// @RequestParam("description") String description,
-			@RequestParam("file") MultipartFile file) throws Exception
-	{
-
-		// System.out.println(description);
-		// 如果文件不为空，写入上传路径
-		if (!file.isEmpty())
-		{
-			// 上传文件路径
-			String path = request.getContextPath() + "/images/";
-			// 上传文件名
-			String filename = file.getOriginalFilename();
-			File filepath = new File(path, filename);
-			// 判断路径是否存在，如果不存在就创建一个
-			if (!filepath.getParentFile().exists())
-			{
-				filepath.getParentFile().mkdirs();
+		if (rows == null) {
+			rows = "2";
+		}
+		System.out.println("page: " + page + " rows: " + rows);
+		int totalRecord = 12; // 总记录数(应根据数据库取得，在此只是模拟)
+		int totalPage = totalRecord % Integer.parseInt(rows) == 0 ? totalRecord / Integer.parseInt(rows)
+				: totalRecord / Integer.parseInt(rows) + 1; // 计算总页数
+		try {
+			int index = (Integer.parseInt(page) - 1) * Integer.parseInt(rows); // 开始记录数0
+			int pageSize = Integer.parseInt(rows);// 2
+			// 以下模拟构造JSON数据对象 ,该对象是jqgrid的默认返回对象
+			String json = "{total: " + totalPage + ", page: " + page + ", records: " + totalRecord + ", rows: [";
+			for (int i = index; i < pageSize + index && i < totalRecord; i++) {
+				json += "{'id':'" + i + "','invdate':'" + i + "','name':'" + i + "','amount':'" + i + "','tax':'" + i
+						+ "','total':'" + i + "','note':'" + i + "'}";
+				if (i != pageSize + index - 1 && i != totalRecord - 1) {
+					json += ",";
+				}
 			}
-			// 将上传文件保存到一个目标文件当中
-			file.transferTo(new File(path + File.separator + filename));
-			return "success";
-		} else
-		{
-			return "error";
+			json += "]}";
+			System.out.println(json);
+			response.getWriter().write(json); // 将JSON数据返回页面
+		} catch (Exception ex) {
 		}
-
 	}
 
 	@RequestMapping("/export")
-	public @ResponseBody String export(HttpServletResponse response)
-	{
+	public @ResponseBody String export(HttpServletResponse response) {
 		response.setContentType("application/binary;charset=UTF-8");
-		try
-		{
+		try {
 			ServletOutputStream out = response.getOutputStream();
 			String fileName = new String(
 					("UserInfo " + new SimpleDateFormat("yyyy-MM-dd").format(new Date())).getBytes(), "UTF-8");
@@ -112,52 +90,9 @@ public class UserController2
 			String[] titles = { "用户编号", "用户姓名", "用户密码", "用户年龄" };
 			// hostService.export(titles, out);
 			return "success";
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 			return "导出信息失败";
-		}
-	}
-
-	@RequestMapping("/doget")
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-	{
-		String page = "1";
-		String rows = "1";
-		page = request.getParameter("page");
-		rows = request.getParameter("rows");
-		if (page == null)
-		{
-			page = "1";
-		}
-		if (rows == null)
-		{
-			rows = "2";
-		}
-		System.out.println("page: " + page + " rows: " + rows);
-		int totalRecord = 12; // 总记录数(应根据数据库取得，在此只是模拟)
-		int totalPage = totalRecord % Integer.parseInt(rows) == 0 ? totalRecord / Integer.parseInt(rows)
-				: totalRecord / Integer.parseInt(rows) + 1; // 计算总页数
-		try
-		{
-			int index = (Integer.parseInt(page) - 1) * Integer.parseInt(rows); // 开始记录数0
-			int pageSize = Integer.parseInt(rows);// 2
-			// 以下模拟构造JSON数据对象 ,该对象是jqgrid的默认返回对象
-			String json = "{total: " + totalPage + ", page: " + page + ", records: " + totalRecord + ", rows: [";
-			for (int i = index; i < pageSize + index && i < totalRecord; i++)
-			{
-				json += "{'id':'" + i + "','invdate':'" + i + "','name':'" + i + "','amount':'" + i + "','tax':'" + i
-						+ "','total':'" + i + "','note':'" + i + "'}";
-				if (i != pageSize + index - 1 && i != totalRecord - 1)
-				{
-					json += ",";
-				}
-			}
-			json += "]}";
-			System.out.println(json);
-			response.getWriter().write(json); // 将JSON数据返回页面
-		} catch (Exception ex)
-		{
 		}
 	}
 
@@ -168,9 +103,56 @@ public class UserController2
 	 * @return
 	 */
 	@ResponseBody
+	@RequestMapping(value = "/json2", method = RequestMethod.GET)
+	public Map<String, Object> json2(ScheduleJobVo scheduleJobVo, ModelMap modelMap) {
+
+		System.err.println("DDDDDDDDDDDDDDDDDDD");
+
+		Map<String, Object> valus = new HashMap<String, Object>();
+
+		valus.put("total", "3");
+		valus.put("page", "1");
+		valus.put("records", "15");
+
+		// List<Map<String,Object>> scheduleJobVoList = new
+		// ArrayList<Map<String,Object>>();
+		//
+		// Map<String, Object> dt = new HashMap<String, Object>();
+		// dt.put("id", "1");
+		// dt.put("cell", new UserVo("Otto Clay---", 25, 1, "Ap #897-1459 Quam
+		// Avenue", false));
+		//
+		// scheduleJobVoList.add(dt);
+
+//		List<IssueVo> scheduleJobVoList = new ArrayList<IssueVo>();
+//
+//		scheduleJobVoList.add(new IssueVo("issueID1", "title", "description", "progress", new Date(), "locked"));
+//		scheduleJobVoList.add(new IssueVo("issueID2", "title", "description", "progress", new Date(), "locked"));
+//		scheduleJobVoList.add(new IssueVo("issueID3", "title", "description", "progress", new Date(), "locked"));
+//		scheduleJobVoList.add(new IssueVo("issueID4", "title", "description", "progress", new Date(), "locked"));
+//
+//		scheduleJobVoList.add(new IssueVo("issueID5", "title", "description", "progress", new Date(), "locked"));
+//		scheduleJobVoList.add(new IssueVo("issueID6", "title", "description", "progress", new Date(), "locked"));
+//
+//		scheduleJobVoList.add(new IssueVo("issueID7", "title", "description", "progress", new Date(), "locked"));
+//		scheduleJobVoList.add(new IssueVo("issueID8", "title", "description", "progress", new Date(), "locked"));
+//
+//		scheduleJobVoList.add(new IssueVo("issueID9", "title", "description", "progress", new Date(), "locked"));
+//		scheduleJobVoList.add(new IssueVo("issueID0", "title", "description", "progress", new Date(), "locked"));
+//
+//		valus.put("rows", scheduleJobVoList);
+		return valus;
+	}
+
+	/**
+	 * 任务列表页
+	 *
+	 * @param modelMap
+	 * @return
+	 */
+	@ResponseBody
 	@RequestMapping(value = "/json", method = RequestMethod.GET)
-	public Map<String, Object> listScheduleJob2(ScheduleJobVo scheduleJobVo, ModelMap modelMap)
-	{
+	public Map<String, Object> listScheduleJob2(ScheduleJobVo scheduleJobVo, ModelMap modelMap) {
 
 		System.err.println("DDDDDDDDDDDDDDDDDDD");
 
@@ -245,53 +227,51 @@ public class UserController2
 		return valus;
 	}
 
-	/**
-	 * 任务列表页
-	 *
-	 * @param modelMap
-	 * @return
-	 */
-	@ResponseBody
-	@RequestMapping(value = "/json2", method = RequestMethod.GET)
-	public Map<String, Object> json2(ScheduleJobVo scheduleJobVo, ModelMap modelMap)
-	{
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public String page(HttpServletRequest request, Model model) {
+		// https://blog.csdn.net/ruthywei/article/details/74295612
 
-		System.err.println("DDDDDDDDDDDDDDDDDDD");
+		String page = request.getParameter("page");
 
-		Map<String, Object> valus = new HashMap<String, Object>();
+		if (StringUtils.isBlank(page)) {
+			page = "chart";
+		}
 
-		valus.put("total", "3");
-		valus.put("page", "1");
-		valus.put("records", "15");
+		model.addAttribute("msg", "username");
+		return "cmdb/host/" + page;
+	}
 
-		// List<Map<String,Object>> scheduleJobVoList = new
-		// ArrayList<Map<String,Object>>();
-		//
-		// Map<String, Object> dt = new HashMap<String, Object>();
-		// dt.put("id", "1");
-		// dt.put("cell", new UserVo("Otto Clay---", 25, 1, "Ap #897-1459 Quam
-		// Avenue", false));
-		//
-		// scheduleJobVoList.add(dt);
+	@RequestMapping(value = "list", method = RequestMethod.GET)
+	public String regist(HttpServletRequest request, Model model) {
+		// https://blog.csdn.net/ruthywei/article/details/74295612
+		model.addAttribute("msg", "username");
+		return "cmdb/user/listView";
+	}
 
-//		List<IssueVo> scheduleJobVoList = new ArrayList<IssueVo>();
-//
-//		scheduleJobVoList.add(new IssueVo("issueID1", "title", "description", "progress", new Date(), "locked"));
-//		scheduleJobVoList.add(new IssueVo("issueID2", "title", "description", "progress", new Date(), "locked"));
-//		scheduleJobVoList.add(new IssueVo("issueID3", "title", "description", "progress", new Date(), "locked"));
-//		scheduleJobVoList.add(new IssueVo("issueID4", "title", "description", "progress", new Date(), "locked"));
-//
-//		scheduleJobVoList.add(new IssueVo("issueID5", "title", "description", "progress", new Date(), "locked"));
-//		scheduleJobVoList.add(new IssueVo("issueID6", "title", "description", "progress", new Date(), "locked"));
-//
-//		scheduleJobVoList.add(new IssueVo("issueID7", "title", "description", "progress", new Date(), "locked"));
-//		scheduleJobVoList.add(new IssueVo("issueID8", "title", "description", "progress", new Date(), "locked"));
-//
-//		scheduleJobVoList.add(new IssueVo("issueID9", "title", "description", "progress", new Date(), "locked"));
-//		scheduleJobVoList.add(new IssueVo("issueID0", "title", "description", "progress", new Date(), "locked"));
-//
-//		valus.put("rows", scheduleJobVoList);
-		return valus;
+	@RequestMapping(value = "/upload", method = RequestMethod.POST)
+	public String upload(HttpServletRequest request,
+			// @RequestParam("description") String description,
+			@RequestParam("file") MultipartFile file) throws Exception {
+
+		// System.out.println(description);
+		// 如果文件不为空，写入上传路径
+		if (!file.isEmpty()) {
+			// 上传文件路径
+			String path = request.getContextPath() + "/images/";
+			// 上传文件名
+			String filename = file.getOriginalFilename();
+			File filepath = new File(path, filename);
+			// 判断路径是否存在，如果不存在就创建一个
+			if (!filepath.getParentFile().exists()) {
+				filepath.getParentFile().mkdirs();
+			}
+			// 将上传文件保存到一个目标文件当中
+			file.transferTo(new File(path + File.separator + filename));
+			return "success";
+		} else {
+			return "error";
+		}
+
 	}
 
 }

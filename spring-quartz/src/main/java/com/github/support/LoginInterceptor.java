@@ -1,6 +1,5 @@
 package com.github.support;
 
-public class LoginInterceptor
-{
+public class LoginInterceptor {
 
 }

@@ -13,125 +13,122 @@ import com.github.support.quartz.service.ScheduleJobService;
 import com.github.support.vo.ScheduleJobVo;
 
 /**
- * author : benjamin
- * createTime : 2017.06.06
- * description : 定时任务控制器
- * version : 1.0
+ * author : benjamin createTime : 2017.06.06 description : 定时任务控制器 version : 1.0
  */
 @Controller
 @RequestMapping(value = "/cmdb/app")
 public class AppController {
-    /** job service */
-    @Autowired
-    private ScheduleJobService scheduleJobService;
+	/** job service */
+	@Autowired
+	private ScheduleJobService scheduleJobService;
 
-    /**
-     * 任务页面
-     *
-     * @return
-     */
-    @RequestMapping(value = "input", method = RequestMethod.GET)
-    public String inputScheduleJob(ScheduleJobVo scheduleJobVo, ModelMap modelMap) {
+	/**
+	 * 删除任务
+	 *
+	 * @return
+	 */
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String deleteScheduleJob(Long scheduleJobId) {
 
-        if (scheduleJobVo.getScheduleJobId() != null) {
-            ScheduleJobVo scheduleJob = scheduleJobService.get(scheduleJobVo.getScheduleJobId());
-            scheduleJob.setKeywords(scheduleJobVo.getKeywords());
-            modelMap.put("scheduleJobVo", scheduleJob);
-        }
+		scheduleJobService.delete(scheduleJobId);
 
-        return "input-schedule-job";
-    }
+		return "redirect:list-schedule-job.shtml";
+	}
 
-    /**
-     * 删除任务
-     *
-     * @return
-     */
-    @RequestMapping(value = "delete", method = RequestMethod.GET)
-    public String deleteScheduleJob(Long scheduleJobId) {
+	/**
+	 * 任务页面
+	 *
+	 * @return
+	 */
+	@RequestMapping(value = "input", method = RequestMethod.GET)
+	public String inputScheduleJob(ScheduleJobVo scheduleJobVo, ModelMap modelMap) {
 
-        scheduleJobService.delete(scheduleJobId);
+		if (scheduleJobVo.getScheduleJobId() != null) {
+			ScheduleJobVo scheduleJob = scheduleJobService.get(scheduleJobVo.getScheduleJobId());
+			scheduleJob.setKeywords(scheduleJobVo.getKeywords());
+			modelMap.put("scheduleJobVo", scheduleJob);
+		}
 
-        return "redirect:list-schedule-job.shtml";
-    }
+		return "input-schedule-job";
+	}
 
-    /**
-     * 运行一次
-     *
-     * @return
-     */
-    @RequestMapping(value = "run", method = RequestMethod.GET)
-    public String runOnceScheduleJob(Long scheduleJobId) {
+	/**
+	 * 任务列表页
+	 *
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "list", method = RequestMethod.GET)
+	public String listScheduleJob(ScheduleJobVo scheduleJobVo, ModelMap modelMap) {
 
-        scheduleJobService.runOnce(scheduleJobId);
+		List<ScheduleJobVo> scheduleJobVoList = scheduleJobService.queryList(scheduleJobVo);
+		modelMap.put("scheduleJobVoList", scheduleJobVoList);
 
-        return "redirect:list-schedule-job.shtml";
-    }
+		List<ScheduleJobVo> executingJobList = scheduleJobService.queryExecutingJobList();
+		modelMap.put("executingJobList", executingJobList);
 
-    /**
-     * 暂停
-     *
-     * @return
-     */
-    @RequestMapping(value = "pause", method = RequestMethod.GET)
-    public String pauseScheduleJob(Long scheduleJobId) {
-        scheduleJobService.pauseJob(scheduleJobId);
-        return "redirect:list-schedule-job.shtml";
-    }
+		return "pages/product/list";
+	}
 
-    /**
-     * 恢复
-     *
-     * @return
-     */
-    @RequestMapping(value = "resume", method = RequestMethod.GET)
-    public String resumeScheduleJob(Long scheduleJobId) {
-        scheduleJobService.resumeJob(scheduleJobId);
-        return "redirect:list-schedule-job.shtml";
-    }
+	/**
+	 * 暂停
+	 *
+	 * @return
+	 */
+	@RequestMapping(value = "pause", method = RequestMethod.GET)
+	public String pauseScheduleJob(Long scheduleJobId) {
+		scheduleJobService.pauseJob(scheduleJobId);
+		return "redirect:list-schedule-job.shtml";
+	}
 
-    /**
-     * 保存任务
-     *
-     * @param scheduleJobVo
-     * @return
-     */
-    @RequestMapping(value = "save", method = RequestMethod.POST)
-    public String saveScheduleJob(ScheduleJobVo scheduleJobVo) {
+	/**
+	 * 恢复
+	 *
+	 * @return
+	 */
+	@RequestMapping(value = "resume", method = RequestMethod.GET)
+	public String resumeScheduleJob(Long scheduleJobId) {
+		scheduleJobService.resumeJob(scheduleJobId);
+		return "redirect:list-schedule-job.shtml";
+	}
 
-     for (int i= 1000; i<2000;i++)
-{
-	scheduleJobVo.setJobName("jobName" + i);
-        //测试用随便设个状态
-        scheduleJobVo.setStatus("1");
+	/**
+	 * 运行一次
+	 *
+	 * @return
+	 */
+	@RequestMapping(value = "run", method = RequestMethod.GET)
+	public String runOnceScheduleJob(Long scheduleJobId) {
 
-        if (scheduleJobVo.getScheduleJobId() == null) {
-            scheduleJobService.insert(scheduleJobVo);
-        } else if (StringUtils.equalsIgnoreCase(scheduleJobVo.getKeywords(),"delUpdate")){
-            //直接拿keywords存一下，就不另外重新弄了
-            scheduleJobService.delUpdate(scheduleJobVo);
-        }else {
-            scheduleJobService.update(scheduleJobVo);
-        }}
-        return "redirect:list-schedule-job.shtml";
-    }
+		scheduleJobService.runOnce(scheduleJobId);
 
-    /**
-     * 任务列表页
-     *
-     * @param modelMap
-     * @return
-     */
-    @RequestMapping(value = "list", method = RequestMethod.GET)
-    public String listScheduleJob(ScheduleJobVo scheduleJobVo, ModelMap modelMap) {
+		return "redirect:list-schedule-job.shtml";
+	}
 
-        List<ScheduleJobVo> scheduleJobVoList = scheduleJobService.queryList(scheduleJobVo);
-        modelMap.put("scheduleJobVoList", scheduleJobVoList);
+	/**
+	 * 保存任务
+	 *
+	 * @param scheduleJobVo
+	 * @return
+	 */
+	@RequestMapping(value = "save", method = RequestMethod.POST)
+	public String saveScheduleJob(ScheduleJobVo scheduleJobVo) {
 
-        List<ScheduleJobVo> executingJobList = scheduleJobService.queryExecutingJobList();
-        modelMap.put("executingJobList", executingJobList);
+		for (int i = 1000; i < 2000; i++) {
+			scheduleJobVo.setJobName("jobName" + i);
+			// 测试用随便设个状态
+			scheduleJobVo.setStatus("1");
 
-        return "pages/product/list";
-    }
+			if (scheduleJobVo.getScheduleJobId() == null) {
+				scheduleJobService.insert(scheduleJobVo);
+			} else if (StringUtils.equalsIgnoreCase(scheduleJobVo.getKeywords(), "delUpdate")) {
+				// 直接拿keywords存一下，就不另外重新弄了
+				scheduleJobService.delUpdate(scheduleJobVo);
+			} else {
+				scheduleJobService.update(scheduleJobVo);
+			}
+		}
+		return "redirect:list-schedule-job.shtml";
+	}
 
 }

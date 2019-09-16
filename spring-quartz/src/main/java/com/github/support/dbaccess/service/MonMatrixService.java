@@ -7,14 +7,12 @@ import com.github.support.dbaccess.dto.MonMatrixDto;
 import com.github.support.dbaccess.mapper.MonMatrixMapper;
 
 @Repository
-public class MonMatrixService
-{
+public class MonMatrixService {
 
 	@Autowired
 	private MonMatrixMapper mapper;
 
-	public int insert(MonMatrixDto record)
-	{
+	public int insert(MonMatrixDto record) {
 		return mapper.insert(record);
 	}
 }

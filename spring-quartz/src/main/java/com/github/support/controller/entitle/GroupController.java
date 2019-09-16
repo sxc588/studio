@@ -24,81 +24,58 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Controller
 @RequestMapping(value = "/entitle/group")
-public class GroupController
-{
+public class GroupController {
 	private static Logger logger = LoggerFactory.getLogger(GroupController.class);
 
 	// @Autowired
 	// private HostService hostService;
 
-	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public String regist(HttpServletRequest request, Model model)
-	{
-		// https://blog.csdn.net/ruthywei/article/details/74295612
-		model.addAttribute("msg", "username");
-		return "cmdb/host/listView3";
-	}
-
 	@RequestMapping(value = "chart", method = RequestMethod.GET)
-	public String chart(HttpServletRequest request, Model model)
-	{
+	public String chart(HttpServletRequest request, Model model) {
 		// https://blog.csdn.net/ruthywei/article/details/74295612
 		model.addAttribute("msg", "username");
 		return "cmdb/host/chart";
 	}
 
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String page(HttpServletRequest request, Model model)
-	{
-		// https://blog.csdn.net/ruthywei/article/details/74295612
-
-		String page = request.getParameter("page");
-
-		if (StringUtils.isBlank(page))
-		{
-			page = "chart";
+	@RequestMapping("/doget")
+	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+		String page = "1";
+		String rows = "1";
+		page = request.getParameter("page");
+		rows = request.getParameter("rows");
+		if (page == null) {
+			page = "1";
 		}
-
-		model.addAttribute("msg", "username");
-		return "cmdb/host/" + page;
-	}
-
-	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public String upload(HttpServletRequest request,
-			// @RequestParam("description") String description,
-			@RequestParam("file") MultipartFile file) throws Exception
-	{
-
-		// System.out.println(description);
-		// 如果文件不为空，写入上传路径
-		if (!file.isEmpty())
-		{
-			// 上传文件路径
-			String path = request.getContextPath() + "/images/";
-			// 上传文件名
-			String filename = file.getOriginalFilename();
-			File filepath = new File(path, filename);
-			// 判断路径是否存在，如果不存在就创建一个
-			if (!filepath.getParentFile().exists())
-			{
-				filepath.getParentFile().mkdirs();
+		if (rows == null) {
+			rows = "2";
+		}
+		System.out.println("page: " + page + " rows: " + rows);
+		int totalRecord = 12; // 总记录数(应根据数据库取得，在此只是模拟)
+		int totalPage = totalRecord % Integer.parseInt(rows) == 0 ? totalRecord / Integer.parseInt(rows)
+				: totalRecord / Integer.parseInt(rows) + 1; // 计算总页数
+		try {
+			int index = (Integer.parseInt(page) - 1) * Integer.parseInt(rows); // 开始记录数0
+			int pageSize = Integer.parseInt(rows);// 2
+			// 以下模拟构造JSON数据对象 ,该对象是jqgrid的默认返回对象
+			String json = "{total: " + totalPage + ", page: " + page + ", records: " + totalRecord + ", rows: [";
+			for (int i = index; i < pageSize + index && i < totalRecord; i++) {
+				json += "{'id':'" + i + "','invdate':'" + i + "','name':'" + i + "','amount':'" + i + "','tax':'" + i
+						+ "','total':'" + i + "','note':'" + i + "'}";
+				if (i != pageSize + index - 1 && i != totalRecord - 1) {
+					json += ",";
+				}
 			}
-			// 将上传文件保存到一个目标文件当中
-			file.transferTo(new File(path + File.separator + filename));
-			return "success";
-		} else
-		{
-			return "error";
+			json += "]}";
+			System.out.println(json);
+			response.getWriter().write(json); // 将JSON数据返回页面
+		} catch (Exception ex) {
 		}
-
 	}
 
 	@RequestMapping("/export")
-	public @ResponseBody String export(HttpServletResponse response)
-	{
+	public @ResponseBody String export(HttpServletResponse response) {
 		response.setContentType("application/binary;charset=UTF-8");
-		try
-		{
+		try {
 			ServletOutputStream out = response.getOutputStream();
 			String fileName = new String(
 					("UserInfo " + new SimpleDateFormat("yyyy-MM-dd").format(new Date())).getBytes(), "UTF-8");
@@ -106,52 +83,56 @@ public class GroupController
 			String[] titles = { "用户编号", "用户姓名", "用户密码", "用户年龄" };
 			// hostService.export(titles, out);
 			return "success";
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 			return "导出信息失败";
 		}
 	}
 
-	@RequestMapping("/doget")
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-	{
-		String page = "1";
-		String rows = "1";
-		page = request.getParameter("page");
-		rows = request.getParameter("rows");
-		if (page == null)
-		{
-			page = "1";
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public String page(HttpServletRequest request, Model model) {
+		// https://blog.csdn.net/ruthywei/article/details/74295612
+
+		String page = request.getParameter("page");
+
+		if (StringUtils.isBlank(page)) {
+			page = "chart";
 		}
-		if (rows == null)
-		{
-			rows = "2";
-		}
-		System.out.println("page: " + page + " rows: " + rows);
-		int totalRecord = 12; // 总记录数(应根据数据库取得，在此只是模拟)
-		int totalPage = totalRecord % Integer.parseInt(rows) == 0 ? totalRecord / Integer.parseInt(rows)
-				: totalRecord / Integer.parseInt(rows) + 1; // 计算总页数
-		try
-		{
-			int index = (Integer.parseInt(page) - 1) * Integer.parseInt(rows); // 开始记录数0
-			int pageSize = Integer.parseInt(rows);// 2
-			// 以下模拟构造JSON数据对象 ,该对象是jqgrid的默认返回对象
-			String json = "{total: " + totalPage + ", page: " + page + ", records: " + totalRecord + ", rows: [";
-			for (int i = index; i < pageSize + index && i < totalRecord; i++)
-			{
-				json += "{'id':'" + i + "','invdate':'" + i + "','name':'" + i + "','amount':'" + i + "','tax':'" + i
-						+ "','total':'" + i + "','note':'" + i + "'}";
-				if (i != pageSize + index - 1 && i != totalRecord - 1)
-				{
-					json += ",";
-				}
+
+		model.addAttribute("msg", "username");
+		return "cmdb/host/" + page;
+	}
+
+	@RequestMapping(value = "list", method = RequestMethod.GET)
+	public String regist(HttpServletRequest request, Model model) {
+		// https://blog.csdn.net/ruthywei/article/details/74295612
+		model.addAttribute("msg", "username");
+		return "cmdb/host/listView3";
+	}
+
+	@RequestMapping(value = "/upload", method = RequestMethod.POST)
+	public String upload(HttpServletRequest request,
+			// @RequestParam("description") String description,
+			@RequestParam("file") MultipartFile file) throws Exception {
+
+		// System.out.println(description);
+		// 如果文件不为空，写入上传路径
+		if (!file.isEmpty()) {
+			// 上传文件路径
+			String path = request.getContextPath() + "/images/";
+			// 上传文件名
+			String filename = file.getOriginalFilename();
+			File filepath = new File(path, filename);
+			// 判断路径是否存在，如果不存在就创建一个
+			if (!filepath.getParentFile().exists()) {
+				filepath.getParentFile().mkdirs();
 			}
-			json += "]}";
-			System.out.println(json);
-			response.getWriter().write(json); // 将JSON数据返回页面
-		} catch (Exception ex)
-		{
+			// 将上传文件保存到一个目标文件当中
+			file.transferTo(new File(path + File.separator + filename));
+			return "success";
+		} else {
+			return "error";
 		}
+
 	}
 }

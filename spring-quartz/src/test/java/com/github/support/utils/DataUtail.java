@@ -29,12 +29,30 @@ import org.junit.Test;
  * yyyy-MM-dd HH:mm:ss
  *  
  */
-public class DataUtail
-{
+public class DataUtail {
 
 	@Test
-	public void formatDataTest()
-	{
+	public void calendarTest() {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+		Date t1 = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(t1);
+
+		cal.set(Calendar.DAY_OF_MONTH, 1);
+		System.out.println(sdf.format(cal.getTime()));
+
+		cal.add(Calendar.DAY_OF_MONTH, -1);
+		System.out.println(sdf.format(cal.getTime()));
+
+		cal.add(Calendar.MONTH, -12);
+		System.out.println(sdf.format(cal.getTime()));
+
+	}
+
+	@Test
+	public void formatDataTest() {
 		/*
 		 * 日期转期望格式的字符串
 		 */
@@ -50,35 +68,12 @@ public class DataUtail
 		 * 字符串转日期
 		 */
 		Date date;
-		try
-		{
+		try {
 			date = sdf.parse(dateString);
 			System.out.println(date);
-		} catch (ParseException e)
-		{
+		} catch (ParseException e) {
 			System.out.println(e.getMessage());
 		}
-	}
-
-	@Test
-	public void calendarTest()
-	{
-
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-		Date t1 = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(t1);
-
-		cal.set(Calendar.DAY_OF_MONTH, 1);
-		System.out.println(sdf.format(cal.getTime()));
-
-		cal.add(Calendar.DAY_OF_MONTH, -1);
-		System.out.println(sdf.format(cal.getTime()));
-		
-		cal.add(Calendar.MONTH, -12);
-		System.out.println(sdf.format(cal.getTime()));
-
 	}
 
 }

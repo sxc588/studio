@@ -3,123 +3,123 @@ package com.github.support.dbaccess.dto;
 import java.util.Date;
 
 public class MonScheduleBase2 {
-    private Long scheduleJobId;
+	private String aliasName;
 
-    private String jobName;
+	private String cronExpression;
 
-    private String aliasName;
+	private String description;
 
-    private String jobGroup;
+	private Date gmtCreate;
 
-    private String jobTrigger;
+	private Date gmtModify;
 
-    private String status;
+	private String isSync;
 
-    private String cronExpression;
+	private String jobGroup;
 
-    private String isSync;
+	private String jobName;
 
-    private String url;
+	private String jobTrigger;
 
-    private String description;
+	private Long scheduleJobId;
 
-    private Date gmtCreate;
+	private String status;
 
-    private Date gmtModify;
+	private String url;
 
-    public Long getScheduleJobId() {
-        return scheduleJobId;
-    }
+	public String getAliasName() {
+		return aliasName;
+	}
 
-    public void setScheduleJobId(Long scheduleJobId) {
-        this.scheduleJobId = scheduleJobId;
-    }
+	public String getCronExpression() {
+		return cronExpression;
+	}
 
-    public String getJobName() {
-        return jobName;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public void setJobName(String jobName) {
-        this.jobName = jobName == null ? null : jobName.trim();
-    }
+	public Date getGmtCreate() {
+		return gmtCreate;
+	}
 
-    public String getAliasName() {
-        return aliasName;
-    }
+	public Date getGmtModify() {
+		return gmtModify;
+	}
 
-    public void setAliasName(String aliasName) {
-        this.aliasName = aliasName == null ? null : aliasName.trim();
-    }
+	public String getIsSync() {
+		return isSync;
+	}
 
-    public String getJobGroup() {
-        return jobGroup;
-    }
+	public String getJobGroup() {
+		return jobGroup;
+	}
 
-    public void setJobGroup(String jobGroup) {
-        this.jobGroup = jobGroup == null ? null : jobGroup.trim();
-    }
+	public String getJobName() {
+		return jobName;
+	}
 
-    public String getJobTrigger() {
-        return jobTrigger;
-    }
+	public String getJobTrigger() {
+		return jobTrigger;
+	}
 
-    public void setJobTrigger(String jobTrigger) {
-        this.jobTrigger = jobTrigger == null ? null : jobTrigger.trim();
-    }
+	public Long getScheduleJobId() {
+		return scheduleJobId;
+	}
 
-    public String getStatus() {
-        return status;
-    }
+	public String getStatus() {
+		return status;
+	}
 
-    public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
-    }
+	public String getUrl() {
+		return url;
+	}
 
-    public String getCronExpression() {
-        return cronExpression;
-    }
+	public void setAliasName(String aliasName) {
+		this.aliasName = aliasName == null ? null : aliasName.trim();
+	}
 
-    public void setCronExpression(String cronExpression) {
-        this.cronExpression = cronExpression == null ? null : cronExpression.trim();
-    }
+	public void setCronExpression(String cronExpression) {
+		this.cronExpression = cronExpression == null ? null : cronExpression.trim();
+	}
 
-    public String getIsSync() {
-        return isSync;
-    }
+	public void setDescription(String description) {
+		this.description = description == null ? null : description.trim();
+	}
 
-    public void setIsSync(String isSync) {
-        this.isSync = isSync == null ? null : isSync.trim();
-    }
+	public void setGmtCreate(Date gmtCreate) {
+		this.gmtCreate = gmtCreate;
+	}
 
-    public String getUrl() {
-        return url;
-    }
+	public void setGmtModify(Date gmtModify) {
+		this.gmtModify = gmtModify;
+	}
 
-    public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
-    }
+	public void setIsSync(String isSync) {
+		this.isSync = isSync == null ? null : isSync.trim();
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setJobGroup(String jobGroup) {
+		this.jobGroup = jobGroup == null ? null : jobGroup.trim();
+	}
 
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
-    }
+	public void setJobName(String jobName) {
+		this.jobName = jobName == null ? null : jobName.trim();
+	}
 
-    public Date getGmtCreate() {
-        return gmtCreate;
-    }
+	public void setJobTrigger(String jobTrigger) {
+		this.jobTrigger = jobTrigger == null ? null : jobTrigger.trim();
+	}
 
-    public void setGmtCreate(Date gmtCreate) {
-        this.gmtCreate = gmtCreate;
-    }
+	public void setScheduleJobId(Long scheduleJobId) {
+		this.scheduleJobId = scheduleJobId;
+	}
 
-    public Date getGmtModify() {
-        return gmtModify;
-    }
+	public void setStatus(String status) {
+		this.status = status == null ? null : status.trim();
+	}
 
-    public void setGmtModify(Date gmtModify) {
-        this.gmtModify = gmtModify;
-    }
+	public void setUrl(String url) {
+		this.url = url == null ? null : url.trim();
+	}
 }

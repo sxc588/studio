@@ -29,80 +29,47 @@ import com.github.support.vo.ScheduleJobVo;
  */
 @Controller
 @RequestMapping(value = "/monitor/http")
-public class HttpController
-{
+public class HttpController {
 	private static Logger log = LoggerFactory.getLogger(HttpController.class);
+
+	int offset = 0;
+	
+	private int pageSize = 10;
+	
+	private String pabeBale = "?offset=" + offset + "&pageSize=" + pageSize;
+
 
 
 	/** job service */
 	@Autowired
 	private ScheduleJobService scheduleJobService;
-	
 	@Autowired
-	private ScheduleJobServiceDb  service;
-	
-	
-	int pageSize =10;
-	
-	int offset =0;
-	private String pabeBale ="?offset=" + offset +"&pageSize="+pageSize;
+	private ScheduleJobServiceDb service;
 
-	
 	/**
-	 * 任务列表页
+	 * 删除任务
 	 *
-	 * @param modelMap
 	 * @return
 	 */
-	@ResponseBody
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public Map<String, Object> search(HttpServletRequest request)
-	{
-
-		System.err.println("DDDDDDDDDDDDDDDDDDD");
-		pageSize =HttpRequestUtil.getParameterInteger( request,"psize",10);
-		offset =HttpRequestUtil.getParameterInteger( request,"offset",0);
-		
-		
-		HttpSession session = request.getSession();
-		//将数据存储到session中
-		session.setAttribute("offset", offset);
-		//将数据存储到session中
-		session.setAttribute("pageSize", pageSize);
-		
-		String pabeBale ="?offset=" + offset +"&pageSize="+pageSize;
-		
-
-		log.info(">>listScheduleJob");
-
-		List<ScheduleJob> scheduleJobVoList = scheduleJobService.getList(offset, pageSize);
-		
-		Map<String, Object> valus = new HashedMap<String, Object>();
-
-		valus.put("pgIdex", 0);
-		valus.put("pgSize", pageSize);
-		valus.put("records", scheduleJobVoList.size());
-
-		
-		valus.put("data", scheduleJobVoList);
-		
-		return valus;
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String deleteScheduleJob(HttpServletRequest request, Long scheduleJobId) {
+		pg(request);
+		log.info(">>deleteScheduleJob");
+		scheduleJobService.delete(scheduleJobId);
+		return "monitor/list" + pabeBale;
 	}
-	
-	
+
 	/**
 	 * 任务页面
 	 *
 	 * @return
 	 */
 	@RequestMapping(value = "/input", method = RequestMethod.GET)
-	public String inputScheduleJob(HttpServletRequest request,ScheduleJobVo scheduleJobVo, ModelMap modelMap)
-	{
+	public String inputScheduleJob(HttpServletRequest request, ScheduleJobVo scheduleJobVo, ModelMap modelMap) {
 
 		scheduleJobVo.setCronExpression("0 */1 * * * ?");
 
-		if (scheduleJobVo.getScheduleJobId() != null)
-		{
+		if (scheduleJobVo.getScheduleJobId() != null) {
 			ScheduleJobVo scheduleJob = scheduleJobService.get(scheduleJobVo.getScheduleJobId());
 			scheduleJob.setKeywords(scheduleJobVo.getKeywords());
 			modelMap.put("scheduleJobVo", scheduleJob);
@@ -112,43 +79,30 @@ public class HttpController
 	}
 
 	/**
-	 * 删除任务
-	 *
-	 * @return
-	 */
-	@RequestMapping(value = "delete", method = RequestMethod.GET)
-	public String deleteScheduleJob(HttpServletRequest request,Long scheduleJobId)
-	{pg(request);
-		log.info(">>deleteScheduleJob");
-		scheduleJobService.delete(scheduleJobId);
-		return "monitor/list"+pabeBale;
-	}
-
-	/**
-	 * 运行一次
-	 *
-	 * @return
-	 */
-	@RequestMapping(value = "runonce", method = RequestMethod.GET)
-	public String runOnceScheduleJob(HttpServletRequest request,Long scheduleJobId)
-	{
-		pg(request);
-		log.info(">>runOnceScheduleJob");
-		scheduleJobService.runOnce(scheduleJobId);
-		return "monitor/list"+pabeBale;
-	}
-
-	/**
 	 * 暂停
 	 *
 	 * @return
 	 */
 	@RequestMapping(value = "pause", method = RequestMethod.GET)
-	public String pauseScheduleJob(HttpServletRequest request,Long scheduleJobId)
-	{pg(request);
+	public String pauseScheduleJob(HttpServletRequest request, Long scheduleJobId) {
+		pg(request);
 		log.info(">>pauseScheduleJob");
 		scheduleJobService.pauseJob(scheduleJobId);
-		return "monitor/list"+pabeBale;
+		return "monitor/list" + pabeBale;
+	}
+
+	private void pg(HttpServletRequest request) {
+		int pageSize = HttpRequestUtil.getParameterInteger(request, "psize", 10);
+
+		int offset = HttpRequestUtil.getParameterInteger(request, "offset", 0);
+
+		HttpSession session = request.getSession();
+		// 将数据存储到session中
+		session.setAttribute("offset", offset);
+		// 将数据存储到session中
+		session.setAttribute("pageSize", pageSize);
+
+		pabeBale = "?offset=" + offset + "&pageSize=" + pageSize;
 	}
 
 	/**
@@ -157,11 +111,24 @@ public class HttpController
 	 * @return
 	 */
 	@RequestMapping(value = "resume", method = RequestMethod.GET)
-	public String resumeScheduleJob(HttpServletRequest request,Long scheduleJobId)
-	{pg(request);
+	public String resumeScheduleJob(HttpServletRequest request, Long scheduleJobId) {
+		pg(request);
 		log.info(">>resumeScheduleJob");
 		scheduleJobService.resumeJob(scheduleJobId);
-		return "monitor/list"+pabeBale;
+		return "monitor/list" + pabeBale;
+	}
+
+	/**
+	 * 运行一次
+	 *
+	 * @return
+	 */
+	@RequestMapping(value = "runonce", method = RequestMethod.GET)
+	public String runOnceScheduleJob(HttpServletRequest request, Long scheduleJobId) {
+		pg(request);
+		log.info(">>runOnceScheduleJob");
+		scheduleJobService.runOnce(scheduleJobId);
+		return "monitor/list" + pabeBale;
 	}
 
 	/**
@@ -171,47 +138,61 @@ public class HttpController
 	 * @return
 	 */
 	@RequestMapping(value = "save", method = RequestMethod.POST)
-	public String saveScheduleJob(HttpServletRequest request,ScheduleJobVo scheduleJobVo)
-	{
-		
-		
+	public String saveScheduleJob(HttpServletRequest request, ScheduleJobVo scheduleJobVo) {
+
 		pg(request);
 
 		scheduleJobVo.setJobName("jobName");
 		// 测试用随便设个状态
 		scheduleJobVo.setStatus("1");
 
-		if (scheduleJobVo.getScheduleJobId() == null)
-		{
+		if (scheduleJobVo.getScheduleJobId() == null) {
 			scheduleJobService.insert(scheduleJobVo);
-		} 
-		else if (StringUtils.equalsIgnoreCase(scheduleJobVo.getKeywords(), "delUpdate"))
-		{
+		} else if (StringUtils.equalsIgnoreCase(scheduleJobVo.getKeywords(), "delUpdate")) {
 			// 直接拿keywords存一下，就不另外重新弄了
 			scheduleJobService.delUpdate(scheduleJobVo);
-		}
-		else
-		{
+		} else {
 			scheduleJobService.update(scheduleJobVo);
 		}
 
-		return "monitor/http/Slist"+pabeBale;
+		return "monitor/http/Slist" + pabeBale;
 	}
 
-	private void pg(HttpServletRequest request)
-	{
-		int pageSize =HttpRequestUtil.getParameterInteger( request,"psize",10);
-		
-		int offset =HttpRequestUtil.getParameterInteger( request,"offset",0);
-		
-		
+	/**
+	 * 任务列表页
+	 *
+	 * @param modelMap
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public Map<String, Object> search(HttpServletRequest request) {
+
+		System.err.println("DDDDDDDDDDDDDDDDDDD");
+		pageSize = HttpRequestUtil.getParameterInteger(request, "psize", 10);
+		offset = HttpRequestUtil.getParameterInteger(request, "offset", 0);
+
 		HttpSession session = request.getSession();
-		//将数据存储到session中
+		// 将数据存储到session中
 		session.setAttribute("offset", offset);
-		//将数据存储到session中
+		// 将数据存储到session中
 		session.setAttribute("pageSize", pageSize);
-		
-		pabeBale ="?offset=" + offset +"&pageSize="+pageSize;
+
+		String pabeBale = "?offset=" + offset + "&pageSize=" + pageSize;
+
+		log.info(">>listScheduleJob");
+
+		List<ScheduleJob> scheduleJobVoList = scheduleJobService.getList(offset, pageSize);
+
+		Map<String, Object> valus = new HashedMap<String, Object>();
+
+		valus.put("pgIdex", 0);
+		valus.put("pgSize", pageSize);
+		valus.put("records", scheduleJobVoList.size());
+
+		valus.put("data", scheduleJobVoList);
+
+		return valus;
 	}
 
 	/**
@@ -221,35 +202,32 @@ public class HttpController
 	 * @return
 	 */
 	@RequestMapping(value = "show", method = RequestMethod.GET)
-	public String show(HttpServletRequest request, HttpServletResponse response,ModelMap modelMap)
-	{
-		
-		pageSize =HttpRequestUtil.getParameterInteger( request,"psize",10);
-		offset =HttpRequestUtil.getParameterInteger( request,"offset",0);
-		
-		
+	public String show(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
+
+		pageSize = HttpRequestUtil.getParameterInteger(request, "psize", 10);
+		offset = HttpRequestUtil.getParameterInteger(request, "offset", 0);
+
 		HttpSession session = request.getSession();
-		//将数据存储到session中
+		// 将数据存储到session中
 		session.setAttribute("offset", offset);
-		//将数据存储到session中
+		// 将数据存储到session中
 		session.setAttribute("pageSize", pageSize);
-		
-		String pabeBale ="?offset=" + offset +"&pageSize="+pageSize;
-		
+
+		String pabeBale = "?offset=" + offset + "&pageSize=" + pageSize;
 
 		log.info(">>listScheduleJob");
 
 		List<ScheduleJob> scheduleJobVoList = scheduleJobService.getList(offset, pageSize);
 
-		//modelMap.put("scheduleJobVoList", scheduleJobVoList);
+		// modelMap.put("scheduleJobVoList", scheduleJobVoList);
 
-		//List<ScheduleJobVo> executingJobList = scheduleJobService.queryExecutingJobList();
-		//modelMap.put("executingJobList", executingJobList);
-		//log.info("scheduleJobVoList" + scheduleJobVoList.size());
-		
+		// List<ScheduleJobVo> executingJobList =
+		// scheduleJobService.queryExecutingJobList();
+		// modelMap.put("executingJobList", executingJobList);
+		// log.info("scheduleJobVoList" + scheduleJobVoList.size());
+
 //		log.info("executingJobList" + executingJobList.size());
 		return "monitor/http/list";
 	}
-
 
 }

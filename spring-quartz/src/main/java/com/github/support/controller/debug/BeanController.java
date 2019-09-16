@@ -22,34 +22,29 @@ import com.github.support.validator.UserValidator;
  */
 @Controller
 @RequestMapping(value = "/debug/bean")
-public class BeanController
-{
+public class BeanController {
 	private static Logger log = LoggerFactory.getLogger(BeanController.class);
 
 	// 我们知道在Controller类中通过@InitBinder标记的方法只有在请求当前Controller的时候才会被执行
 	// 所以在这里注册校验器
 	@InitBinder
-	public void initBainder(DataBinder binder)
-	{
+	public void initBainder(DataBinder binder) {
 		binder.replaceValidators(new UserValidator());
 
 	}
 
 	// 这个方法主要是跳转到登录页面
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(Model model)
-	{
+	public String login(Model model) {
 		model.addAttribute(new User());
 		return "/hello/login";
 	}
 
 	// 处理登录表单
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(@Validated User user, BindingResult br)
-	{
+	public String login(@Validated User user, BindingResult br) {
 
-		if (br.hasErrors())
-		{
+		if (br.hasErrors()) {
 			return "hello/login";
 		}
 		return "--";

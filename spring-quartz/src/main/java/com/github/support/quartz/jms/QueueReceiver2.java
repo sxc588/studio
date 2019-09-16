@@ -5,19 +5,17 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
-
 /**
  * 利用Spring与ActiveMQ整合发送、接收消息实例(Queue与Topic模式)
  * https://blog.csdn.net/u012358328/article/details/77749779
  * 
  * 
  * .接收topic消息的消费者1：
+ * 
  * @author Administrator
  *
  */
-public class QueueReceiver2 implements MessageListener
-{
-
+public class QueueReceiver2 implements MessageListener {
 
 	/*
 	 * (非 Javadoc) <p>Title: onMessage</p> <p>Description: </p>
@@ -37,6 +35,5 @@ public class QueueReceiver2 implements MessageListener
 			e.printStackTrace();
 		}
 	}
-
 
 }

@@ -10,49 +10,42 @@ import org.springframework.stereotype.Repository;
 import com.github.support.dbaccess.dto.ScheduleJob;
 import com.github.support.dbaccess.mapper.ScheduleJobMapper;
 
-
 @Repository
 public class ScheduleJobServiceDb {
 
 	@Autowired
 	private ScheduleJobMapper mapper;
-	
-	public int deleteByPrimaryKey(Long scheduleJobId)
-    {
+
+	public int deleteByPrimaryKey(Long scheduleJobId) {
 		return mapper.deleteByPrimaryKey(scheduleJobId);
-    }
+	}
 
-	public int insert(ScheduleJob record)
-    {
-    	return mapper.insert(record);
-    }
-
-	public int insertSelective(ScheduleJob record)
-    {
-    	return mapper.insertSelective(record);
-    	
-    }
-	public  ScheduleJob selectByPrimaryKey(Long scheduleJobId)
-    {
-    	return mapper.selectByPrimaryKey(scheduleJobId);
-    }
-
-	public int updateByPrimaryKeySelective(ScheduleJob record)
-    {
-    	return mapper.updateByPrimaryKeySelective(record);
-    }
-
-	public int updateByPrimaryKey(ScheduleJob record)
-    {
-    	return mapper.updateByPrimaryKey(record);
-    }
-	
-	public List<ScheduleJob> getList(int offset, int pagesize)
-	{
+	public List<ScheduleJob> getList(int offset, int pagesize) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("offset", offset);
 		map.put("limit", pagesize);
 		return mapper.getList(map);
+	}
+
+	public int insert(ScheduleJob record) {
+		return mapper.insert(record);
+	}
+
+	public int insertSelective(ScheduleJob record) {
+		return mapper.insertSelective(record);
+
+	}
+
+	public ScheduleJob selectByPrimaryKey(Long scheduleJobId) {
+		return mapper.selectByPrimaryKey(scheduleJobId);
+	}
+
+	public int updateByPrimaryKey(ScheduleJob record) {
+		return mapper.updateByPrimaryKey(record);
+	}
+
+	public int updateByPrimaryKeySelective(ScheduleJob record) {
+		return mapper.updateByPrimaryKeySelective(record);
 	}
 
 }

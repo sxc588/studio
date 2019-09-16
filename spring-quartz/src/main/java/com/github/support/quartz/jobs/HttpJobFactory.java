@@ -1,6 +1,10 @@
 package com.github.support.quartz.jobs;
 
-import org.quartz.*;
+import org.quartz.DisallowConcurrentExecution;
+import org.quartz.JobDataMap;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
+import org.quartz.PersistJobDataAfterExecution;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,29 +15,26 @@ import com.github.support.quartz.model.ScheduleJob;
 import com.github.support.vo.ScheduleJobVo;
 
 /**
- * author : benjamin
- * createTime : 2017.06.06
- * description : 同步任务工厂
- * version : 1.0
+ * author : benjamin createTime : 2017.06.06 description : 同步任务工厂 version : 1.0
  */
 @PersistJobDataAfterExecution
 @DisallowConcurrentExecution
 public class HttpJobFactory extends QuartzJobBean {
 
-    /* 日志对象 */
-    private static final Logger LOG = LoggerFactory.getLogger(HttpJobFactory.class);
-    
-    
-    @Autowired
-   private MatrixInteger abcd;
+	/* 日志对象 */
+	private static final Logger LOG = LoggerFactory.getLogger(HttpJobFactory.class);
 
-    protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
-        LOG.info("SyncJobFactory execute");
-        JobDataMap mergedJobDataMap = context.getMergedJobDataMap();
-        ScheduleJob scheduleJob = (ScheduleJob) mergedJobDataMap.get(ScheduleJobVo.JOB_PARAM_KEY);
-        System.out.println("jobName:" + scheduleJob.getJobName() + "  " + scheduleJob);
-        
-        abcd.inc("HttpJobFactory");
+	@Autowired
+	private MatrixInteger abcd;
+
+	@Override
+	protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
+		LOG.info("SyncJobFactory execute");
+		JobDataMap mergedJobDataMap = context.getMergedJobDataMap();
+		ScheduleJob scheduleJob = (ScheduleJob) mergedJobDataMap.get(ScheduleJobVo.JOB_PARAM_KEY);
+		System.out.println("jobName:" + scheduleJob.getJobName() + "  " + scheduleJob);
+
+		abcd.inc("HttpJobFactory");
 //        String url = scheduleJob.getUrl();
 //        CloseableHttpClient httpclient = HttpClients.createDefault();
 //        HttpGet httpGet = new HttpGet(url);
@@ -46,5 +47,5 @@ public class HttpJobFactory extends QuartzJobBean {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-    }
+	}
 }

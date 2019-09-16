@@ -2,31 +2,23 @@ package com.github.support.quartz.jobs;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TimerTask;
-
-import org.apache.commons.collections4.Get;
 
 import com.github.support.vo.ScheduleJobVo;
 
-public class TaskFactory
-{
-	List<ScheduleJobVo> getTaskTimer()
-	{
-		return new ArrayList<ScheduleJobVo>();
-	}
-	
-	List<ScheduleJobVo> getTaskSLA()
-	{
-		return new ArrayList<ScheduleJobVo>();
-	}
-	
-	List<ScheduleJobVo> getTaskHttp()
-	{
+public class TaskFactory {
+	List<ScheduleJobVo> getTaskHttp() {
 		return new ArrayList<ScheduleJobVo>();
 	}
 
-	List<ScheduleJobVo> getTaskNginx()
-	{
+	List<ScheduleJobVo> getTaskNginx() {
+		return new ArrayList<ScheduleJobVo>();
+	}
+
+	List<ScheduleJobVo> getTaskSLA() {
+		return new ArrayList<ScheduleJobVo>();
+	}
+
+	List<ScheduleJobVo> getTaskTimer() {
 		return new ArrayList<ScheduleJobVo>();
 	}
 }

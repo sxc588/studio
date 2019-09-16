@@ -24,35 +24,32 @@ import com.github.support.quartz.matrix.MatrixInteger;
  */
 @PersistJobDataAfterExecution
 @DisallowConcurrentExecution
-public class SyncJobFactory extends QuartzJobBean
-{
+public class SyncJobFactory extends QuartzJobBean {
 
 	/* 日志对象 */
 	private static final Logger LOG = LoggerFactory.getLogger(SyncJobFactory.class);
 
+	private final static DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 等价于now.toLocaleString()
+
+	@Autowired
+	private MatrixInteger abcd;
+
 	@Autowired
 	private ScheduleJobServiceDb mapper;
 
-    //队列消息生产者
-    @Resource(name = "activeMqProducerService")
-    private ActiveMqProducerService producer;
+	// 队列消息生产者
+	@Resource(name = "activeMqProducerService")
+	private ActiveMqProducerService producer;
 
-    private final static DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//等价于now.toLocaleString()
-   
-    @Autowired
-   private MatrixInteger abcd;
-	
+	@Override
 	protected void executeInternal(JobExecutionContext context) throws JobExecutionException
-	
-	{	
+
+	{
 		Date date = new Date();
-		String msg =  sdf.format(date);
+		String msg = sdf.format(date);
 		producer.sendMessage(msg);
-	    abcd.inc("SyncJobFactory");
-	    
-	    
-	    
-	    
+		abcd.inc("SyncJobFactory");
+
 //		 producer.sendMessage(new Data().toString());
 //		 producer.sendMessage(new Data().toString());
 //		 producer.sendMessage(new Data().toString());
@@ -63,22 +60,18 @@ public class SyncJobFactory extends QuartzJobBean
 //		 producer.sendMessage(new Data().toString());
 //		 producer.sendMessage(new Data().toString());
 //		 producer.sendMessage(new Data().toString());
-		 
 
 //		HttpStatus status = TelnetUtils.telnet("support.huawei.comA", 8080);
 //		telnetUtils.telnet("www.sohu.com", 80);
-		
-//		System.err.println(status);
-		//LOG.info("SyncJobFactory execute" + status);
-		
 
-	//	boolean pinStatus = PingUtils.ping("support.huawei.comA");
+//		System.err.println(status);
+		// LOG.info("SyncJobFactory execute" + status);
+
+		// boolean pinStatus = PingUtils.ping("support.huawei.comA");
 //		telnetUtils.telnet("www.sohu.com", 80);
-		
-	//	System.err.println(pinStatus);
-		
-		
-		
+
+		// System.err.println(pinStatus);
+
 //		
 //		LOG.info("SyncJobFactory execute");
 //		JobDataMap mergedJobDataMap = context.getMergedJobDataMap();

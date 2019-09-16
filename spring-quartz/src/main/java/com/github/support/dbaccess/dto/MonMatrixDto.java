@@ -2,46 +2,51 @@ package com.github.support.dbaccess.dto;
 
 import java.util.Date;
 
-public class MonMatrixDto
-{
-	public String getMachineName() {
-		return machineName;
-	}
-	public void setMachineName(String machineName) {
-		this.machineName = machineName;
-	}
-	public String getMatrixKey() {
-		return matrixKey;
-	}
-	public void setMatrixKey(String matrixKey) {
-		this.matrixKey = matrixKey;
-	}
-	public String getMatrixFiled() {
-		return matrixFiled;
-	}
-	public void setMatrixFiled(String matrixFiled) {
-		this.matrixFiled = matrixFiled;
-	}
-	public Integer getMatrixValue() {
-		return matrixValue;
-	}
-	public void setMatrixValue(Integer matrixValue) {
-		this.matrixValue = matrixValue;
-	}
+public class MonMatrixDto {
+	private Date createDate;
+	private String machineName;
+	private String matrixFiled;
+	private String matrixKey;
+	private Integer matrixValue;
+
 	public Date getCreateDate() {
 		return createDate;
 	}
+
+	public String getMachineName() {
+		return machineName;
+	}
+
+	public String getMatrixFiled() {
+		return matrixFiled;
+	}
+
+	public String getMatrixKey() {
+		return matrixKey;
+	}
+
+	public Integer getMatrixValue() {
+		return matrixValue;
+	}
+
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	private String machineName;
 
-	private String matrixKey;
+	public void setMachineName(String machineName) {
+		this.machineName = machineName;
+	}
 
-	private String matrixFiled;
+	public void setMatrixFiled(String matrixFiled) {
+		this.matrixFiled = matrixFiled;
+	}
 
-	private Integer matrixValue;
-	private Date createDate;
+	public void setMatrixKey(String matrixKey) {
+		this.matrixKey = matrixKey;
+	}
 
+	public void setMatrixValue(Integer matrixValue) {
+		this.matrixValue = matrixValue;
+	}
 
 }

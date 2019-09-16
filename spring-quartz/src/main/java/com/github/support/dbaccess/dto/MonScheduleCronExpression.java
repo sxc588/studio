@@ -2,23 +2,23 @@ package com.github.support.dbaccess.dto;
 
 public class MonScheduleCronExpression {
 
-    public String getCronExpression() {
-		return cronExpression;
-	}
+	private int count;
 
-	public void setCronExpression(String cronExpression) {
-		this.cronExpression = cronExpression;
-	}
+	private String cronExpression;
 
 	public int getCount() {
 		return count;
+	}
+
+	public String getCronExpression() {
+		return cronExpression;
 	}
 
 	public void setCount(int count) {
 		this.count = count;
 	}
 
-	private String cronExpression;
-
-    private int count;
+	public void setCronExpression(String cronExpression) {
+		this.cronExpression = cronExpression;
+	}
 }

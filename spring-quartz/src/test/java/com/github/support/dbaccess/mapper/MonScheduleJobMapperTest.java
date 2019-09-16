@@ -14,12 +14,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.alibaba.fastjson.JSON;
 import com.github.HelloLucene;
 import com.github.support.dbaccess.dto.MonScheduleJob;
-import com.github.support.dbaccess.mapper.MonScheduleJobMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class) // 使用junit4进行测试
 @ContextConfiguration(locations = { "classpath:spring-test.xml" })
-public class MonScheduleJobMapperTest
-{
+public class MonScheduleJobMapperTest {
 	@Autowired
 	private BasicDataSource ds;
 
@@ -27,16 +25,23 @@ public class MonScheduleJobMapperTest
 	private MonScheduleJobMapper mapper;
 
 	@Test
-	public void testsearch()
-	{
-		HelloLucene helloLucene = new HelloLucene();
-		helloLucene.index();
-		helloLucene.search("AAA");
+	public void getList() {
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		map.put("offset", 9);
+		map.put("limit", 100);
+
+		List<MonScheduleJob> tt = mapper.getList(map);
+
+		System.err.println(tt.size());
+
+		String json = JSON.toJSONString(tt);
+		System.err.println(json);
+
 	}
 
 	@Test
-	public void test()
-	{
+	public void test() {
 		System.err.println(ds.getUsername());
 		System.err.println(ds.getPassword());
 		System.err.println(ds.getUrl());
@@ -45,34 +50,21 @@ public class MonScheduleJobMapperTest
 		System.err.println(ds.getMaxIdle());
 		System.err.println(ds.getMinIdle());
 	}
-	
+
 	@Test
-	public void testA()
-	{
+	public void testA() {
 		MonScheduleJob tt = mapper.selectByPrimaryKey(15L);
-		
+
 		String json = JSON.toJSONString(tt);
 		System.err.println(json);
-		
+
 	}
 
-	
 	@Test
-	public void getList()
-	{
-		Map<String, Object> map = new HashMap<String, Object>();
-		
-		map.put("offset", 9);
-		map.put("limit", 100);
-
-		
-		List<MonScheduleJob> tt = mapper.getList(map);
-		
-		System.err.println(	tt.size());
-		
-		String json = JSON.toJSONString(tt);
-		System.err.println(json);
-		
+	public void testsearch() {
+		HelloLucene helloLucene = new HelloLucene();
+		helloLucene.index();
+		helloLucene.search("AAA");
 	}
 
 }

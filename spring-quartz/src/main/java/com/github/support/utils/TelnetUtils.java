@@ -3,11 +3,9 @@ package com.github.support.utils;
 import java.io.IOException;
 
 import org.apache.commons.net.telnet.TelnetClient;
-import org.apache.http.HttpResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.client.OkHttp3ClientHttpRequestFactory;
 
 /**
  * 编写JAVA代码在生产环境启用临时端口进行telnet网络测试
@@ -17,23 +15,33 @@ import org.springframework.http.client.OkHttp3ClientHttpRequestFactory;
  * @author Administrator
  *
  */
-public class TelnetUtils
-{
+public class TelnetUtils {
 
 	static private Logger LOG = LoggerFactory.getLogger(TelnetUtils.class);
 
 	/**
-	 * @param ip
-	 *            : telnet的IP地址
-	 * @param port
-	 *            : 端口号，默认11211
+	 * 关闭Telnet连接
+	 */
+	private static void disconnect(TelnetClient telnetClient) {
+		try {
+			Thread.sleep(10);
+			if (telnetClient != null)
+				telnetClient.disconnect();
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		} catch (IOException e2) {
+			e2.printStackTrace();
+		}
+	}
+
+	/**
+	 * @param ip   : telnet的IP地址
+	 * @param port : 端口号，默认11211
 	 * @return
 	 */
-	public static HttpStatus telnet(String ip, Integer port)
-	{
+	public static HttpStatus telnet(String ip, Integer port) {
 		TelnetClient telnetClient = new TelnetClient();
-		try
-		{
+		try {
 
 			long begin = System.currentTimeMillis();
 			telnetClient.connect(ip, port);
@@ -46,35 +54,14 @@ public class TelnetUtils
 
 			return HttpStatus.OK;
 
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			LOG.error("[{}:{}]--telnet fail!; {};{}", ip, port, telnetClient.getRemoteAddress(),
 					telnetClient.getLocalAddress());
 			return HttpStatus.NOT_FOUND;
 
-		} finally
-		{
+		} finally {
 
 			disconnect(telnetClient);
-		}
-	}
-
-	/**
-	 * 关闭Telnet连接
-	 */
-	private static void disconnect(TelnetClient telnetClient)
-	{
-		try
-		{
-			Thread.sleep(10);
-			if (telnetClient != null)
-				telnetClient.disconnect();
-		} catch (InterruptedException e1)
-		{
-			e1.printStackTrace();
-		} catch (IOException e2)
-		{
-			e2.printStackTrace();
 		}
 	}
 

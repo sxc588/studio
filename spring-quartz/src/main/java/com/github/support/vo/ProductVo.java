@@ -1,151 +1,148 @@
 package com.github.support.vo;
 
-import com.dexcoder.commons.pager.Pageable;
-
 import java.util.Date;
 
+import com.dexcoder.commons.pager.Pageable;
+
 /**
- * author : benjamin
- * createTime : 2017.06.06
- * description : 产品模型Vo
- * version : 1.0
+ * author : benjamin createTime : 2017.06.06 description : 产品模型Vo version : 1.0
  */
 public class ProductVo extends Pageable {
 
-    private static final long  serialVersionUID = -4216107640768329946L;
+	/** 任务调度的参数key */
+	public static final String JOB_PARAM_KEY = "jobParam";
 
-    /** 任务调度的参数key */
-    public static final String JOB_PARAM_KEY    = "jobParam";
+	private static final long serialVersionUID = -4216107640768329946L;
 
-    /** 任务id */
-    private Long               scheduleJobId;
+	/** 任务别名 */
+	private String aliasName;
 
-    /** 任务名称 */
-    private String             jobName;
+	/** 任务运行时间表达式 */
+	private String cronExpression;
 
-    /** 任务别名 */
-    private String             aliasName;
+	/** 任务描述 */
+	private String description;
 
-    /** 任务分组 */
-    private String             jobGroup;
+	/** 创建时间 */
+	private Date gmtCreate;
 
-    /** 触发器 */
-    private String             jobTrigger;
+	/** 修改时间 */
+	private Date gmtModify;
 
-    /** 任务状态 */
-    private String             status;
+	/** 是否异步 */
+	private Boolean isSync;
 
-    /** 任务运行时间表达式 */
-    private String             cronExpression;
+	/** 任务分组 */
+	private String jobGroup;
 
-    /** 是否异步 */
-    private Boolean            isSync;
+	/** 任务名称 */
+	private String jobName;
 
-    /** 任务描述 */
-    private String             description;
+	/** 触发器 */
+	private String jobTrigger;
 
-    /** 创建时间 */
-    private Date               gmtCreate;
+	/** 任务id */
+	private Long scheduleJobId;
 
-    /** 修改时间 */
-    private Date               gmtModify;
+	/** 任务状态 */
+	private String status;
 
-    /** 任务执行url */
-    private String             url;
+	/** 任务执行url */
+	private String url;
 
-    public Long getScheduleJobId() {
-        return scheduleJobId;
-    }
+	public String getAliasName() {
+		return aliasName;
+	}
 
-    public void setScheduleJobId(Long scheduleJobId) {
-        this.scheduleJobId = scheduleJobId;
-    }
+	public String getCronExpression() {
+		return cronExpression;
+	}
 
-    public String getJobName() {
-        return jobName;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public void setJobName(String jobName) {
-        this.jobName = jobName;
-    }
+	public Date getGmtCreate() {
+		return gmtCreate;
+	}
 
-    public String getAliasName() {
-        return aliasName;
-    }
+	public Date getGmtModify() {
+		return gmtModify;
+	}
 
-    public void setAliasName(String aliasName) {
-        this.aliasName = aliasName;
-    }
+	public Boolean getIsSync() {
+		return isSync;
+	}
 
-    public String getJobGroup() {
-        return jobGroup;
-    }
+	public String getJobGroup() {
+		return jobGroup;
+	}
 
-    public void setJobGroup(String jobGroup) {
-        this.jobGroup = jobGroup;
-    }
+	public String getJobName() {
+		return jobName;
+	}
 
-    public String getJobTrigger() {
-        return jobTrigger;
-    }
+	public String getJobTrigger() {
+		return jobTrigger;
+	}
 
-    public void setJobTrigger(String jobTrigger) {
-        this.jobTrigger = jobTrigger;
-    }
+	public Long getScheduleJobId() {
+		return scheduleJobId;
+	}
 
-    public String getStatus() {
-        return status;
-    }
+	public String getStatus() {
+		return status;
+	}
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+	public String getUrl() {
+		return url;
+	}
 
-    public String getCronExpression() {
-        return cronExpression;
-    }
+	public void setAliasName(String aliasName) {
+		this.aliasName = aliasName;
+	}
 
-    public void setCronExpression(String cronExpression) {
-        this.cronExpression = cronExpression;
-    }
+	public void setCronExpression(String cronExpression) {
+		this.cronExpression = cronExpression;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setGmtCreate(Date gmtCreate) {
+		this.gmtCreate = gmtCreate;
+	}
 
-    public Date getGmtCreate() {
-        return gmtCreate;
-    }
+	public void setGmtModify(Date gmtModify) {
+		this.gmtModify = gmtModify;
+	}
 
-    public void setGmtCreate(Date gmtCreate) {
-        this.gmtCreate = gmtCreate;
-    }
+	public void setIsSync(Boolean isSync) {
+		this.isSync = isSync;
+	}
 
-    public Date getGmtModify() {
-        return gmtModify;
-    }
+	public void setJobGroup(String jobGroup) {
+		this.jobGroup = jobGroup;
+	}
 
-    public void setGmtModify(Date gmtModify) {
-        this.gmtModify = gmtModify;
-    }
+	public void setJobName(String jobName) {
+		this.jobName = jobName;
+	}
 
-    public Boolean getIsSync() {
-        return isSync;
-    }
+	public void setJobTrigger(String jobTrigger) {
+		this.jobTrigger = jobTrigger;
+	}
 
-    public void setIsSync(Boolean isSync) {
-        this.isSync = isSync;
-    }
+	public void setScheduleJobId(Long scheduleJobId) {
+		this.scheduleJobId = scheduleJobId;
+	}
 
-    public String getUrl() {
-        return url;
-    }
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
+	public void setUrl(String url) {
+		this.url = url;
+	}
 }

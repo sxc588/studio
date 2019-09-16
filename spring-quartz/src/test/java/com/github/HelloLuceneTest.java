@@ -1,20 +1,15 @@
 package com.github;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
-public class HelloLuceneTest
-{
+public class HelloLuceneTest {
 
 	@Test
-	public void test()
-	{
-		 HelloLucene helloLucene = new HelloLucene();  
-		  helloLucene.index();
-	      helloLucene.search("AAA");  
-	      
-	      
+	public void test() {
+		HelloLucene helloLucene = new HelloLucene();
+		helloLucene.index();
+		helloLucene.search("AAA");
+
 //	    //存储的文档数量，也就是document对象的数量，删除索引后，这个数值会减少
 //	      System.out.println("存储的文档数量: " + reader.numDocs());
 //	      （2）获取文档的总量

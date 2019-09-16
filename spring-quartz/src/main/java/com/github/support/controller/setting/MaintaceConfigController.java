@@ -21,63 +21,60 @@ import com.github.support.vo.ScheduleJobVo;
 
 /**
  * 功能说明：系统配置项Action
+ * 
  * @author Administrator
  *
  */
 @Controller
 @RequestMapping(value = "/setting/maintance")
-public class MaintaceConfigController
-{
+public class MaintaceConfigController {
 	private static Logger log = LoggerFactory.getLogger(MaintaceConfigController.class);
-	
+
 	@Autowired
 	private ScheduleJobServiceImpl quartzManager;
 
-	 //我们知道在Controller类中通过@InitBinder标记的方法只有在请求当前Controller的时候才会被执行
-    //所以在这里注册校验器
-    @InitBinder
-    public void initBainder(DataBinder binder){
-        binder.replaceValidators(new UserValidator());
+	@RequestMapping(value = "/init", method = RequestMethod.GET)
+	public void init(Model model) {
 
-    }
-    //这个方法主要是跳转到登录页面
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
-    public String login(Model model){
-    	
-    	quartzManager.cleanJobs();
-    	
-    	
-        model.addAttribute(new User());
-        return "/hello/login";
-    }
-    
-    
-    //这个方法主要是跳转到登录页面
-    @RequestMapping(value = "/query",method = RequestMethod.GET)
-    public void queryQu(Model model){
-    	
-    	List<ScheduleJobVo> jobs= quartzManager.queryExecutingJobList();
-    	
-    	log.info("queryExecutingJobList>>" +jobs.size());
-    }
-    
-    @RequestMapping(value = "/init",method = RequestMethod.GET)
-    public void init(Model model){
-    	
-    	quartzManager.initScheduleJob();
-    	List<ScheduleJobVo> jobs= quartzManager.queryExecutingJobList();
-    	log.info("queryExecutingJobList>>" + jobs.size());
-    }
-    
-    
-    
-    //处理登录表单
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public String login(@Validated User user, BindingResult br){
+		quartzManager.initScheduleJob();
+		List<ScheduleJobVo> jobs = quartzManager.queryExecutingJobList();
+		log.info("queryExecutingJobList>>" + jobs.size());
+	}
 
-        if (br.hasErrors()){
-            return "hello/login";
-        }
-        return "--";
-    }
+	// 我们知道在Controller类中通过@InitBinder标记的方法只有在请求当前Controller的时候才会被执行
+	// 所以在这里注册校验器
+	@InitBinder
+	public void initBainder(DataBinder binder) {
+		binder.replaceValidators(new UserValidator());
+
+	}
+
+	// 这个方法主要是跳转到登录页面
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(Model model) {
+
+		quartzManager.cleanJobs();
+
+		model.addAttribute(new User());
+		return "/hello/login";
+	}
+
+	// 处理登录表单
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(@Validated User user, BindingResult br) {
+
+		if (br.hasErrors()) {
+			return "hello/login";
+		}
+		return "--";
+	}
+
+	// 这个方法主要是跳转到登录页面
+	@RequestMapping(value = "/query", method = RequestMethod.GET)
+	public void queryQu(Model model) {
+
+		List<ScheduleJobVo> jobs = quartzManager.queryExecutingJobList();
+
+		log.info("queryExecutingJobList>>" + jobs.size());
+	}
 }

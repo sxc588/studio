@@ -4,13 +4,13 @@ import org.quartz.spi.ThreadPool;
 public class MyThreadPool implements ThreadPool {
 
 	@Override
-	public boolean runInThread(Runnable runnable) {
+	public int blockForAvailableThreads() {
 		// TODO Auto-generated method stub
-		return false;
+		return 0;
 	}
 
 	@Override
-	public int blockForAvailableThreads() {
+	public int getPoolSize() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -22,15 +22,9 @@ public class MyThreadPool implements ThreadPool {
 	}
 
 	@Override
-	public void shutdown(boolean waitForJobsToComplete) {
+	public boolean runInThread(Runnable runnable) {
 		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public int getPoolSize() {
-		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 	@Override
@@ -41,6 +35,12 @@ public class MyThreadPool implements ThreadPool {
 
 	@Override
 	public void setInstanceName(String schedName) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void shutdown(boolean waitForJobsToComplete) {
 		// TODO Auto-generated method stub
 
 	}

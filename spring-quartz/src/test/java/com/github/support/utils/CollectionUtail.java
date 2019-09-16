@@ -29,14 +29,12 @@ import org.junit.Test;
  * yyyy-MM-dd HH:mm:ss
  *  
  */
-public class CollectionUtail
-{
+public class CollectionUtail {
 
 	@Test
-	public void formatDataTest()
-	{
-		
-		String[] staffs = new String[]{"Tom", "Bob", "Jane"};
+	public void formatDataTest() {
+
+		String[] staffs = new String[] { "Tom", "Bob", "Jane" };
 		List<String> staffsList = Arrays.asList(staffs);
 		Set<String> staffsSet = new HashSet<String>(Arrays.asList(staffs));
 	}

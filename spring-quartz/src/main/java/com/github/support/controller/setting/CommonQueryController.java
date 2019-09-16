@@ -1,30 +1,19 @@
 package com.github.support.controller.setting;
 
-import java.util.LinkedList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.DataBinder;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import com.github.support.quartz.model.User;
-import com.github.support.validator.UserValidator;
 
 /**
  * 功能说明：系统配置项Action
+ * 
  * @author Administrator
  *
  */
 @Controller
 @RequestMapping(value = "setting/commonquery")
-public class CommonQueryController
-{
+public class CommonQueryController {
 	private static Logger log = LoggerFactory.getLogger(CommonQueryController.class);
 
 //	 //我们知道在Controller类中通过@InitBinder标记的方法只有在请求当前Controller的时候才会被执行
