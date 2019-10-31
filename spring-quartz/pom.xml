@@ -22,7 +22,7 @@
 		<poi.version>3.17</poi.version>
 		<!-- <jackson.version>2.9.5</jackson.version> -->
 		<!-- <jackson.version>2.5.1</jackson.version> -->
-		<jackson.version>2.7.4</jackson.version>
+		<jackson.version>2.10.0</jackson.version>
 	</properties>
 
 	<dependencyManagement>
