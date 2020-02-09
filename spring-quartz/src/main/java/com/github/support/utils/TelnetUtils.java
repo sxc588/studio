@@ -15,33 +15,45 @@ import org.springframework.http.HttpStatus;
  * @author Administrator
  *
  */
-public class TelnetUtils {
+public class TelnetUtils
+{
 
 	static private Logger LOG = LoggerFactory.getLogger(TelnetUtils.class);
 
 	/**
 	 * 关闭Telnet连接
 	 */
-	private static void disconnect(TelnetClient telnetClient) {
-		try {
+	private static void disconnect(TelnetClient telnetClient)
+	{
+		try
+		{
 			Thread.sleep(10);
 			if (telnetClient != null)
 				telnetClient.disconnect();
-		} catch (InterruptedException e1) {
+		} catch (InterruptedException e1)
+		{
 			e1.printStackTrace();
-		} catch (IOException e2) {
+		} catch (IOException e2)
+		{
 			e2.printStackTrace();
 		}
 	}
 
 	/**
-	 * @param ip   : telnet的IP地址
-	 * @param port : 端口号，默认11211
+	 * @param ip
+	 *            : telnet的IP地址
+	 * @param port
+	 *            : 端口号，默认11211
 	 * @return
 	 */
-	public static HttpStatus telnet(String ip, Integer port) {
+	public static PtResoult telnet(String ip, Integer port)
+	{
+
+		PtResoult result = null;
+
 		TelnetClient telnetClient = new TelnetClient();
-		try {
+		try
+		{
 
 			long begin = System.currentTimeMillis();
 			telnetClient.connect(ip, port);
@@ -52,14 +64,16 @@ public class TelnetUtils {
 			LOG.info("[{}:{}]--telnet Ok! -{}ms; {};{}", ip, port, (end - begin), telnetClient.getRemoteAddress(),
 					telnetClient.getLocalAddress());
 
-			return HttpStatus.OK;
+			return result = new PtResoult(HttpStatus.OK.value(), "telnet Ok!", (end - begin));
 
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			LOG.error("[{}:{}]--telnet fail!; {};{}", ip, port, telnetClient.getRemoteAddress(),
 					telnetClient.getLocalAddress());
-			return HttpStatus.NOT_FOUND;
+			return result = new PtResoult(HttpStatus.NOT_FOUND.value(), "telnet fail!", -1);
 
-		} finally {
+		} finally
+		{
 
 			disconnect(telnetClient);
 		}

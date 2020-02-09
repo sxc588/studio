@@ -1,56 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <configuration debug="true" scan="true" scanPeriod="30 seconds">
-	
-	<property name="format" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %logger{25} %line %n %msg%n" />
-	<property name="APP_Name" value="myAppName" /> 
-	
-<!-- 	<jmxConfigurator /> -->
-	
-	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder>
-			 <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
-		</encoder>
-	</appender>
+    <property name="format1" value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n" />
+    <property name="format2" value="%d{yyyy-MM-dd HH:mm:ss.SSS}%-4relative [%thread] %-5level %logger{35} - %msg %n" />
+    <property name="APP_Name" value="myAppName" />
+
+    <encoder>
+        <charset class="java.nio.charset.Charset">UTF-8</charset>
+    </encoder>
     
-	<appender name="test1" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>/applog/test1.log</file>
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>/applog/test1.log.%d{yyyy-MM-dd}.log</fileNamePattern>
-			<maxHistory>30</maxHistory>
-		</rollingPolicy>
-		<encoder>
-			<pattern>${format}</pattern>
-		</encoder>
-	</appender>
-
-	<appender name="test2" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>/applog/test2.log</file>
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>/applog/test2.log.%d{yyyy-MM-dd}.log</fileNamePattern>
-			<maxHistory>30</maxHistory>
-		</rollingPolicy>
-		<encoder>
-			<pattern>${format}</pattern>
-		</encoder>
-	</appender>
-	
-	<logger name="com.github.support.quartz" level="info" addtivity="true">
-		<appender-ref ref="test2" />
-		<appender-ref ref="STDOUT" />
-	</logger>
-
-	<!--myibatis log configure -->
-	<logger name="com.apache.ibatis" level="TRACE" />
-	<logger name="java.sql.Connection" level="DEBUG" />
-	<logger name="java.sql.Statement" level="DEBUG" />
-	<logger name="java.sql.PreparedStatement" level="DEBUG" />
-
-	<root level="info">
-		<appender-ref ref="STDOUT" />
-		<!-- <appender-ref ref="ERROR-OUT" /> -->
-		<!-- <appender-ref ref="INFO-OUT" /> -->
-		<!-- <appender-ref ref="DEBUG-OUT" /> -->
-		<!-- <appender-ref ref="SUM-OUT" /> -->
-	</root>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${format2}</pattern>
+            <charset class="java.nio.charset.Charset">UTF-8</charset>
+        </encoder>
+    </appender>
+   
+    <!--myibatis log configure -->
+<!--     <logger name="com.apache.ibatis" level="TRACE" /> -->
+<!--     <logger name="java.sql.Connection" level="DEBUG" /> -->
+<!--     <logger name="java.sql.Statement" level="DEBUG" /> -->
+<!--     <logger name="java.sql.PreparedStatement" level="DEBUG" /> -->
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+        <!-- <appender-ref ref="ERROR-OUT" /> -->
+        <!-- <appender-ref ref="INFO-OUT" /> -->
+        <!-- <appender-ref ref="DEBUG-OUT" /> -->
+        <!-- <appender-ref ref="SUM-OUT" /> -->
+    </root>
+    
 </configuration>

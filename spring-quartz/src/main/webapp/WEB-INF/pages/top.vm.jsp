@@ -96,7 +96,7 @@ String contextPath = request.getContextPath();
                 <li>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">系统管理<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="integrate/angular">注册表</a></li>
+                        <li><a href="setting/config">注册表</a></li>
                         <li><a href="integrate/angular">系统维护窗管理</a></li>
                          <li><a href="integrate/angular">用户管理</a></li>
                         <li><a href="integrate/angular">用户组管理</a></li>

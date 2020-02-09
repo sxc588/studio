@@ -14,7 +14,7 @@
 	<!-- 配置数据源 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://192.168.1.72:3306/sup_ops" />
+		<property name="url" value="jdbc:mysql://192.168.208.128:3306/sup_ops" />
 		<property name="username" value="root" />
 		<property name="password" value="root" />
 	</bean>

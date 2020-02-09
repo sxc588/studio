@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.logging.SimpleFormatter;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,18 +34,24 @@ import com.github.support.dbaccess.dto.ConfigDto;
  *
  */
 @Controller
-@RequestMapping(value = "/setting/config")
-public class ConfigController extends SimpleFormatter {
+@RequestMapping(value = "setting/config")
+public class ConfigController extends SimpleFormatter
+{
 	private static Logger log = LoggerFactory.getLogger(ConfigController.class);
+
+	HttpSession session;
 
 	@Autowired
 	private ConfigServcie configService;
 
 	// 这个方法主要是跳转到登录页面
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public String edit(HttpServletRequest request, Model model) {
+	public String edit(HttpServletRequest request, Model model)
+	{
 
-		log.info(">>edit");
+		this.
+
+				log.info(">>edit");
 		long begin = System.currentTimeMillis();
 		ConfigDto dto = new ConfigDto();
 		dto.setLastUpdateTime(new Date());
@@ -65,7 +72,8 @@ public class ConfigController extends SimpleFormatter {
 	// }
 
 	@InitBinder
-	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder)
+	{
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 		dateFormat.setLenient(false);
@@ -76,8 +84,9 @@ public class ConfigController extends SimpleFormatter {
 	/**
 	 * 任务列表页
 	 **/
-	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public String list(ModelMap modelMap) {
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public String list(ModelMap modelMap)
+	{
 		long begin = System.currentTimeMillis();
 		log.info(">>list");
 		Collection<ConfigDto> dtos = configService.list();
@@ -89,11 +98,13 @@ public class ConfigController extends SimpleFormatter {
 
 	// 处理登录表单
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	public String save(@Validated ConfigDto configDto, BindingResult br) {
+	public String save(@Validated ConfigDto configDto, BindingResult br)
+	{
 
 		long begin = System.currentTimeMillis();
 		log.info(">>edit.save");
-		if (br.hasErrors()) {
+		if (br.hasErrors())
+		{
 			return "/settings/configsEdit";
 		}
 

@@ -1,13 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+    <link rel="stylesheet"
+	href="/springmvc/3rd/bootstrap/assets/bootstrap/css/bootstrap.min.css">
+<style>.footer{
 
+width: 100%;
+background-color: #ddd;
+position: fixed;
+bottom: 0;
+text-align:center;
+margin-top: -50px;
+margin-left: -50px;
+}
+</style>
 <footer class="footer">
-	<div class="container">
+	<div class="container1">
 		<p class="text-muted">版权所有©2019 华为技术有限公司 粤A2-20044005号</p>
 	</div>
-
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </footer>
