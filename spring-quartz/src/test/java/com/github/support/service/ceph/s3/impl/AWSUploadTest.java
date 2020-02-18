@@ -22,7 +22,8 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
  * @author liuwei117
  *
  */
-public class AWSUploadTest extends AWSBaseTest {
+public class AWSUploadTest extends AWSBaseTest
+{
 	private static Logger logger = LoggerFactory.getLogger(AWSUploadTest.class);
 
 	private String contno = "12345678";
@@ -30,56 +31,64 @@ public class AWSUploadTest extends AWSBaseTest {
 	// 本地的一个文件
 	private File file = new File("E:" + File.separator + "EliteClient2017060710.log");
 	// 这里做一下目录分级：上传的文件放在1/1TT/下面
-	private String key = managecom + "/" + salecom + "/" + file.getName();
 	private String managecom = "1";
 	private String recordid = "11111111";
 
 	private String salecom = "1TT";
+	private String key = managecom + "/" + salecom + "/" + file.getName();
 
 	@Test
-	public void listObjectWithClientBuilder() {
+	public void listObjectWithClientBuilder()
+	{
 		AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
 
 		ClientConfiguration clientConfig = new ClientConfiguration();
 
-		try {
-//			clientConfig.setProtocol(Protocol.HTTP);
-//
-//			AmazonS3ClientBuilder builder = AmazonS3ClientBuilder.standard()
-//					.withCredentials(new AWSStaticCredentialsProvider(credentials));
-//			EndpointConfiguration endpointConfiguration = new EndpointConfiguration(
-//					ENDPOINT,
-//					Regions.AP_SOUTHEAST_1.getName());
-//			builder.setEndpointConfiguration(endpointConfiguration);
-//
-//			AmazonS3 conn = builder.build();
-//
-//			ObjectMetadata metadata = new ObjectMetadata();
-//			metadata.setContentLength(file.length());
-//
-//			metadata.addUserMetadata("managecom", managecom); // 可以设置一些属性，如公司码 =
-//																// 1
-//			metadata.addUserMetadata("salecom", salecom);
-//			metadata.addUserMetadata("contno", contno);
-//			metadata.addUserMetadata("recordid", recordid);
-//
-//			FileInputStream fi = new FileInputStream(file);
-//
-//			conn.putObject(new PutObjectRequest(bucket_name, key, fi, metadata));
+		try
+		{
+			// clientConfig.setProtocol(Protocol.HTTP);
+			//
+			// AmazonS3ClientBuilder builder = AmazonS3ClientBuilder.standard()
+			// .withCredentials(new AWSStaticCredentialsProvider(credentials));
+			// EndpointConfiguration endpointConfiguration = new
+			// EndpointConfiguration(
+			// ENDPOINT,
+			// Regions.AP_SOUTHEAST_1.getName());
+			// builder.setEndpointConfiguration(endpointConfiguration);
+			//
+			// AmazonS3 conn = builder.build();
+			//
+			// ObjectMetadata metadata = new ObjectMetadata();
+			// metadata.setContentLength(file.length());
+			//
+			// metadata.addUserMetadata("managecom", managecom); //
+			// 可以设置一些属性，如公司码 =
+			// // 1
+			// metadata.addUserMetadata("salecom", salecom);
+			// metadata.addUserMetadata("contno", contno);
+			// metadata.addUserMetadata("recordid", recordid);
+			//
+			// FileInputStream fi = new FileInputStream(file);
+			//
+			// conn.putObject(new PutObjectRequest(bucket_name, key, fi,
+			// metadata));
 			// conn.putObject(new PutObjectRequest(bucket_name, key, file));
 
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 	}
 
 	@Test
-	public void UploadObject() {
+	public void UploadObject()
+	{
 		AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
 
 		ClientConfiguration clientConfig = new ClientConfiguration();
 
-		try {
+		try
+		{
 			clientConfig.setProtocol(Protocol.HTTP);
 
 			AmazonS3Client conn = new AmazonS3Client(credentials, clientConfig);
@@ -105,7 +114,8 @@ public class AWSUploadTest extends AWSBaseTest {
 			URL url = conn.generatePresignedUrl(urlRequest);
 
 			logger.info("[" + key + "]'s url is " + url);
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 	}

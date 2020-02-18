@@ -1,3 +1,5 @@
+package com.github.support;
+
 import org.quartz.SchedulerConfigException;
 import org.quartz.spi.ThreadPool;
 

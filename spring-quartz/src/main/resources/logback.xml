@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="true" scan="true" scanPeriod="30 seconds">
     <property name="format1" value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n" />
-    <property name="format2" value="%d{yyyy-MM-dd HH:mm:ss.SSS}%-4relative [%thread] %-5level %logger{35} - %msg %n" />
+    <property name="format2" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{35} - %msg %n" />
+    <property name="format" value="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{35} - %msg %n" />
+  
     <property name="APP_Name" value="myAppName" />
 
     <encoder>
@@ -10,7 +12,7 @@
     
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>${format2}</pattern>
+            <pattern>${format}</pattern>
             <charset class="java.nio.charset.Charset">UTF-8</charset>
         </encoder>
     </appender>

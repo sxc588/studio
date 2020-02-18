@@ -19,6 +19,7 @@
     </mvc:annotation-driven>
     <mvc:default-servlet-handler />
     <mvc:resources mapping="/3rd/**" location="/WEB-INF/3rd/" />
+    
     <!-- 登录拦截器 -->
     <mvc:interceptors>
         <mvc:interceptor>
@@ -27,36 +28,7 @@
             <bean class="com.github.support.intercepters.LoginInterceptor"></bean>
         </mvc:interceptor>
     </mvc:interceptors>
-    <!-- <bean -->
-    <!-- class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver"> -->
-    <!-- <property name="order" value="1" /> -->
-    <!-- <property name="ignoreAcceptHeader" value="true" /> -->
-    <!-- <property name="mediaTypes"> -->
-    <!-- <map> -->
-    <!-- <entry key="json" value="application/json;charset=UTF-8" /> -->
-    <!-- <entry key="xml" value="application/xml;charset=UTF-8" /> -->
-    <!-- <entry key="rss" value="application/rss+xml;charset=UTF-8" /> -->
-    <!-- </map> -->
-    <!-- </property> -->
-    <!-- <property name="defaultViews"> -->
-    <!-- <list> -->
-    <!-- </list> -->
-    <!-- </property> -->
-    <!-- </bean> -->
-    <!-- <bean id="velocityConfig" -->
-    <!-- class="org.springframework.web.servlet.view.velocity.VelocityConfigurer"> -->
-    <!-- <property name="resourceLoaderPath" value="/WEB-INF" /> -->
-    <!-- <property name="configLocation" value="classpath:velocity.properties" /> -->
-    <!-- </bean> -->
-    <!-- <bean id="viewResolver" -->
-    <!-- class="org.springframework.web.servlet.view.velocity.VelocityViewResolver"> -->
-    <!-- <property name="order" value="2"/> -->
-    <!-- <property name="suffix" value=".vm" /> -->
-    <!-- <property name="prefix" value="/"/> -->
-    <!-- <property name="exposeSpringMacroHelpers" value="true"/> -->
-    <!-- <property name="requestContextAttribute" value="rc"/> -->
-    <!-- <property name="contentType" value="text/html;charset=UTF-8" /> -->
-    <!-- </bean> -->
+    
     <bean id="viewResolver"
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"></property>

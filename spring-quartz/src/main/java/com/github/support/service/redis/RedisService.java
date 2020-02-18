@@ -1,4 +1,4 @@
-package com.github.cbb.redis;
+package com.github.support.service.redis;
 
 import java.util.List;
 import java.util.Map;

@@ -17,7 +17,7 @@
         <property name="ignoreUnresolvablePlaceholders" value="true" />
         <property name="locations">
             <list>
-                <value>classpath:redis.properties</value>
+                <value>classpath:prop/redis.properties</value>
             </list>
         </property>
     </bean>
@@ -69,7 +69,7 @@
     </bean>
     
     <!--自定义redis工具类,在需要缓存的地方注入此类  -->  
-    <bean id="redisService" class="com.github.cbb.redis.RedisService">  
+    <bean id="redisService" class="com.github.support.service.redis.RedisService">  
         <property name="redisTemplate" ref="redisTemplate" />  
     </bean>
 </beans>

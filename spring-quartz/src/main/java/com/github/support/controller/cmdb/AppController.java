@@ -17,7 +17,8 @@ import com.github.support.vo.ScheduleJobVo;
  */
 @Controller
 @RequestMapping(value = "/cmdb/app")
-public class AppController {
+public class AppController
+{
 	/** job service */
 	@Autowired
 	private ScheduleJobService scheduleJobService;
@@ -28,7 +29,8 @@ public class AppController {
 	 * @return
 	 */
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
-	public String deleteScheduleJob(Long scheduleJobId) {
+	public String deleteScheduleJob(Long scheduleJobId)
+	{
 
 		scheduleJobService.delete(scheduleJobId);
 
@@ -41,9 +43,11 @@ public class AppController {
 	 * @return
 	 */
 	@RequestMapping(value = "input", method = RequestMethod.GET)
-	public String inputScheduleJob(ScheduleJobVo scheduleJobVo, ModelMap modelMap) {
+	public String inputScheduleJob(ScheduleJobVo scheduleJobVo, ModelMap modelMap)
+	{
 
-		if (scheduleJobVo.getScheduleJobId() != null) {
+		if (scheduleJobVo.getScheduleJobId() != null)
+		{
 			ScheduleJobVo scheduleJob = scheduleJobService.get(scheduleJobVo.getScheduleJobId());
 			scheduleJob.setKeywords(scheduleJobVo.getKeywords());
 			modelMap.put("scheduleJobVo", scheduleJob);
@@ -59,7 +63,8 @@ public class AppController {
 	 * @return
 	 */
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public String listScheduleJob(ScheduleJobVo scheduleJobVo, ModelMap modelMap) {
+	public String listScheduleJob(ScheduleJobVo scheduleJobVo, ModelMap modelMap)
+	{
 
 		List<ScheduleJobVo> scheduleJobVoList = scheduleJobService.queryList(scheduleJobVo);
 		modelMap.put("scheduleJobVoList", scheduleJobVoList);
@@ -76,7 +81,8 @@ public class AppController {
 	 * @return
 	 */
 	@RequestMapping(value = "pause", method = RequestMethod.GET)
-	public String pauseScheduleJob(Long scheduleJobId) {
+	public String pauseScheduleJob(Long scheduleJobId)
+	{
 		scheduleJobService.pauseJob(scheduleJobId);
 		return "redirect:list-schedule-job.shtml";
 	}
@@ -87,7 +93,8 @@ public class AppController {
 	 * @return
 	 */
 	@RequestMapping(value = "resume", method = RequestMethod.GET)
-	public String resumeScheduleJob(Long scheduleJobId) {
+	public String resumeScheduleJob(Long scheduleJobId)
+	{
 		scheduleJobService.resumeJob(scheduleJobId);
 		return "redirect:list-schedule-job.shtml";
 	}
@@ -98,7 +105,8 @@ public class AppController {
 	 * @return
 	 */
 	@RequestMapping(value = "run", method = RequestMethod.GET)
-	public String runOnceScheduleJob(Long scheduleJobId) {
+	public String runOnceScheduleJob(Long scheduleJobId)
+	{
 
 		scheduleJobService.runOnce(scheduleJobId);
 
@@ -112,19 +120,24 @@ public class AppController {
 	 * @return
 	 */
 	@RequestMapping(value = "save", method = RequestMethod.POST)
-	public String saveScheduleJob(ScheduleJobVo scheduleJobVo) {
+	public String saveScheduleJob(ScheduleJobVo scheduleJobVo)
+	{
 
-		for (int i = 1000; i < 2000; i++) {
+		for (int i = 1000; i < 2000; i++)
+		{
 			scheduleJobVo.setJobName("jobName" + i);
 			// 测试用随便设个状态
 			scheduleJobVo.setStatus("1");
 
-			if (scheduleJobVo.getScheduleJobId() == null) {
+			if (scheduleJobVo.getScheduleJobId() == null)
+			{
 				scheduleJobService.insert(scheduleJobVo);
-			} else if (StringUtils.equalsIgnoreCase(scheduleJobVo.getKeywords(), "delUpdate")) {
+			} else if (StringUtils.equalsIgnoreCase(scheduleJobVo.getKeywords(), "delUpdate"))
+			{
 				// 直接拿keywords存一下，就不另外重新弄了
 				scheduleJobService.delUpdate(scheduleJobVo);
-			} else {
+			} else
+			{
 				scheduleJobService.update(scheduleJobVo);
 			}
 		}
