@@ -22,14 +22,15 @@
                 <value>classpath:prop/druid.properties</value>
             </list>
         </property>
+        
     </bean>
     <!-- https://blog.csdn.net/guowujun321/article/details/79315328 -->
     <!-- 数据源 -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
         destroy-method="close">
         <property name="url" value="${url}" />
-        <property name="username" value="${username}" />
-        <property name="password" value="${password}" />
+        <property name="username" value="${uname}" />
+        <property name="password" value="${pword}" />
         <property name="filters" value="${filters}" />
         <property name="maxActive" value="${maxActive}" />
         <property name="initialSize" value="${initialSize}" />
@@ -45,6 +46,16 @@
         <property name="poolPreparedStatements" value="${poolPreparedStatements}" />
         <property name="maxPoolPreparedStatementPerConnectionSize"
             value="${maxPoolPreparedStatementPerConnectionSize}" />
+            
+            
+<!-- 超过时间限制是否回收 -->
+<property name="removeAbandoned" value="true" />
+<!-- 超时时间；单位为秒。180秒=3分钟 -->
+<property name="removeAbandonedTimeout" value="180" />
+<!-- 关闭abanded连接时输出错误日志 此配置项会影响性能，只在排查的时候打开。系统运行时最好关闭。-->
+<property name="logAbandoned" value="true" />  
+            
+            
     </bean>
     <!-- 数据源 -->
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
@@ -67,6 +78,8 @@
             value="classpath*:com/github/support/dbaccess/mybatis/*Mapper.xml" />
         <property name="typeAliasesPackage" value="com.github.support.dbaccess.dto" />
     </bean>
+    
+    
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.github.support.dbaccess.mapper" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />

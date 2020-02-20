@@ -3,15 +3,18 @@ package com.github.t0190;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class Solution {
+class Solution
+{
 
-	public long reverseBits(long x) {
+	public long reverseBits(long x)
+	{
 
 		Queue<Long> st = new LinkedList<Long>();
 
 		long absX = x;
 
-		while (absX > 0) {
+		while (absX > 0)
+		{
 			st.offer(absX % 2);
 			absX = absX / 2;
 		}
@@ -20,17 +23,18 @@ class Solution {
 
 		int i = 0;
 
-		while (i < 32) {
+		while (i < 32)
+		{
 
-			Long kv = st.isEmpty() ? 0 : st.poll();
+			Long kv = st.isEmpty() ? 0L : st.poll();
 			value = value * 2 + kv;
 
 			i++;
 		}
 
-//		if (value > Integer.MAX_VALUE) {
-//			return 0;
-//		}
+		// if (value > Integer.MAX_VALUE) {
+		// return 0;
+		// }
 
 		return (int) value;
 	}
