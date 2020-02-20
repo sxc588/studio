@@ -3,33 +3,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<jsp:include page="../top.vm.jsp"></jsp:include>
 <meta http-equiv="refresh" content="5">
-<a href="input2" class="btn btn-success" role="button">添加任务</a>
-<a href="export" class="btn btn-success" role="button">导出</a>
 
-<p class="lead">数据库中的任务</p>
+<p class="lead">定义的Spring 对象</p>
 <table class="table table-bordered table-margin-top">
     <tr>
-        <td>任务分组${scheduleJobVoList.size()}</td>
-        <td>任务名称</td>
-        <td>任务别名</td>
-        <td>触发器</td>
-        <td>nextFireTime</td>
-        
-        <td>previousFireTime</td>
-        <td>任务状态</td>
-        <td>时间表达式</td>
-        <td>是否异步</td>
-        <td>任务执行url</td>
-        <td>任务描述</td>
-        <td>操作</td>
+        <td>序号</td>
+        <td>Bean名称</td>
+        <td>Bean的类型</td>
     </tr>
     
-    <c:forEach items="${scheduleJobVoList}" var="item" varStatus="id"
+    <c:forEach items="${map}" var="item" varStatus="go">
+    ${go.count}
+    ${item.key}
+    <c:forEach items="${item.value}" var="i">
+     ${i.rname}
+    </c:forEach>
+ 
+    
+    <c:forEach items="${beans}" var="item" varStatus="id"
 				begin="0">
 				<tr>
-					<td>${item.jobGroup}</td>
+					<td>${item.}</td>
 					<td>${item.jobName}</td>
 					<td>${item.aliasName}</td>
 					<td>${item.jobTrigger}</td>

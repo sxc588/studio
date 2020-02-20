@@ -29,7 +29,6 @@ public class PtController
 	@ResponseBody
 	public PtResoult ping()
 	{
-
 		String host = "192.168.208.128";
 		PtResoult result = PingUtils.ping(host);
 		log.info(JSON.toJSONString(result));

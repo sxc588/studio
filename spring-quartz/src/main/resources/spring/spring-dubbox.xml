@@ -36,7 +36,7 @@
 <!-- <dubbo:application name="consumer"/> -->
 <!-- <dubbo:registry protocol="zookeeper" address="192.168.25.137:2181"/>	 -->
 <!-- <dubbo:reference interface="cn.XXX.service.ItemService" id="itemService" /> -->
-<!-- <dubbo:reference interface="com.github.support.api.TestRegistryService" id="testRegistryService" /> -->
+<!-- <dubbo:reference interface="com.github.support.api.TestRegistryService" id="testRegistryService" retries="5"/> -->
 
 
 </beans>

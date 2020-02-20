@@ -1,6 +1,5 @@
 package com.github.support.jms;
 
-import javax.annotation.Resource;
 import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.TextMessage;
@@ -12,15 +11,20 @@ import org.springframework.stereotype.Service;
  * Created by Administrator on 2017/1/5.
  */
 @Service
-public class ConsumerService {
-	@Resource(name = "jmsTemplate")
+public class ConsumerService
+{
+
+	// @Resource(name = "jmsTemplate")
 	private JmsTemplate jmsTemplate;
 
-	public TextMessage receive(Destination destination) {
+	public TextMessage receive(Destination destination)
+	{
 		TextMessage textMessage = (TextMessage) jmsTemplate.receive(destination);
-		try {
+		try
+		{
 			System.out.println("从队列" + destination.toString() + "收到了消息：\t" + textMessage.getText());
-		} catch (JMSException e) {
+		} catch (JMSException e)
+		{
 			e.printStackTrace();
 		}
 		return textMessage;

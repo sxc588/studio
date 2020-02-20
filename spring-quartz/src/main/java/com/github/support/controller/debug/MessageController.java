@@ -20,11 +20,12 @@ import com.github.support.jms.ConsumerService;
 @Controller
 
 @RequestMapping(value = "debug/msg")
-public class MessageController {
+public class MessageController
+{
 	// 队列消息消费者
 	@Resource(name = "consumerService")
 	private ConsumerService consumer;
-	@Resource(name = "demoQueueDestination")
+	// @Resource(name = "demoQueueDestination")
 	private Destination destination;
 
 	private Logger logger = LoggerFactory.getLogger(MessageController.class);
@@ -35,7 +36,8 @@ public class MessageController {
 
 	@RequestMapping(value = "/reeivemsg", method = RequestMethod.GET)
 	@ResponseBody
-	public Object receive() {
+	public Object receive()
+	{
 		System.err.println(Thread.currentThread().getName() + "------------receive from jms Start");
 		TextMessage tm = consumer.receive(destination);
 		System.err.println(Thread.currentThread().getName() + "------------receive from jms End");
@@ -44,7 +46,8 @@ public class MessageController {
 
 	@RequestMapping(value = "/sendmsg", method = RequestMethod.GET)
 	@ResponseBody
-	public void send(String msg) {
+	public void send(String msg)
+	{
 		System.err.println(Thread.currentThread().getName() + "------------send to jms Start");
 		producer.sendMessage(msg);
 		System.err.println(Thread.currentThread().getName() + "------------send to jms End");

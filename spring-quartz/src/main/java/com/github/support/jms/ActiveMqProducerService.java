@@ -1,6 +1,5 @@
 package com.github.support.jms;
 
-import javax.annotation.Resource;
 import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
@@ -19,35 +18,42 @@ import com.github.support.service.PerformancMatrixBean;
  * Created by Administrator on 2017/1/5.
  */
 @Service
-public class ActiveMqProducerService {
+public class ActiveMqProducerService
+{
 
 	/* 日志对象 */
 	private static final Logger LOG = LoggerFactory.getLogger(ActiveMqProducerService.class);
 
-	@Resource(name = "jmsTemplate")
+	// @Resource(name = "jmsTemplate")
 	private JmsTemplate jmsTemplate;
 
 	@Autowired
 	private PerformancMatrixBean pmb;
 
-	public void sendMessage(Destination destination, final String msg) {
+	public void sendMessage(Destination destination, final String msg)
+	{
 		pmb.inc();
 		LOG.info("{}向队列{}发送消息：{}" + Thread.currentThread().getName(), destination.toString(), msg);
 
-		jmsTemplate.send(destination, new MessageCreator() {
+		jmsTemplate.send(destination, new MessageCreator()
+		{
 			@Override
-			public Message createMessage(Session session) throws JMSException {
+			public Message createMessage(Session session) throws JMSException
+			{
 				return session.createTextMessage(msg);
 			}
 		});
 	}
 
-	public void sendMessage(final String msg) {
+	public void sendMessage(final String msg)
+	{
 		String destination = jmsTemplate.getDefaultDestinationName();
 		LOG.info("{}向缺省队列{}发送消息：{}", Thread.currentThread().getName(), destination, msg);
-		jmsTemplate.send(new MessageCreator() {
+		jmsTemplate.send(new MessageCreator()
+		{
 			@Override
-			public Message createMessage(Session session) throws JMSException {
+			public Message createMessage(Session session) throws JMSException
+			{
 				return session.createTextMessage(msg);
 			}
 		});
