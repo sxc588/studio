@@ -49,10 +49,12 @@ public class ConfigController extends SimpleFormatter
 	public String edit(HttpServletRequest request, Model model)
 	{
 
-		this.
-
-				log.info(">>edit");
+		log.info(">>edit");
 		long begin = System.currentTimeMillis();
+		
+	requert.
+		
+		
 		ConfigDto dto = new ConfigDto();
 		dto.setLastUpdateTime(new Date());
 		dto.setLastUpdateBy(IpUtil.getIpAddr());
@@ -115,7 +117,7 @@ public class ConfigController extends SimpleFormatter
 		long end = System.currentTimeMillis();
 		log.info(">>edit.save" + (end - begin));
 
-		return "redirect:list";
+		return "redirect:";
 	}
 
 }

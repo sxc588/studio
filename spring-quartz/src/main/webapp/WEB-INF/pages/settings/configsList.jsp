@@ -35,15 +35,15 @@
 					<td>
 					
 					<a class="btn-sm btn-danger" role="button"
-						href="pause?scheduleJobId=${item.key}"><i
+						href="edit?copy=${item.key}"><i
 							class="fa fa-pause-circle-o" aria-hidden="true"></i>复制</a>
 				    <a
 						class="btn-sm btn-danger" role="button"
-						href="resume?scheduleJobId=${item.key}"><i
+						href="edit?modify=${item.key}"><i
 							class="fa fa-reply" aria-hidden="true"></i>编辑</a> 
 				    				    <a
 						class="btn-sm btn-danger" role="button"
-						href="resume?scheduleJobId=${item.key}"><i
+						href="remove?config=${item.key}"><i
 							class="fa fa-reply" aria-hidden="true"></i>删除</a> 
 						</td>
 				</tr>
