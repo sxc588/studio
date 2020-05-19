@@ -1,0 +1,10 @@
+@font-face {
+ font-family: 'fontnameRegular';
+ src: url('fontname.eot');
+ src: local('fontname Regular'),
+        local('fontname'),
+        url('fontname.woff') format('woff'),
+        url('fontname.ttf') format('truetype'),
+        url('fontname.svg#fontname') format('svg');
+}  
+/*其中fontName替换为你的字体名称*/
