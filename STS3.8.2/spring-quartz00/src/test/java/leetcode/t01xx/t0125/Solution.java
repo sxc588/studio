@@ -4,7 +4,7 @@ class Solution {
 	public boolean isPalindrome(String s) {
 
 		int left = 0;
-		int right = s.length()-1;
+		int right = s.length() - 1;
 
 		while (left < right) {
 			if (isNotNumber(s.charAt(left)) && isNotAlpha(s.charAt(left))) {
@@ -12,7 +12,7 @@ class Solution {
 				continue;
 			}
 
-			if (isNotNumber(s.charAt(right)) &&  isNotAlpha(s.charAt(right))) {
+			if (isNotNumber(s.charAt(right)) && isNotAlpha(s.charAt(right))) {
 				right--;
 				continue;
 			}
@@ -29,31 +29,26 @@ class Solution {
 	}
 
 	private boolean isEqualAlpha(char charAt, char charAt2) {
-		
-		if (charAt == charAt2)
-		{
-			return  true;
+
+		if (charAt == charAt2) {
+			return true;
 		}
-		
+
 		if (isNotAlpha(charAt)) {
-		return false;
+			return false;
 		}
 
 		if (isNotAlpha(charAt2)) {
-		return false;
+			return false;
 		}
-		
-		
-		
-		int delt =charAt - charAt2;
-		int delt0= 'a' -'A';
-		
-		if (delt - delt0 == 0 || delt + delt0== 0)
-		{
-			return  true;
+
+		int delt = charAt - charAt2;
+		int delt0 = 'a' - 'A';
+
+		if (delt - delt0 == 0 || delt + delt0 == 0) {
+			return true;
 		}
-		
-		
+
 		return false;
 	}
 
@@ -63,9 +58,7 @@ class Solution {
 		}
 		return true;
 	}
-	
-	
-	
+
 	private boolean isNotAlpha(char charAt) {
 
 		if (charAt >= 'a' && charAt <= 'z') {
