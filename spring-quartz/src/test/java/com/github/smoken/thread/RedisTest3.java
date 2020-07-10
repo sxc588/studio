@@ -12,7 +12,7 @@ public class RedisTest3 {
 //	https://www.cnblogs.com/dolphin0520/p/3932921.html
 	@Test
 	public void testExpire() {
-		HttpClients
+
 	}
 
 //	Executors.newCachedThreadPool();        //创建一个缓冲池，缓冲池容量大小为Integer.MAX_VALUE

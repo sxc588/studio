@@ -46,10 +46,8 @@
 
 <body>
 	<H1>This is 404 page!</H1>
-
 	<div class="circle red"></div>
 	<div class="circle yellow"></div>
 	<div class="circle green"></div>
-
 </body>
 </html>
