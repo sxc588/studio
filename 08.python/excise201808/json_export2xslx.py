@@ -6,7 +6,8 @@ import requests
 import traceback
 import time
 
-def weritxls(data):
+
+def write_xls(data):
     wb = xlwt.Workbook();
     sheet = wb.add_sheet("dddf");
     key_list = data[0].keys()
@@ -27,6 +28,7 @@ def weritxls(data):
 
     wb.save(filename);
 
+
 def make_data(start_time = 15009180000,end_time= 153305280000):
     tim1=time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(start_time/1000))
     tim2 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(end_time / 1000))
@@ -36,9 +38,8 @@ def make_data(start_time = 15009180000,end_time= 153305280000):
     by_month="y"
     prod=""
 
-    avaiable_url = 'http://support.huawei.com/enterprise' \
-         'starttime=%s&endtime=%s&bymoth=%s&prod=%s'
+    available_url = 'http://support.huawei.com/enterprise/starttime=%s&endtime=%s&bymoth=%s&prod=%s'
 
-    url = avaiable_url %(start_time,end_time,by_month,prod)
+    url = available_url %(start_time,end_time,by_month,prod)
 
     reuqet = requests
