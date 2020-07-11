@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>1.2</jsp-version>
+    <short-name>util</short-name>
+    <uri>custmTag2</uri>
+    <tag>
+        <name>i18n</name>
+        <tag-class>com.github.support.utils.tag.I18nTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <!-- 标签名 -->
+            <name>key</name>
+            <!-- 是否为可选属性 -->
+            <required>true</required>
+            <!-- 是否接受JSP表达示计算结果 -->
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+        <tag>
+        <name>config</name>
+        <tag-class>com.github.support.utils.tag.ConfigTag</tag-class>
+        <body-content>empty</body-content>
+        <!-- JSP,empty表示不能包函内容的,scriptless,tagdependent -->
+        <attribute>
+            <!-- 标签名 -->
+            <name>key</name>
+            <!-- 是否为可选属性 -->
+            <required>true</required>
+            <!-- 是否接受JSP表达示计算结果 -->
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <name>timer</name>
+        <tag-class>com.github.support.utils.tag.LangHuaTag</tag-class>
+        <body-content>JSP</body-content>
+        <!-- JSP,empty表示能能包函内容的,scriptless,tagdependent -->
+    </tag>
+    <tag>
+        <name>date</name>
+        <tag-class>com.github.support.utils.tagDateTag</tag-class>
+        <body-content>empty</body-content>
+        <!-- JSP,empty表示不能包函内容的,scriptless,tagdependent -->
+        <attribute>
+            <!-- 标签名 -->
+            <name>time</name>
+            <!-- 是否为可选属性 -->
+            <required>false</required>
+            <!-- 是否接受JSP表达示计算结果 -->
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>pattern</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <name>loop</name>
+        <tag-class>com.github.support.utils.tag.LoopTag</tag-class>
+        <body-content>JSP</body-content>
+        <!-- JSP,empty表示不能包函内容的,scriptless,tagdependent -->
+        <attribute>
+            <!-- 标签名 -->
+            <name>times</name>
+            <!-- 是否为可选属性 -->
+            <required>true</required>
+            <!-- 是否接受JSP表达示计算结果 -->
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <name>menu</name>
+        <tag-class>com.github.support.utils.tag.MenuTag</tag-class>
+        <body-content>JSP</body-content>
+        <description>menu</description>
+        <attribute>
+            <name>menuStr</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <type>type</type>
+            <description>MenuId</description>
+        </attribute>
+    </tag>
+</taglib>
