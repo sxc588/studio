@@ -7,7 +7,7 @@
 	<name>BPMN 2.0 with Activiti - Examples</name>
 	<properties>
 		<activiti-version>5.11</activiti-version>
-		<mysql.version>5.1.24</mysql.version>
+		<mysql.version>8.0.16</mysql.version>
 	</properties>
 	<dependencies>
 		<dependency>
