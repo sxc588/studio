@@ -35,8 +35,7 @@
 		<property name="maxActive" value="${maxActive}" />
 		<property name="initialSize" value="${initialSize}" />
 		<property name="maxWait" value="${maxWait}" />
-		<property name="timeBetweenEvictionRunsMillis"
-			value="${timeBetweenEvictionRunsMillis}" />
+		<property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}" />
 		<property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}" />
 		<property name="validationQuery" value="${validationQuery}" />
 		<property name="testWhileIdle" value="${testWhileIdle}" />
@@ -53,9 +52,8 @@
 		<property name="removeAbandonedTimeout" value="180" />
 		<!-- 关闭abanded连接时输出错误日志 此配置项会影响性能，只在排查的时候打开。系统运行时最好关闭。 -->
 		<property name="logAbandoned" value="true" />
-
-
 	</bean>
+	
 	<!-- 数据源 -->
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource">
@@ -65,6 +63,7 @@
 			<value>${jdbc.jdbcTemplate.fetchSize}</value>
 		</property>
 	</bean>
+	
 	<!-- 访问数据库方式 -->
 	<bean id="jdbcDao" class="com.dexcoder.dal.spring.JdbcDaoImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />

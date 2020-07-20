@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="true" scan="true" scanPeriod="30 seconds">
-    <property name="format1" value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n" />
-    <property name="format2" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{35} - %msg %n" />
-    <property name="format" value="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{35} - %msg %n" />
-  
-    <property name="APP_Name" value="myAppName" />
+	<property name="fmt1" value="%d{HH:mm:ss.SSS} %-4relative [%thread] %logger{36} - %msg%n" />
+	<property name="fmt2" value="%d{yyyy-MM-dd HH:mm:ss.SSS}  %-5level %logger{35} - %msg %n" />
+	<property name="fmt3" value="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{35} - %msg %n" />
 
-    <encoder>
-        <charset class="java.nio.charset.Charset">UTF-8</charset>
-    </encoder>
-    
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>${format}</pattern>
-            <charset class="java.nio.charset.Charset">UTF-8</charset>
-        </encoder>
-    </appender>
-   
-    <!--myibatis log configure -->
-<!--     <logger name="com.apache.ibatis" level="TRACE" /> -->
-<!--     <logger name="java.sql.Connection" level="DEBUG" /> -->
-<!--     <logger name="java.sql.Statement" level="DEBUG" /> -->
-<!--     <logger name="java.sql.PreparedStatement" level="DEBUG" /> -->
-    <root level="info">
-        <appender-ref ref="STDOUT" />
-        <!-- <appender-ref ref="ERROR-OUT" /> -->
-        <!-- <appender-ref ref="INFO-OUT" /> -->
-        <!-- <appender-ref ref="DEBUG-OUT" /> -->
-        <!-- <appender-ref ref="SUM-OUT" /> -->
-    </root>
-    
+	<property name="APP_Name" value="myAppName" />
+
+	<encoder>
+		<charset class="java.nio.charset.Charset">UTF-8</charset>
+	</encoder>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${fmt1}</pattern>
+			<charset class="java.nio.charset.Charset">UTF-8</charset>
+		</encoder>
+	</appender>
+
+
+	<!--myibatis log configure -->
+	<!-- <logger name="com.apache.ibatis" level="TRACE" /> -->
+	<!-- <logger name="java.sql.Connection" level="DEBUG" /> -->
+	<!-- <logger name="java.sql.Statement" level="DEBUG" /> -->
+	<!-- <logger name="java.sql.PreparedStatement" level="DEBUG" /> -->
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+		<!-- <appender-ref ref="ERROR-OUT" /> -->
+		<!-- <appender-ref ref="INFO-OUT" /> -->
+		<!-- <appender-ref ref="DEBUG-OUT" /> -->
+		<!-- <appender-ref ref="SUM-OUT" /> -->
+	</root>
+
 </configuration>

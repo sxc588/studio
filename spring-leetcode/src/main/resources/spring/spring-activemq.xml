@@ -41,16 +41,15 @@
 		<property name="maximumRedeliveryDelay" value="1000"></property>
 	</bean>
 
-	<amq:connectionFactory id="amqConnectionFactory"
-		brokerURL="${activemq.url}" userName="admin" password="admin" />
+	<amq:connectionFactory id="amqConnectionFactory" brokerURL="${activemq.url}"
+		userName="admin" password="admin" />
 	<!-- <bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory"> -->
 	<!-- <property name="brokerURL" value=${activemq.url}" /> -->
 	<!-- <property name="redeliveryPolicy" ref="activeMQRedeliveryPolicy"/> -->
 	<!-- <property name="useAsyncSend" value="true"/> 默认就是异步发送 -->
 	<!-- </bean> -->
 	<!-- 配置JMS连接工长 -->
-	<bean id="connectionFactory"
-		class="org.springframework.jms.connection.CachingConnectionFactory">
+	<bean id="connectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
 		<constructor-arg ref="amqConnectionFactory" />
 		<property name="sessionCacheSize" value="100" />
 	</bean>
@@ -69,6 +68,7 @@
 		<!-- true是topic，false是queue，默认是false，此处显示写出false -->
 		<property name="pubSubDomain" value="false" />
 	</bean>
+	
 	<!-- 配置消息队列监听者（Queue） -->
 	<bean id="queueMessageListener" class="com.github.support.jms.QueueMessageListener" />
 	<!-- 显示注入消息监听容器（Queue），配置连接工厂，监听的目标是demoQueueDestination，监听器是上面定义的监听器 -->

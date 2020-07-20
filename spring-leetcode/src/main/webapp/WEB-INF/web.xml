@@ -73,7 +73,7 @@
     </jsp-config>
     
     <welcome-file-list>
-        <welcome-file>/WEB-INF/index.jsp</welcome-file>
+        <welcome-file>/WEB-INF/welcome.jsp</welcome-file>
     </welcome-file-list>
     
     <!-- 错误页面 -->
@@ -82,7 +82,7 @@
         <location>/WEB-INF/403.jsp</location>
     </error-page>
     <error-page>
-        <error-code>407</error-code>
+        <error-code>404</error-code>
         <location>/WEB-INF/404.jsp</location>
     </error-page>
     <error-page>
