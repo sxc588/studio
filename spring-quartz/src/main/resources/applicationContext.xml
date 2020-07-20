@@ -32,6 +32,6 @@
 	</bean>
 
 	<!-- <import resource="spring/spring-activemq.xml" /> -->
-	<!-- <import resource="spring/spring-mybatis.xml" /> -->
+	<import resource="spring/spring-mybatis.xml" />
 	<!-- <import resource="spring/spring-quartz.xml" /> -->
 </beans>
