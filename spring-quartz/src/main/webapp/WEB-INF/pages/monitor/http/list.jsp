@@ -17,7 +17,7 @@
 	src="/springmvc/3rd/jsgrid-1.5.3/dist/jsgrid.min.js"></script>
 </head>
 <body>
-	<jsp:include page='../../top.vm.jsp'></jsp:include>
+	<jsp:include page='<%=request.getContextPath()%>/top.vm.jsp'></jsp:include>
 
 	<table id="jsGrid"></table>
 	<div id="gridpager"></div>

@@ -52,7 +52,7 @@ public class ConfigController extends SimpleFormatter
 		log.info(">>edit");
 		long begin = System.currentTimeMillis();
 		
-	requert.
+
 		
 		
 		ConfigDto dto = new ConfigDto();

@@ -201,6 +201,6 @@ table {
 </form>
 	
 	
-<%-- 	<jsp:include page="../../foot.vm.jsp"></jsp:include> --%>
+<%-- 	<jsp:include page="../<%=request.getContextPath()%>/foot.vm.jsp"></jsp:include> --%>
 </body>
 </html>

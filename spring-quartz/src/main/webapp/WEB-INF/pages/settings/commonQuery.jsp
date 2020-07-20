@@ -24,7 +24,7 @@ request.setCharacterEncoding("utf-8"); %>
 }
 </style>
 <body>
-	<jsp:include page="../top.vm.jsp"></jsp:include>
+	<jsp:include page="../top.header.jsp"></jsp:include>
 
 	<div class="container" role="main">
 
@@ -113,6 +113,6 @@ request.setCharacterEncoding("utf-8"); %>
 			</div>
 		</div>
 	</div>
-	<jsp:include page="../foot.vm.jsp"></jsp:include>
+	<jsp:include page="<%=request.getContextPath()%>/foot.vm.jsp"></jsp:include>
 </body>
 </html>
