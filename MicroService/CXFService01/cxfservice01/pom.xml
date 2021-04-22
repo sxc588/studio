@@ -9,7 +9,7 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<cxf.version>3.1.9</cxf.version>
+		<cxf.version>3.3.8</cxf.version>
 		<spring.version>4.1.9.RELEASE</spring.version>
 		<jettyVersion>9.0.2.v20130417</jettyVersion>
 	</properties>
