@@ -19,7 +19,7 @@
 		<servlet.version>2.5</servlet.version>
 
 		<!-- Spring -->
-		<spring.version>3.2.3.RELEASE</spring.version>
+		<spring.version>5.2.20.RELEASE</spring.version>
 
 		<!-- Hibernate / JPA -->
 		<hibernate.version>3.2.1.Final</hibernate.version>
